@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BAC51D41C6F67510098B9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D21C6F67510098B9C8 /* Assets.xcassets */; };
+		5BAC51D81C6F67A90098B9C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */; };
 		5BC71F131C6F5F66005E90C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F121C6F5F66005E90C8 /* AppDelegate.swift */; };
-		5BC71F1A1C6F5F66005E90C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BC71F191C6F5F66005E90C8 /* Assets.xcassets */; };
-		5BC71F1D1C6F5F66005E90C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC71F1B1C6F5F66005E90C8 /* LaunchScreen.storyboard */; };
 		5BC71F281C6F5F66005E90C8 /* JumuNordostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F271C6F5F66005E90C8 /* JumuNordostTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,10 +24,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5BAC51D21C6F67510098B9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5BAC51D71C6F67A90098B9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BC71F0F1C6F5F66005E90C8 /* JumuNordost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumuNordost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC71F121C6F5F66005E90C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5BC71F191C6F5F66005E90C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5BC71F1C1C6F5F66005E90C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BC71F1E1C6F5F66005E90C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BC71F231C6F5F66005E90C8 /* JumuNordostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumuNordostTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC71F271C6F5F66005E90C8 /* JumuNordostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumuNordostTests.swift; sourceTree = "<group>"; };
@@ -52,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BAC51D01C6F67030098B9C8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5BAC51D21C6F67510098B9C8 /* Assets.xcassets */,
+				5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5BC71F061C6F5F66005E90C8 = {
 			isa = PBXGroup;
 			children = (
@@ -74,9 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				5BC71F121C6F5F66005E90C8 /* AppDelegate.swift */,
-				5BC71F191C6F5F66005E90C8 /* Assets.xcassets */,
-				5BC71F1B1C6F5F66005E90C8 /* LaunchScreen.storyboard */,
 				5BC71F1E1C6F5F66005E90C8 /* Info.plist */,
+				5BAC51D01C6F67030098B9C8 /* Resources */,
 			);
 			path = JumuNordost;
 			sourceTree = "<group>";
@@ -171,8 +179,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BC71F1D1C6F5F66005E90C8 /* LaunchScreen.storyboard in Resources */,
-				5BC71F1A1C6F5F66005E90C8 /* Assets.xcassets in Resources */,
+				5BAC51D41C6F67510098B9C8 /* Assets.xcassets in Resources */,
+				5BAC51D81C6F67A90098B9C8 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,10 +221,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5BC71F1B1C6F5F66005E90C8 /* LaunchScreen.storyboard */ = {
+		5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5BC71F1C1C6F5F66005E90C8 /* Base */,
+				5BAC51D71C6F67A90098B9C8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
