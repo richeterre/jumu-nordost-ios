@@ -1,5 +1,5 @@
 //
-//  Contest.swift
+//  Venue.swift
 //  JumuNordost
 //
 //  Created by Martin Richter on 13/02/16.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct Contest {
+struct Venue {
     let id: String
     let name: String
-    let venues: [Venue]
 }
