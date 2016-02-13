@@ -10,6 +10,7 @@
 		5BAC51D41C6F67510098B9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D21C6F67510098B9C8 /* Assets.xcassets */; };
 		5BAC51D81C6F67A90098B9C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */; };
 		5BAC51DB1C6F68430098B9C8 /* ContestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51DA1C6F68430098B9C8 /* ContestsViewController.swift */; };
+		5BAC51E31C6F6D650098B9C8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51E21C6F6D650098B9C8 /* Constant.swift */; };
 		5BAC51E61C6F6D9E0098B9C8 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51E51C6F6D9E0098B9C8 /* Contest.swift */; };
 		5BAC51E81C6F6DD40098B9C8 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51E71C6F6DD40098B9C8 /* Store.swift */; };
 		5BAC51EA1C6F71A80098B9C8 /* ContestsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51E91C6F71A80098B9C8 /* ContestsMediator.swift */; };
@@ -31,6 +32,7 @@
 		5BAC51D21C6F67510098B9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BAC51D71C6F67A90098B9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BAC51DA1C6F68430098B9C8 /* ContestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestsViewController.swift; sourceTree = "<group>"; };
+		5BAC51E21C6F6D650098B9C8 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5BAC51E51C6F6D9E0098B9C8 /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contest.swift; sourceTree = "<group>"; };
 		5BAC51E71C6F6DD40098B9C8 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		5BAC51E91C6F71A80098B9C8 /* ContestsMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestsMediator.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		5BAC51DE1C6F6A710098B9C8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5BAC51E21C6F6D650098B9C8 /* Constant.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		5BAC51E11C6F6D3C0098B9C8 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +130,7 @@
 				5BAC51D91C6F680E0098B9C8 /* Application */,
 				5BAC51E41C6F6D7A0098B9C8 /* Models */,
 				5BAC51E11C6F6D3C0098B9C8 /* Stores */,
+				5BAC51DE1C6F6A710098B9C8 /* Helpers */,
 				5BAC51D01C6F67030098B9C8 /* Resources */,
 			);
 			path = JumuNordost;
@@ -238,6 +249,7 @@
 				5BAC51E61C6F6D9E0098B9C8 /* Contest.swift in Sources */,
 				5BC71F131C6F5F66005E90C8 /* AppDelegate.swift in Sources */,
 				5BAC51DB1C6F68430098B9C8 /* ContestsViewController.swift in Sources */,
+				5BAC51E31C6F6D650098B9C8 /* Constant.swift in Sources */,
 				5BAC51EA1C6F71A80098B9C8 /* ContestsMediator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
