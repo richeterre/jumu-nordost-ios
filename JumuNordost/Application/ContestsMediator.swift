@@ -8,8 +8,6 @@
 
 import Foundation
 
-protocol StoreType {}
-
 class ContestsMediator {
 
     private let store: StoreType
