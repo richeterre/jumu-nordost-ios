@@ -14,6 +14,7 @@
 		5BAC51E61C6F6D9E0098B9C8 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51E51C6F6D9E0098B9C8 /* Contest.swift */; };
 		5BAC51E81C6F6DD40098B9C8 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51E71C6F6DD40098B9C8 /* Store.swift */; };
 		5BAC51EA1C6F71A80098B9C8 /* ContestsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51E91C6F71A80098B9C8 /* ContestsMediator.swift */; };
+		5BAC51F51C6F7C450098B9C8 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAC51F41C6F7C450098B9C8 /* Argo.framework */; };
 		5BC71F131C6F5F66005E90C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F121C6F5F66005E90C8 /* AppDelegate.swift */; };
 		5BC71F281C6F5F66005E90C8 /* JumuNordostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F271C6F5F66005E90C8 /* JumuNordostTests.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		5BAC51E51C6F6D9E0098B9C8 /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contest.swift; sourceTree = "<group>"; };
 		5BAC51E71C6F6DD40098B9C8 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		5BAC51E91C6F71A80098B9C8 /* ContestsMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestsMediator.swift; sourceTree = "<group>"; };
+		5BAC51F41C6F7C450098B9C8 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
 		5BC71F0F1C6F5F66005E90C8 /* JumuNordost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumuNordost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC71F121C6F5F66005E90C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BC71F1E1C6F5F66005E90C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BAC51F51C6F7C450098B9C8 /* Argo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,9 +107,18 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5BAC51F61C6F7C490098B9C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BAC51F41C6F7C450098B9C8 /* Argo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5BC71F061C6F5F66005E90C8 = {
 			isa = PBXGroup;
 			children = (
+				5BAC51F61C6F7C490098B9C8 /* Frameworks */,
 				5BC71F111C6F5F66005E90C8 /* JumuNordost */,
 				5BC71F261C6F5F66005E90C8 /* JumuNordostTests */,
 				5BC71F101C6F5F66005E90C8 /* Products */,
@@ -155,6 +167,7 @@
 				5BC71F0B1C6F5F66005E90C8 /* Sources */,
 				5BC71F0C1C6F5F66005E90C8 /* Frameworks */,
 				5BC71F0D1C6F5F66005E90C8 /* Resources */,
+				5BAC51F01C6F79F70098B9C8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -239,6 +252,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5BAC51F01C6F79F70098B9C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Argo.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks ";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5BC71F0B1C6F5F66005E90C8 /* Sources */ = {
@@ -370,6 +400,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = "Jumu Nordost";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = JumuNordost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.martinrichter.jumu-nordost";
@@ -382,6 +416,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = "Jumu Nordost";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = JumuNordost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.martinrichter.jumu-nordost";
