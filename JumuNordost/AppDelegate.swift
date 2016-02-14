@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let store = Store()
         let contestsMediator = ContestsMediator(store: store)
-        window?.rootViewController = ContestsViewController(mediator: contestsMediator)
+        let contestsViewController = ContestsViewController(mediator: contestsMediator)
+        window?.rootViewController = UINavigationController(rootViewController: contestsViewController)
 
         window?.makeKeyAndVisible()
 
