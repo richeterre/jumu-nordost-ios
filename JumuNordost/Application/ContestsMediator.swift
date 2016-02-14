@@ -52,4 +52,8 @@ class ContestsMediator {
     func numberOfContests() -> Int {
         return contests.count
     }
+
+    func nameForContestAtIndexPath(indexPath: NSIndexPath) -> String {
+        return contests[indexPath.row].name
+    }
 }

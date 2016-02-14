@@ -9,12 +9,13 @@
 import ReactiveCocoa
 import Result
 
-class ContestsViewController: UIViewController {
+class ContestsViewController: UITableViewController {
 
     // MARK: - Private Properties
 
     private let mediator: ContestsMediator
     private let (isActive, isActiveObserver) = Signal<Bool, NoError>.pipe()
+    private let contestCellIdentifier = "ContestCell"
 
     // MARK: - Lifecycle
 
@@ -33,6 +34,9 @@ class ContestsViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.whiteColor()
+
+        tableView.allowsSelection = false
+        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
 
         makeBindings()
     }
@@ -55,9 +59,19 @@ class ContestsViewController: UIViewController {
         mediator.contentChanged
             .observeOn(UIScheduler())
             .observeNext { [weak self] in
-                if let contestCount = self?.mediator.numberOfContests() {
-                    print("\(contestCount) contest(s) fetched")
-                }
+                self?.tableView.reloadData()
             }
+    }
+
+    // MARK: - UITableViewDataSource
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mediator.numberOfContests()
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath)
+        cell.textLabel?.text = mediator.nameForContestAtIndexPath(indexPath)
+        return cell
     }
 }
