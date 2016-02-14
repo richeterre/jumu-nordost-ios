@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B843C741C7110A600048552 /* Mediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C731C7110A600048552 /* Mediator.swift */; };
+		5B843C781C71179400048552 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B843C771C71179400048552 /* Curry.framework */; };
 		5BAC51D41C6F67510098B9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D21C6F67510098B9C8 /* Assets.xcassets */; };
 		5BAC51D81C6F67A90098B9C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */; };
 		5BAC51DB1C6F68430098B9C8 /* ContestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51DA1C6F68430098B9C8 /* ContestsViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		5B843C731C7110A600048552 /* Mediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mediator.swift; sourceTree = "<group>"; };
+		5B843C771C71179400048552 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
 		5BAC51D21C6F67510098B9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BAC51D71C6F67A90098B9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BAC51DA1C6F68430098B9C8 /* ContestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestsViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BAC51F51C6F7C450098B9C8 /* Argo.framework in Frameworks */,
+				5B843C781C71179400048552 /* Curry.framework in Frameworks */,
 				5BAC51FB1C6FF0350098B9C8 /* ReactiveCocoa.framework in Frameworks */,
 				5BAC51FC1C6FF0350098B9C8 /* Result.framework in Frameworks */,
 			);
@@ -151,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				5BAC51F41C6F7C450098B9C8 /* Argo.framework */,
+				5B843C771C71179400048552 /* Curry.framework */,
 				5BAC51F91C6FF0350098B9C8 /* ReactiveCocoa.framework */,
 				5BAC51FA1C6FF0350098B9C8 /* Result.framework */,
 			);
@@ -306,6 +310,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Argo.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Curry.framework",
 			);
 			outputPaths = (
 			);
