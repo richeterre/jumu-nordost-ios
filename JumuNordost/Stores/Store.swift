@@ -30,14 +30,7 @@ class Store: StoreType {
     // MARK: - Private Helpers
 
     private func requestForEndpoint(endpoint: Endpoint) -> NSURLRequest {
-        let path: String = {
-            switch endpoint {
-            case .Contests:
-                return "contests"
-            }
-        }()
-
-        let url = NSURL(string: path, relativeToURL: Constant.baseURL)!
+        let url = NSURL(string: endpoint.rawValue, relativeToURL: Constant.baseURL)!
         return NSURLRequest(URL: url)
     }
 }
