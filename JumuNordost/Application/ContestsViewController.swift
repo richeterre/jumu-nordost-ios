@@ -85,7 +85,10 @@ class ContestsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath)
+
         cell.textLabel?.text = mediator.nameForContestAtIndexPath(indexPath)
+        cell.detailTextLabel?.text = mediator.dateForContestAtIndexPath(indexPath)
+
         return cell
     }
 

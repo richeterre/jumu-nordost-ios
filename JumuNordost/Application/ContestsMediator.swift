@@ -23,9 +23,16 @@ class ContestsMediator {
 
     // MARK: - Private Properties
 
+    private var contests = [Contest]()
     private let store: StoreType
     private let contentChangedObserver: Observer<Void, NoError>
-    private var contests = [Contest]()
+    private lazy var dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .LongStyle
+        formatter.timeStyle = .NoStyle
+        formatter.locale = NSLocale.autoupdatingCurrentLocale()
+        return formatter
+    }()
 
     // MARK: - Lifecycle
 
@@ -66,6 +73,17 @@ class ContestsMediator {
     }
 
     func nameForContestAtIndexPath(indexPath: NSIndexPath) -> String {
-        return contests[indexPath.row].name
+        return contestAtIndexPath(indexPath).name
+    }
+
+    func dateForContestAtIndexPath(indexPath: NSIndexPath) -> String {
+        let contest = contestAtIndexPath(indexPath)
+        return dateFormatter.stringFromDate(contest.startDate)
+    }
+
+    // MARK: - Private Helpers
+
+    private func contestAtIndexPath(indexPath: NSIndexPath) -> Contest {
+        return contests[indexPath.row]
     }
 }
