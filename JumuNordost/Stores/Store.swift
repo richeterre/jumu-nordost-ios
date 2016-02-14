@@ -6,6 +6,38 @@
 //  Copyright © 2016 Martin Richter. All rights reserved.
 //
 
-import Foundation
+import Argo
+import ReactiveCocoa
 
-class Store: StoreType {}
+enum Endpoint: String {
+    case Contests = "contests"
+}
+
+class Store: StoreType {
+    func fetchContests() -> SignalProducer<[Contest], NSError> {
+        let request = requestForEndpoint(.Contests)
+        return NSURLSession.sharedSession().rac_dataWithRequest(request)
+            .map { data, response in
+                if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
+                    contests: [Contest] = decode(json) {
+                        return contests
+                } else {
+                    return []
+                }
+            }
+    }
+
+    // MARK: - Private Helpers
+
+    private func requestForEndpoint(endpoint: Endpoint) -> NSURLRequest {
+        let path: String = {
+            switch endpoint {
+            case .Contests:
+                return "contests"
+            }
+        }()
+
+        let url = NSURL(string: path, relativeToURL: Constant.baseURL)!
+        return NSURLRequest(URL: url)
+    }
+}

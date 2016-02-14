@@ -6,4 +6,8 @@
 //  Copyright © 2016 Martin Richter. All rights reserved.
 //
 
-protocol StoreType {}
+import ReactiveCocoa
+
+protocol StoreType {
+    func fetchContests() -> SignalProducer<[Contest], NSError>
+}
