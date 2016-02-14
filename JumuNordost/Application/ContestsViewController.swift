@@ -33,6 +33,8 @@ class ContestsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = localize("NAV_TITLE.CONTESTS")
+
         view.backgroundColor = UIColor.whiteColor()
 
         tableView.allowsSelection = false

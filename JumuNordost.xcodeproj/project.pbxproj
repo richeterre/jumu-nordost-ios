@@ -20,6 +20,8 @@
 		5BAC51FB1C6FF0350098B9C8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAC51F91C6FF0350098B9C8 /* ReactiveCocoa.framework */; };
 		5BAC51FC1C6FF0350098B9C8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAC51FA1C6FF0350098B9C8 /* Result.framework */; };
 		5BAC51FE1C70D8820098B9C8 /* ContestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51FD1C70D8820098B9C8 /* ContestCell.swift */; };
+		5BAC52001C70E4E80098B9C8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51FF1C70E4E80098B9C8 /* Localization.swift */; };
+		5BAC52021C70E5D90098B9C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC52011C70E5D90098B9C8 /* Localizable.strings */; };
 		5BC71F131C6F5F66005E90C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F121C6F5F66005E90C8 /* AppDelegate.swift */; };
 		5BC71F281C6F5F66005E90C8 /* JumuNordostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F271C6F5F66005E90C8 /* JumuNordostTests.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		5BAC51F91C6FF0350098B9C8 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		5BAC51FA1C6FF0350098B9C8 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		5BAC51FD1C70D8820098B9C8 /* ContestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestCell.swift; sourceTree = "<group>"; };
+		5BAC51FF1C70E4E80098B9C8 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		5BAC52011C70E5D90098B9C8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5BC71F0F1C6F5F66005E90C8 /* JumuNordost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumuNordost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC71F121C6F5F66005E90C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BC71F1E1C6F5F66005E90C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 			children = (
 				5BAC51D21C6F67510098B9C8 /* Assets.xcassets */,
 				5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */,
+				5BAC52011C70E5D90098B9C8 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				5BAC51E21C6F6D650098B9C8 /* Constant.swift */,
+				5BAC51FF1C70E4E80098B9C8 /* Localization.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BAC51D41C6F67510098B9C8 /* Assets.xcassets in Resources */,
+				5BAC52021C70E5D90098B9C8 /* Localizable.strings in Resources */,
 				5BAC51D81C6F67A90098B9C8 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +308,7 @@
 				5BAC51EC1C6F77320098B9C8 /* Venue.swift in Sources */,
 				5BAC51FE1C70D8820098B9C8 /* ContestCell.swift in Sources */,
 				5BAC51DB1C6F68430098B9C8 /* ContestsViewController.swift in Sources */,
+				5BAC52001C70E4E80098B9C8 /* Localization.swift in Sources */,
 				5BAC51E31C6F6D650098B9C8 /* Constant.swift in Sources */,
 				5BAC51EA1C6F71A80098B9C8 /* ContestsMediator.swift in Sources */,
 			);
