@@ -37,9 +37,7 @@ class ContestsViewController: UITableViewController {
 
         view.backgroundColor = UIColor.whiteColor()
 
-        tableView.allowsSelection = false
-        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
-
+        configureTableView()
         makeBindings()
     }
 
@@ -58,11 +56,25 @@ class ContestsViewController: UITableViewController {
     private func makeBindings() {
         mediator.active <~ isActive
 
+        mediator.isLoading.producer
+            .observeOn(UIScheduler())
+            .startWithNext({ [weak self] isLoading in
+                if !isLoading {
+                    self?.refreshControl?.endRefreshing()
+                }
+            })
+
         mediator.contentChanged
             .observeOn(UIScheduler())
             .observeNext { [weak self] in
                 self?.tableView.reloadData()
             }
+    }
+
+    // MARK: - User Interaction
+
+    func refreshControlFired() {
+        mediator.refreshObserver.sendNext(())
     }
 
     // MARK: - UITableViewDataSource
@@ -75,5 +87,19 @@ class ContestsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath)
         cell.textLabel?.text = mediator.nameForContestAtIndexPath(indexPath)
         return cell
+    }
+
+    // MARK: - Private Helpers
+
+    private func configureTableView() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self,
+            action: Selector("refreshControlFired"),
+            forControlEvents: .ValueChanged
+        )
+        self.refreshControl = refreshControl
+
+        tableView.allowsSelection = false
+        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
     }
 }
