@@ -9,23 +9,11 @@
 import ReactiveCocoa
 import Result
 
-class ContestsMediator {
-
-    // MARK: - Inputs
-
-    let active = MutableProperty<Bool>(false)
-    let refreshObserver: Observer<Void, NoError>
-
-    // MARK: - Outputs
-
-    let isLoading: MutableProperty<Bool>
-    let contentChanged: Signal<Void, NoError>
+class ContestsMediator: Mediator {
 
     // MARK: - Private Properties
 
     private var contests = [Contest]()
-    private let store: StoreType
-    private let contentChangedObserver: Observer<Void, NoError>
     private lazy var dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
         formatter.dateStyle = .LongStyle
@@ -36,20 +24,10 @@ class ContestsMediator {
 
     // MARK: - Lifecycle
 
-    init(store: StoreType) {
-        self.store = store
+    override init(store: StoreType) {
+        super.init(store: store)
 
-        let (refreshTrigger, refreshObserver) = SignalProducer<Void, NoError>.buffer(0)
-        self.refreshObserver = refreshObserver
-
-        let isLoading = MutableProperty<Bool>(false)
-        self.isLoading = isLoading
-        (contentChanged, contentChangedObserver) = Signal<Void, NoError>.pipe()
-
-        active.producer
-            .filter { $0 }
-            .map { _ in () }
-            .start(refreshObserver)
+        let isLoading = self.isLoading
 
         refreshTrigger
             .on(next: { _ in isLoading.value = true })
@@ -57,13 +35,13 @@ class ContestsMediator {
                 return store.fetchContests()
                     .flatMapError { error in
                         return SignalProducer(value: [])
-                    }
+                }
             }
             .on(next: { _ in isLoading.value = false })
             .startWithNext { [weak self] contests in
                 self?.contests = contests
                 self?.contentChangedObserver.sendNext(())
-            }
+        }
     }
 
     // MARK: - Data Source
