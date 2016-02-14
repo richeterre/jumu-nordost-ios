@@ -7,6 +7,7 @@
 //
 
 import Argo
+import Curry
 
 struct Contest {
     let id: String
@@ -19,10 +20,6 @@ struct Contest {
 // MARK: - Decodable
 
 extension Contest: Decodable {
-    static func create(id: String)(name: String)(timeZone: NSTimeZone)(startDate: NSDate)(venues: [Venue]) -> Contest {
-        return Contest(id: id, name: name, timeZone: timeZone, startDate: startDate, venues: venues)
-    }
-
     static func decode(json: JSON) -> Decoded<Contest> {
         let toTimeZone: String -> Decoded<NSTimeZone> = {
             .fromOptional(NSTimeZone(name: $0))
@@ -40,7 +37,7 @@ extension Contest: Decodable {
             .fromOptional(jsonDateFormatter.dateFromString($0))
         }
 
-        return Contest.create
+        return curry(self.init)
             <^> json <| "id"
             <*> json <| "name"
             <*> (json <| "timeZone" >>- toTimeZone)

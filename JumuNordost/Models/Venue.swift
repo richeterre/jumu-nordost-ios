@@ -7,6 +7,7 @@
 //
 
 import Argo
+import Curry
 
 struct Venue {
     let id: String
@@ -16,12 +17,8 @@ struct Venue {
 // MARK: - Decodable
 
 extension Venue: Decodable {
-    static func create(id: String)(name: String) -> Venue {
-        return Venue(id: id, name: name)
-    }
-
     static func decode(json: JSON) -> Decoded<Venue> {
-        return Venue.create
+        return curry(self.init)
             <^> json <| "id"
             <*> json <| "name"
     }
