@@ -40,8 +40,8 @@ extension Contest: Decodable {
         return curry(self.init)
             <^> json <| "id"
             <*> json <| "name"
-            <*> (json <| "timeZone" >>- toTimeZone)
-            <*> (json <| "startDate" >>- toNSDate)
+            <*> (json <| "time_zone" >>- toTimeZone)
+            <*> (json <| "start_date" >>- toNSDate)
             <*> json <|| "venues"
     }
 }
