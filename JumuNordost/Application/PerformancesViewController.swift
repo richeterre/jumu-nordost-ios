@@ -40,6 +40,8 @@ class PerformancesViewController: ListViewController {
     // MARK: - Bindings
 
     private func makeBindings() {
+        self.title = mediator.title
+
         mediator.active <~ isActive
 
         mediator.isLoading.producer

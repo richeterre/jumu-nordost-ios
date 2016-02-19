@@ -10,6 +10,10 @@ import ReactiveCocoa
 
 class PerformancesMediator: Mediator {
 
+    // MARK: - Internal Properties
+
+    let title: String
+
     // MARK: - Private Properties
 
     var performances = [Performance]()
@@ -17,6 +21,8 @@ class PerformancesMediator: Mediator {
     // MARK: - Lifecycle
 
     init(store: StoreType, contest: Contest) {
+        self.title = contest.name
+
         super.init(store: store)
 
         let venue = contest.venues.first! // TODO: Handle nil case
