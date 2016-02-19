@@ -56,6 +56,7 @@ class ContestsMediator: Mediator {
 
     func dateForContestAtIndexPath(indexPath: NSIndexPath) -> String {
         let contest = contestAtIndexPath(indexPath)
+        dateFormatter.timeZone = contest.timeZone
         return dateFormatter.stringFromDate(contest.startDate)
     }
 
