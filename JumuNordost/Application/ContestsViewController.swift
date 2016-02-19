@@ -78,7 +78,7 @@ class ContestsViewController: ListViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath)
 
         cell.textLabel?.text = mediator.nameForContestAtIndexPath(indexPath)
-        cell.detailTextLabel?.text = mediator.dateForContestAtIndexPath(indexPath)
+        cell.detailTextLabel?.text = mediator.datesForContestAtIndexPath(indexPath)
         cell.accessoryType = .DisclosureIndicator
 
         return cell

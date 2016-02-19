@@ -14,6 +14,7 @@ struct Contest {
     let name: String
     let timeZone: NSTimeZone
     let startDate: NSDate
+    let endDate: NSDate
     let venues: [Venue]
 }
 
@@ -42,6 +43,7 @@ extension Contest: Decodable {
             <*> json <| "name"
             <*> (json <| "time_zone" >>- toTimeZone)
             <*> (json <| "start_date" >>- toNSDate)
+            <*> (json <| "end_date" >>- toNSDate)
             <*> json <|| "venues"
     }
 }

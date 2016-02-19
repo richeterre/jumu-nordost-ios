@@ -54,10 +54,17 @@ class ContestsMediator: Mediator {
         return contestAtIndexPath(indexPath).name
     }
 
-    func dateForContestAtIndexPath(indexPath: NSIndexPath) -> String {
+    func datesForContestAtIndexPath(indexPath: NSIndexPath) -> String {
         let contest = contestAtIndexPath(indexPath)
         dateFormatter.timeZone = contest.timeZone
-        return dateFormatter.stringFromDate(contest.startDate)
+
+        let (startDate, endDate) = (contest.startDate, contest.endDate)
+
+        if startDate == endDate {
+            return dateFormatter.stringFromDate(startDate)
+        } else {
+            return "\(dateFormatter.stringFromDate(startDate)) – \(dateFormatter.stringFromDate(endDate))"
+        }
     }
 
     // MARK: - Mediators
