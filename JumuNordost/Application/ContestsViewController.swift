@@ -33,6 +33,7 @@ class ContestsViewController: ListViewController {
         super.viewDidLoad()
 
         self.title = localize("NAV_TITLE.CONTESTS")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
         view.backgroundColor = UIColor.whiteColor()
 
