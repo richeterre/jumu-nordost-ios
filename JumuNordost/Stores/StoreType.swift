@@ -9,5 +9,12 @@
 import ReactiveCocoa
 
 protocol StoreType {
+
+    // MARK: - Contests
+
     func fetchContests() -> SignalProducer<[Contest], NSError>
+
+    // MARK: - Performances
+
+    func fetchPerformances(contest contest: Contest, venue: Venue, date: NSDateComponents) -> SignalProducer<[Performance], NSError>
 }

@@ -1,27 +1,27 @@
 //
-//  ContestsViewController.swift
+//  PerformancesViewController.swift
 //  JumuNordost
 //
-//  Created by Martin Richter on 13/02/16.
+//  Created by Martin Richter on 14/02/16.
 //  Copyright © 2016 Martin Richter. All rights reserved.
 //
 
 import ReactiveCocoa
 import Result
 
-class ContestsViewController: UITableViewController {
+class PerformancesViewController: UITableViewController {
 
     // MARK: - Private Properties
 
-    private let mediator: ContestsMediator
+    private let mediator: PerformancesMediator
     private let (isActive, isActiveObserver) = Signal<Bool, NoError>.pipe()
-    private let contestCellIdentifier = "ContestCell"
+    private let performanceCellIdentifier = "PerformanceCell"
 
     // MARK: - Lifecycle
 
-    init(mediator: ContestsMediator) {
+    init(mediator: PerformancesMediator) {
         self.mediator = mediator
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .Plain)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -32,10 +32,6 @@ class ContestsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.title = localize("NAV_TITLE.CONTESTS")
-
-        view.backgroundColor = UIColor.whiteColor()
 
         configureTableView()
         makeBindings()
@@ -68,7 +64,7 @@ class ContestsViewController: UITableViewController {
             .observeOn(UIScheduler())
             .observeNext { [weak self] in
                 self?.tableView.reloadData()
-            }
+        }
     }
 
     // MARK: - User Interaction
@@ -80,27 +76,15 @@ class ContestsViewController: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mediator.numberOfContests()
+        return mediator.numberOfPerformances()
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(performanceCellIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = mediator.nameForContestAtIndexPath(indexPath)
-        cell.detailTextLabel?.text = mediator.dateForContestAtIndexPath(indexPath)
-        cell.accessoryType = .DisclosureIndicator
+        cell.textLabel?.text = mediator.categoryNameForPerformanceAtIndexPath(indexPath)
 
         return cell
-    }
-
-    // MARK: - UITableViewDelegate
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-        let performancesMediator = mediator.performancesMediatorForContestAtIndexPath(indexPath)
-        let performancesViewController = PerformancesViewController(mediator: performancesMediator)
-        self.navigationController?.pushViewController(performancesViewController, animated: true)
     }
 
     // MARK: - Private Helpers
@@ -113,6 +97,8 @@ class ContestsViewController: UITableViewController {
         )
         self.refreshControl = refreshControl
 
-        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
+        tableView.allowsSelection = false
+
+        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: performanceCellIdentifier)
     }
 }

@@ -9,13 +9,10 @@
 import Argo
 import ReactiveCocoa
 
-enum Endpoint: String {
-    case Contests = "contests"
-}
-
 class Store: StoreType {
     func fetchContests() -> SignalProducer<[Contest], NSError> {
-        let request = requestForEndpoint(.Contests)
+
+        let request = requestForPath("contests")
         return NSURLSession.sharedSession().rac_dataWithRequest(request)
             .map { data, response in
                 if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
@@ -27,10 +24,37 @@ class Store: StoreType {
             }
     }
 
+    func fetchPerformances(contest contest: Contest, venue: Venue, date: NSDateComponents) -> SignalProducer<[Performance], NSError> {
+
+        let dateString = "\(date.year)-\(date.month)-\(date.day)"
+
+        let queryItems = [
+            NSURLQueryItem(name: "venue_id", value: venue.id),
+            NSURLQueryItem(name: "local_date", value: dateString)
+        ]
+
+        let path = String(format: "contests/%@/performances", arguments: [contest.id])
+        let request = requestForPath(path, queryItems: queryItems)
+
+        return NSURLSession.sharedSession().rac_dataWithRequest(request)
+            .map { data, response in
+                if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
+                    performances: [Performance] = decode(json) {
+                        return performances
+                } else {
+                    return []
+                }
+            }
+    }
+
     // MARK: - Private Helpers
 
-    private func requestForEndpoint(endpoint: Endpoint) -> NSURLRequest {
-        let url = NSURL(string: endpoint.rawValue, relativeToURL: Constant.baseURL)!
-        return NSURLRequest(URL: url)
+    private func requestForPath(path: String, queryItems: [NSURLQueryItem] = []) -> NSURLRequest {
+        let url = NSURL(string: path, relativeToURL: Constant.baseURL)!
+        let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)!
+
+        components.queryItems = queryItems
+
+        return NSURLRequest(URL: components.URL!)
     }
 }

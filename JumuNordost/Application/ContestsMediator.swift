@@ -59,6 +59,13 @@ class ContestsMediator: Mediator {
         return dateFormatter.stringFromDate(contest.startDate)
     }
 
+    // MARK: - Mediators
+
+    func performancesMediatorForContestAtIndexPath(indexPath: NSIndexPath) -> PerformancesMediator {
+        let contest = contestAtIndexPath(indexPath)
+        return PerformancesMediator(store: self.store, contest: contest)
+    }
+
     // MARK: - Private Helpers
 
     private func contestAtIndexPath(indexPath: NSIndexPath) -> Contest {

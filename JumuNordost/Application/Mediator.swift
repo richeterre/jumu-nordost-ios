@@ -23,12 +23,9 @@ class Mediator {
 
     // MARK: - Internal Properties
 
+    let store: StoreType
     let refreshTrigger: SignalProducer<Void, NoError>
     let contentChangedObserver: Observer<Void, NoError>
-
-    // MARK: - Private Properties
-
-    private let store: StoreType
 
     // MARK: - Lifecycle
 
