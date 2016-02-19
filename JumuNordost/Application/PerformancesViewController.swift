@@ -32,6 +32,7 @@ class PerformancesViewController: ListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.allowsSelection = false
         tableView.registerClass(ContestCell.self, forCellReuseIdentifier: performanceCellIdentifier)
 
         makeBindings()
