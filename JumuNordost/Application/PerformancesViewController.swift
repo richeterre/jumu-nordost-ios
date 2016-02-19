@@ -9,12 +9,11 @@
 import ReactiveCocoa
 import Result
 
-class PerformancesViewController: UITableViewController {
+class PerformancesViewController: ListViewController {
 
     // MARK: - Private Properties
 
     private let mediator: PerformancesMediator
-    private let (isActive, isActiveObserver) = Signal<Bool, NoError>.pipe()
     private let performanceCellIdentifier = "PerformanceCell"
 
     // MARK: - Lifecycle
@@ -33,18 +32,9 @@ class PerformancesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureTableView()
+        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: performanceCellIdentifier)
+
         makeBindings()
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        isActiveObserver.sendNext(true)
-    }
-
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        isActiveObserver.sendNext(false)
     }
 
     // MARK: - Bindings
@@ -69,7 +59,7 @@ class PerformancesViewController: UITableViewController {
 
     // MARK: - User Interaction
 
-    func refreshControlFired() {
+    override func refreshControlFired() {
         mediator.refreshObserver.sendNext(())
     }
 
@@ -85,20 +75,5 @@ class PerformancesViewController: UITableViewController {
         cell.textLabel?.text = mediator.categoryNameForPerformanceAtIndexPath(indexPath)
 
         return cell
-    }
-
-    // MARK: - Private Helpers
-
-    private func configureTableView() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self,
-            action: Selector("refreshControlFired"),
-            forControlEvents: .ValueChanged
-        )
-        self.refreshControl = refreshControl
-
-        tableView.allowsSelection = false
-
-        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: performanceCellIdentifier)
     }
 }

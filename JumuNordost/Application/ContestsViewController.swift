@@ -9,12 +9,11 @@
 import ReactiveCocoa
 import Result
 
-class ContestsViewController: UITableViewController {
+class ContestsViewController: ListViewController {
 
     // MARK: - Private Properties
 
     private let mediator: ContestsMediator
-    private let (isActive, isActiveObserver) = Signal<Bool, NoError>.pipe()
     private let contestCellIdentifier = "ContestCell"
 
     // MARK: - Lifecycle
@@ -37,18 +36,9 @@ class ContestsViewController: UITableViewController {
 
         view.backgroundColor = UIColor.whiteColor()
 
-        configureTableView()
+        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
+
         makeBindings()
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        isActiveObserver.sendNext(true)
-    }
-
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        isActiveObserver.sendNext(false)
     }
 
     // MARK: - Bindings
@@ -73,7 +63,7 @@ class ContestsViewController: UITableViewController {
 
     // MARK: - User Interaction
 
-    func refreshControlFired() {
+    override func refreshControlFired() {
         mediator.refreshObserver.sendNext(())
     }
 
@@ -101,18 +91,5 @@ class ContestsViewController: UITableViewController {
         let performancesMediator = mediator.performancesMediatorForContestAtIndexPath(indexPath)
         let performancesViewController = PerformancesViewController(mediator: performancesMediator)
         self.navigationController?.pushViewController(performancesViewController, animated: true)
-    }
-
-    // MARK: - Private Helpers
-
-    private func configureTableView() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self,
-            action: Selector("refreshControlFired"),
-            forControlEvents: .ValueChanged
-        )
-        self.refreshControl = refreshControl
-
-        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
     }
 }
