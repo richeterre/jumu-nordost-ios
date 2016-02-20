@@ -8,6 +8,8 @@
 
 import ReactiveCocoa
 
+typealias ContestDay = NSDateComponents
+
 protocol StoreType {
 
     // MARK: - Contests
@@ -16,5 +18,5 @@ protocol StoreType {
 
     // MARK: - Performances
 
-    func fetchPerformances(contest contest: Contest, venue: Venue, date: NSDateComponents) -> SignalProducer<[Performance], NSError>
+    func fetchPerformances(contest contest: Contest, venue: Venue, day: ContestDay) -> SignalProducer<[Performance], NSError>
 }

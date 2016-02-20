@@ -24,7 +24,7 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
 
     init(mediator: PerformancesMediator) {
         self.mediator = mediator
-        filterView = PerformanceFilterView(dateStrings: mediator.contestDates())
+        filterView = PerformanceFilterView(dateStrings: mediator.formattedContestDays())
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -91,6 +91,9 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
             .observeNext { [weak self] in
                 self?.tableView.reloadData()
         }
+
+        filterView.selectedDateIndex.value = mediator.selectedDayIndex.value // Set initial value
+        mediator.selectedDayIndex <~ filterView.selectedDateIndex // Create binding for future values
     }
 
     // MARK: - User Interaction

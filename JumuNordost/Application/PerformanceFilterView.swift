@@ -7,8 +7,11 @@
 //
 
 import Cartography
+import ReactiveCocoa
 
 class PerformanceFilterView: UIView {
+
+    let selectedDateIndex = MutableProperty<Int?>(nil)
 
     private let dateSwitcher: UISegmentedControl
 
@@ -18,6 +21,12 @@ class PerformanceFilterView: UIView {
         dateSwitcher = UISegmentedControl(items: dateStrings)
 
         super.init(frame: CGRectZero)
+
+        selectedDateIndex.producer.startWithNext { [weak self] index in
+            self?.dateSwitcher.selectedSegmentIndex = index ?? -1
+        }
+
+        dateSwitcher.addTarget(self, action: Selector("dateSwitcherChanged:"), forControlEvents: .ValueChanged)
 
         addSubview(dateSwitcher)
         makeConstraints()
@@ -33,5 +42,11 @@ class PerformanceFilterView: UIView {
         constrain(dateSwitcher, self) { dateSwitcher, superview in
             dateSwitcher.edges == superview.edgesWithinMargins
         }
+    }
+
+    // MARK: - User Interaction
+
+    func dateSwitcherChanged(switcher: UISegmentedControl) {
+        selectedDateIndex.value = switcher.selectedSegmentIndex
     }
 }

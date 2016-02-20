@@ -24,9 +24,9 @@ class Store: StoreType {
             }
     }
 
-    func fetchPerformances(contest contest: Contest, venue: Venue, date: NSDateComponents) -> SignalProducer<[Performance], NSError> {
+    func fetchPerformances(contest contest: Contest, venue: Venue, day: ContestDay) -> SignalProducer<[Performance], NSError> {
 
-        let dateString = "\(date.year)-\(date.month)-\(date.day)"
+        let dateString = "\(day.year)-\(day.month)-\(day.day)"
 
         let queryItems = [
             NSURLQueryItem(name: "venue_id", value: venue.id),
