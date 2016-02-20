@@ -6,6 +6,7 @@
 //  Copyright © 2016 Martin Richter. All rights reserved.
 //
 
+import Cartography
 import ReactiveCocoa
 import Result
 
@@ -54,12 +55,9 @@ class ContestsViewController: BaseViewController, UITableViewDataSource, UITable
     // MARK: - Layout
 
     private func makeConstraints() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        tableView.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor).active = true
-        tableView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
-        tableView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
-        tableView.bottomAnchor.constraintEqualToAnchor(self.bottomLayoutGuide.topAnchor).active = true
+        constrain(view, tableView) { superview, tableView in
+            tableView.edges == superview.edges
+        }
     }
 
     // MARK: - Bindings

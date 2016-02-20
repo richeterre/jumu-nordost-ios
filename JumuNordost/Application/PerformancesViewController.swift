@@ -6,6 +6,7 @@
 //  Copyright © 2016 Martin Richter. All rights reserved.
 //
 
+import Cartography
 import ReactiveCocoa
 import Result
 
@@ -51,11 +52,12 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
     // MARK: - Layout
 
     private func makeConstraints() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        constrain(view, tableView) { superview, tableView in
+            tableView.top == superview.top
+            tableView.left == superview.left
+            tableView.right == superview.right
+        }
 
-        tableView.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor).active = true
-        tableView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
-        tableView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
         tableView.bottomAnchor.constraintEqualToAnchor(self.bottomLayoutGuide.topAnchor).active = true
     }
 
