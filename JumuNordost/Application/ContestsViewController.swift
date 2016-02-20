@@ -9,11 +9,13 @@
 import ReactiveCocoa
 import Result
 
-class ContestsViewController: ListViewController {
+class ContestsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Private Properties
 
     private let mediator: ContestsMediator
+    private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
     private let contestCellIdentifier = "ContestCell"
 
     // MARK: - Lifecycle
@@ -38,8 +40,26 @@ class ContestsViewController: ListViewController {
         view.backgroundColor = UIColor.whiteColor()
 
         tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
+        tableView.dataSource = self
+        tableView.delegate = self
 
+        refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControl)
+        view.addSubview(tableView)
+
+        makeConstraints()
         makeBindings()
+    }
+
+    // MARK: - Layout
+
+    private func makeConstraints() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        tableView.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor).active = true
+        tableView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        tableView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
+        tableView.bottomAnchor.constraintEqualToAnchor(self.bottomLayoutGuide.topAnchor).active = true
     }
 
     // MARK: - Bindings
@@ -51,7 +71,7 @@ class ContestsViewController: ListViewController {
             .observeOn(UIScheduler())
             .startWithNext({ [weak self] isLoading in
                 if !isLoading {
-                    self?.refreshControl?.endRefreshing()
+                    self?.refreshControl.endRefreshing()
                 }
             })
 
@@ -64,17 +84,17 @@ class ContestsViewController: ListViewController {
 
     // MARK: - User Interaction
 
-    override func refreshControlFired() {
+    func refreshControlFired() {
         mediator.refreshObserver.sendNext(())
     }
 
     // MARK: - UITableViewDataSource
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mediator.numberOfContests()
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath)
 
         cell.textLabel?.text = mediator.nameForContestAtIndexPath(indexPath)
@@ -86,7 +106,7 @@ class ContestsViewController: ListViewController {
 
     // MARK: - UITableViewDelegate
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
         let performancesMediator = mediator.performancesMediatorForContestAtIndexPath(indexPath)
