@@ -44,7 +44,7 @@ class ContestsMediator: Mediator {
         }
     }
 
-    // MARK: - Data Source
+    // MARK: - Contests
 
     func numberOfContests() -> Int {
         return contests.count

@@ -15,6 +15,7 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
     // MARK: - Private Properties
 
     private let mediator: PerformancesMediator
+    private let filterView: PerformanceFilterView
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private let performanceCellIdentifier = "PerformanceCell"
@@ -23,6 +24,8 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
 
     init(mediator: PerformancesMediator) {
         self.mediator = mediator
+        filterView = PerformanceFilterView(dateStrings: mediator.contestDates())
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -43,6 +46,8 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
 
         refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
+
+        view.addSubview(filterView)
         view.addSubview(tableView)
 
         makeConstraints()
@@ -52,8 +57,13 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(view, tableView) { superview, tableView in
-            tableView.top == superview.top
+        filterView.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor).active = true
+
+        constrain(view, filterView, tableView) { superview, filterView, tableView in
+            filterView.left == superview.left
+            filterView.right == superview.right
+
+            tableView.top == filterView.bottom
             tableView.left == superview.left
             tableView.right == superview.right
         }
