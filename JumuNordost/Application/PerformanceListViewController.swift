@@ -10,7 +10,7 @@ import Cartography
 import ReactiveCocoa
 import Result
 
-class PerformanceListViewController: BaseViewController, UITableViewDataSource {
+class PerformanceListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Private Properties
 
@@ -45,12 +45,12 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource {
         view.backgroundColor = UIColor.whiteColor()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
 
-        tableView.allowsSelection = false
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 62.5 // TODO: Find better value
 
         tableView.registerClass(PerformanceCell.self, forCellReuseIdentifier: performanceCellIdentifier)
         tableView.dataSource = self
+        tableView.delegate = self
 
         refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
@@ -130,6 +130,18 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource {
         let ageGroup = mediator.ageGroupForPerformanceAtIndexPath(indexPath)
         cell.configure(time: time, category: category, ageGroup: ageGroup)
 
+        cell.accessoryType = .DisclosureIndicator
+
         return cell
+    }
+
+    // MARK: - UITableViewDelegate
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        let performanceMediator = mediator.mediatorForPerformanceAtIndexPath(indexPath)
+        let performanceViewController = PerformanceViewController(mediator: performanceMediator)
+        self.navigationController?.pushViewController(performanceViewController, animated: true)
     }
 }

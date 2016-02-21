@@ -133,9 +133,16 @@ class PerformanceListMediator: Mediator {
         return "AG " + performanceAtIndexPath(indexPath).ageGroup
     }
 
+    // MARK: - Mediators
+
+    func mediatorForPerformanceAtIndexPath(indexPath: NSIndexPath) -> PerformanceMediator {
+        let performance = performanceAtIndexPath(indexPath)
+        return PerformanceMediator(store: store, performance: performance)
+    }
+
     // MARK: - Private Helpers
 
-    func performanceAtIndexPath(indexPath: NSIndexPath) -> Performance {
+    private func performanceAtIndexPath(indexPath: NSIndexPath) -> Performance {
         return performances[indexPath.row]
     }
 }
