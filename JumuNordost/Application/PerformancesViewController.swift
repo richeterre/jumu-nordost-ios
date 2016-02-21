@@ -46,7 +46,10 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
 
         tableView.allowsSelection = false
-        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: performanceCellIdentifier)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 62.5 // TODO: Find better value
+
+        tableView.registerClass(PerformanceCell.self, forCellReuseIdentifier: performanceCellIdentifier)
         tableView.dataSource = self
 
         refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
@@ -120,9 +123,12 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(performanceCellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(performanceCellIdentifier, forIndexPath: indexPath) as! PerformanceCell
 
-        cell.textLabel?.text = mediator.categoryNameForPerformanceAtIndexPath(indexPath)
+        let time = mediator.timeForPerformanceAtIndexPath(indexPath)
+        let category = mediator.categoryNameForPerformanceAtIndexPath(indexPath)
+        let ageGroup = mediator.ageGroupForPerformanceAtIndexPath(indexPath)
+        cell.configure(time: time, category: category, ageGroup: ageGroup)
 
         return cell
     }

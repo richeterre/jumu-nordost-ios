@@ -17,6 +17,7 @@
 		5B843C821C787CC300048552 /* PerformanceFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C811C787CC300048552 /* PerformanceFilterView.swift */; };
 		5B843C841C78836800048552 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B843C831C78836800048552 /* Cartography.framework */; };
 		5B843C8B1C79CA8D00048552 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B843C8D1C79CA8D00048552 /* Localizable.strings */; };
+		5B843C921C79DCAA00048552 /* PerformanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C911C79DCAA00048552 /* PerformanceCell.swift */; };
 		5B843C941C7A02CE00048552 /* Decodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C931C7A02CE00048552 /* Decodables.swift */; };
 		5BAC51D41C6F67510098B9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D21C6F67510098B9C8 /* Assets.xcassets */; };
 		5BAC51D81C6F67A90098B9C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */; };
@@ -58,6 +59,7 @@
 		5B843C831C78836800048552 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 		5B843C8E1C79CA9200048552 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B843C8F1C79CAC300048552 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5B843C911C79DCAA00048552 /* PerformanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceCell.swift; sourceTree = "<group>"; };
 		5B843C931C7A02CE00048552 /* Decodables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodables.swift; sourceTree = "<group>"; };
 		5BAC51D21C6F67510098B9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BAC51D71C6F67A90098B9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				5B843C6F1C71104200048552 /* PerformancesMediator.swift */,
 				5B843C791C7119DD00048552 /* PerformancesViewController.swift */,
 				5B843C811C787CC300048552 /* PerformanceFilterView.swift */,
+				5B843C911C79DCAA00048552 /* PerformanceCell.swift */,
 			);
 			name = Performances;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B843C921C79DCAA00048552 /* PerformanceCell.swift in Sources */,
 				5B843C821C787CC300048552 /* PerformanceFilterView.swift in Sources */,
 				5B843C941C7A02CE00048552 /* Decodables.swift in Sources */,
 				5BAC51E81C6F6DD40098B9C8 /* Store.swift in Sources */,

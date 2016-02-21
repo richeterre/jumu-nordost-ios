@@ -32,9 +32,16 @@ class PerformancesMediator: Mediator {
 
     private var performances = [Performance]()
 
-    private lazy var dateFormatter: NSDateFormatter = {
+    private lazy var contestDayFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale.autoupdatingCurrentLocale()
+        return formatter
+    }()
+    private lazy var stageTimeFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale.autoupdatingCurrentLocale()
+        formatter.dateStyle = .NoStyle
+        formatter.timeStyle = .ShortStyle
         return formatter
     }()
 
@@ -65,12 +72,12 @@ class PerformancesMediator: Mediator {
         super.init(store: store)
 
         // Dates are shown in contest's, not user's time zone
-        dateFormatter.timeZone = contest.timeZone
+        contestDayFormatter.timeZone = contest.timeZone
 
         // Set contest day format according to amount of days
         let template = contestDays.count > 2 ? "EEEMMMMd" : "EEEEMMMMd"
         let locale = NSLocale.autoupdatingCurrentLocale()
-        dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate(template, options: 0, locale: locale)
+        contestDayFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate(template, options: 0, locale: locale)
 
         let isLoading = self.isLoading
 
@@ -99,7 +106,7 @@ class PerformancesMediator: Mediator {
         let calendar = calendarForContest(contest)
         return contestDays.map { day in
             let date = calendar.dateFromComponents(day)!
-            return dateFormatter.stringFromDate(date)
+            return contestDayFormatter.stringFromDate(date)
         }
     }
 
@@ -113,8 +120,23 @@ class PerformancesMediator: Mediator {
         return performances.count
     }
 
+    func timeForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
+        let time = performanceAtIndexPath(indexPath).stageTime
+        return stageTimeFormatter.stringFromDate(time)
+    }
+
     func categoryNameForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
-        return performances[indexPath.row].categoryName
+        return performanceAtIndexPath(indexPath).categoryName
+    }
+
+    func ageGroupForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
+        return "AG " + performanceAtIndexPath(indexPath).ageGroup
+    }
+
+    // MARK: - Private Helpers
+
+    func performanceAtIndexPath(indexPath: NSIndexPath) -> Performance {
+        return performances[indexPath.row]
     }
 }
 
