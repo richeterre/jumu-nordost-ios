@@ -19,9 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor = Color.primaryColor
 
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UINavigationBar.appearance().barTintColor = Color.primaryColor
+        UINavigationBar.appearance().barTintColor = Color.barTintColor
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.whiteColor()
         ]
