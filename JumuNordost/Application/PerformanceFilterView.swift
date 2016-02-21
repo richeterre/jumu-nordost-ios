@@ -12,13 +12,16 @@ import ReactiveCocoa
 class PerformanceFilterView: UIView {
 
     let selectedDateIndex = MutableProperty<Int?>(nil)
+    let selectedVenueIndex = MutableProperty<Int?>(nil)
 
     private let dateSwitcher: UISegmentedControl
+    private let venueSwitcher: UISegmentedControl
 
     // MARK: - Lifecycle
 
-    init(dateStrings: [String]) {
+    init(dateStrings: [String], venueNames: [String]) {
         dateSwitcher = UISegmentedControl(items: dateStrings)
+        venueSwitcher = UISegmentedControl(items: venueNames)
 
         super.init(frame: CGRectZero)
 
@@ -26,9 +29,16 @@ class PerformanceFilterView: UIView {
             self?.dateSwitcher.selectedSegmentIndex = index ?? -1
         }
 
+        selectedVenueIndex.producer.startWithNext { [weak self] index in
+            self?.venueSwitcher.selectedSegmentIndex = index ?? -1
+        }
+
         dateSwitcher.addTarget(self, action: Selector("dateSwitcherChanged:"), forControlEvents: .ValueChanged)
+        venueSwitcher.addTarget(self, action: Selector("venueSwitcherChanged:"), forControlEvents: .ValueChanged)
 
         addSubview(dateSwitcher)
+        addSubview(venueSwitcher)
+
         makeConstraints()
     }
 
@@ -39,8 +49,14 @@ class PerformanceFilterView: UIView {
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(dateSwitcher, self) { dateSwitcher, superview in
-            dateSwitcher.edges == superview.edgesWithinMargins
+        constrain(self, dateSwitcher, venueSwitcher) { superview, dateSwitcher, venueSwitcher in
+            dateSwitcher.top == superview.topMargin
+            dateSwitcher.left == superview.leftMargin
+            dateSwitcher.right == superview.rightMargin
+            venueSwitcher.top == dateSwitcher.bottom + 8
+            venueSwitcher.left == superview.leftMargin
+            venueSwitcher.right == superview.rightMargin
+            venueSwitcher.bottom == superview.bottomMargin
         }
     }
 
@@ -48,5 +64,9 @@ class PerformanceFilterView: UIView {
 
     func dateSwitcherChanged(switcher: UISegmentedControl) {
         selectedDateIndex.value = switcher.selectedSegmentIndex
+    }
+
+    func venueSwitcherChanged(switcher: UISegmentedControl) {
+        selectedVenueIndex.value = switcher.selectedSegmentIndex
     }
 }

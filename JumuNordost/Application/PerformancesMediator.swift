@@ -13,6 +13,7 @@ class PerformancesMediator: Mediator {
     // MARK: - Inputs
 
     var selectedDayIndex: MutableProperty<Int?>
+    var selectedVenueIndex: MutableProperty<Int?>
 
     // MARK: - Outputs
 
@@ -27,6 +28,7 @@ class PerformancesMediator: Mediator {
     private let contest: Contest
     private let contestDays: [ContestDay]
     private let selectedDay = MutableProperty<ContestDay?>(nil)
+    private let selectedVenue = MutableProperty<Venue?>(nil)
 
     private var performances = [Performance]()
 
@@ -50,10 +52,16 @@ class PerformancesMediator: Mediator {
         self.contestDays = contestDays
 
         selectedDayIndex = MutableProperty(contestDays.isEmpty ? nil : 0)
+        selectedVenueIndex = MutableProperty(contest.venues.isEmpty ? nil : 0)
 
         selectedDay <~ selectedDayIndex.producer.map { index in
             guard let index = index else { return nil }
             return contestDays[index]
+        }
+
+        selectedVenue <~ selectedVenueIndex.producer.map { index in
+            guard let index = index else { return nil }
+            return contest.venues[index]
         }
 
         super.init(store: store)
@@ -64,12 +72,12 @@ class PerformancesMediator: Mediator {
         let isLoading = self.isLoading
 
         let daySelection = selectedDay.producer.ignoreNil()
-        let venue = contest.venues.first! // TODO: Handle nil case
-        let combinedRefreshTriggers = combineLatest(refreshTrigger, daySelection)
+        let venueSelection = selectedVenue.producer.ignoreNil()
+        let combinedRefreshTriggers = combineLatest(refreshTrigger, daySelection, venueSelection)
 
         combinedRefreshTriggers
             .on(next: { _ in isLoading.value = true })
-            .flatMap(.Latest) { _, day in
+            .flatMap(.Latest) { _, day, venue in
                 return store.fetchPerformances(contest: contest, venue: venue, day: day)
                     .flatMapError { error in
                         return SignalProducer(value: [])
@@ -90,6 +98,10 @@ class PerformancesMediator: Mediator {
             let date = calendar.dateFromComponents(day)!
             return dateFormatter.stringFromDate(date)
         }
+    }
+
+    func venueNames() -> [String] {
+        return contest.venues.map { $0.name }
     }
 
     // MARK: - Performances
