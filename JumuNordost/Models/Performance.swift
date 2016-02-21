@@ -10,7 +10,10 @@ import Argo
 import Curry
 
 struct Performance {
+    let stageTime: NSDate
     let categoryName: String
+    let ageGroup: String
+    let predecessorHostName: String?
 }
 
 // MARK: - Decodable
@@ -18,6 +21,9 @@ struct Performance {
 extension Performance: Decodable {
     static func decode(json: JSON) -> Decoded<Performance> {
         return curry(self.init)
-            <^> json <| "category_name"
+            <^> json <| "stage_time"
+            <*> json <| "category_name"
+            <*> json <| "age_group"
+            <*> json <|? "predecessor_host_name"
     }
 }
