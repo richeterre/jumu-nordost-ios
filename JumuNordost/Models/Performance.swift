@@ -14,6 +14,7 @@ struct Performance {
     let categoryName: String
     let ageGroup: String
     let predecessorHostName: String?
+    let appearances: [Appearance]
 }
 
 // MARK: - Decodable
@@ -25,5 +26,6 @@ extension Performance: Decodable {
             <*> json <| "category_name"
             <*> json <| "age_group"
             <*> json <|? "predecessor_host_name"
+            <*> json <|| "appearances"
     }
 }
