@@ -34,9 +34,7 @@ class PerformancesMediator: Mediator {
 
     private lazy var dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
-        let locale = NSLocale.autoupdatingCurrentLocale()
-        formatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMMMd", options: 0, locale: locale)
-        formatter.locale = locale
+        formatter.locale = NSLocale.autoupdatingCurrentLocale()
         return formatter
     }()
 
@@ -68,6 +66,11 @@ class PerformancesMediator: Mediator {
 
         // Dates are shown in contest's, not user's time zone
         dateFormatter.timeZone = contest.timeZone
+
+        // Set contest day format according to amount of days
+        let template = contestDays.count > 2 ? "EEEMMMMd" : "EEEEMMMMd"
+        let locale = NSLocale.autoupdatingCurrentLocale()
+        dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate(template, options: 0, locale: locale)
 
         let isLoading = self.isLoading
 
