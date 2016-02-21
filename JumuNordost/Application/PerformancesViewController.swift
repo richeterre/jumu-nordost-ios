@@ -18,6 +18,7 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
     private let filterView: PerformanceFilterView
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
+    private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
     private let performanceCellIdentifier = "PerformanceCell"
 
     // MARK: - Lifecycle
@@ -42,6 +43,7 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.whiteColor()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
 
         tableView.allowsSelection = false
         tableView.registerClass(ContestCell.self, forCellReuseIdentifier: performanceCellIdentifier)
@@ -84,8 +86,11 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
         mediator.isLoading.producer
             .observeOn(UIScheduler())
             .startWithNext({ [weak self] isLoading in
-                if !isLoading {
+                if isLoading {
+                    self?.spinner.startAnimating()
+                } else {
                     self?.refreshControl.endRefreshing()
+                    self?.spinner.stopAnimating()
                 }
             })
 
