@@ -14,7 +14,7 @@ protocol StoreType {
 
     // MARK: - Contests
 
-    func fetchContests() -> SignalProducer<[Contest], NSError>
+    func fetchContests(currentOnly currentOnly: Bool) -> SignalProducer<[Contest], NSError>
 
     // MARK: - Performances
 

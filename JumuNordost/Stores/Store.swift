@@ -10,9 +10,13 @@ import Argo
 import ReactiveCocoa
 
 class Store: StoreType {
-    func fetchContests() -> SignalProducer<[Contest], NSError> {
+    func fetchContests(currentOnly currentOnly: Bool) -> SignalProducer<[Contest], NSError> {
 
-        let request = requestForPath("contests")
+        let queryItems = [
+            NSURLQueryItem(name: "current", value: queryValueForBool(currentOnly))
+        ]
+        let request = requestForPath("contests", queryItems: queryItems)
+
         return NSURLSession.sharedSession().rac_dataWithRequest(request)
             .map { data, response in
                 if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
@@ -57,4 +61,9 @@ class Store: StoreType {
 
         return NSURLRequest(URL: components.URL!)
     }
+}
+
+/// Returns an API-compatible value for the given boolean.
+func queryValueForBool(bool: Bool) -> String {
+    return bool ? "1" : "0"
 }
