@@ -69,9 +69,9 @@ class ContestsMediator: Mediator {
 
     // MARK: - Mediators
 
-    func performancesMediatorForContestAtIndexPath(indexPath: NSIndexPath) -> PerformancesMediator {
+    func performanceListMediatorForContestAtIndexPath(indexPath: NSIndexPath) -> PerformanceListMediator {
         let contest = contestAtIndexPath(indexPath)
-        return PerformancesMediator(store: self.store, contest: contest)
+        return PerformanceListMediator(store: self.store, contest: contest)
     }
 
     // MARK: - Private Helpers

@@ -1,5 +1,5 @@
 //
-//  PerformancesViewController.swift
+//  PerformanceListViewController.swift
 //  JumuNordost
 //
 //  Created by Martin Richter on 14/02/16.
@@ -10,11 +10,11 @@ import Cartography
 import ReactiveCocoa
 import Result
 
-class PerformancesViewController: BaseViewController, UITableViewDataSource {
+class PerformanceListViewController: BaseViewController, UITableViewDataSource {
 
     // MARK: - Private Properties
 
-    private let mediator: PerformancesMediator
+    private let mediator: PerformanceListMediator
     private let filterView: PerformanceFilterView
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
@@ -23,7 +23,7 @@ class PerformancesViewController: BaseViewController, UITableViewDataSource {
 
     // MARK: - Lifecycle
 
-    init(mediator: PerformancesMediator) {
+    init(mediator: PerformanceListMediator) {
         self.mediator = mediator
         filterView = PerformanceFilterView(
             dateStrings: mediator.formattedContestDays(),

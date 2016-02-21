@@ -107,8 +107,8 @@ class ContestsViewController: BaseViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-        let performancesMediator = mediator.performancesMediatorForContestAtIndexPath(indexPath)
-        let performancesViewController = PerformancesViewController(mediator: performancesMediator)
-        self.navigationController?.pushViewController(performancesViewController, animated: true)
+        let performanceListMediator = mediator.performanceListMediatorForContestAtIndexPath(indexPath)
+        let performanceListViewController = PerformanceListViewController(mediator: performanceListMediator)
+        self.navigationController?.pushViewController(performanceListViewController, animated: true)
     }
 }

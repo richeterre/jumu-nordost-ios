@@ -1,5 +1,5 @@
 //
-//  PerformancesMediator.swift
+//  PerformanceListMediator.swift
 //  JumuNordost
 //
 //  Created by Martin Richter on 14/02/16.
@@ -8,7 +8,7 @@
 
 import ReactiveCocoa
 
-class PerformancesMediator: Mediator {
+class PerformanceListMediator: Mediator {
 
     // MARK: - Inputs
 

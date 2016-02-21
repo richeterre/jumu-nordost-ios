@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B843C701C71104200048552 /* PerformancesMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C6F1C71104200048552 /* PerformancesMediator.swift */; };
+		5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C6F1C71104200048552 /* PerformanceListMediator.swift */; };
 		5B843C741C7110A600048552 /* Mediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C731C7110A600048552 /* Mediator.swift */; };
 		5B843C761C71167700048552 /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C751C71167700048552 /* Performance.swift */; };
 		5B843C781C71179400048552 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B843C771C71179400048552 /* Curry.framework */; };
-		5B843C7A1C7119DD00048552 /* PerformancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C791C7119DD00048552 /* PerformancesViewController.swift */; };
+		5B843C7A1C7119DD00048552 /* PerformanceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C791C7119DD00048552 /* PerformanceListViewController.swift */; };
 		5B843C7E1C77C47F00048552 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C7D1C77C47F00048552 /* BaseViewController.swift */; };
 		5B843C801C77CED400048552 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C7F1C77CED400048552 /* Color.swift */; };
 		5B843C821C787CC300048552 /* PerformanceFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C811C787CC300048552 /* PerformanceFilterView.swift */; };
@@ -48,11 +48,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5B843C6F1C71104200048552 /* PerformancesMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformancesMediator.swift; sourceTree = "<group>"; };
+		5B843C6F1C71104200048552 /* PerformanceListMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceListMediator.swift; sourceTree = "<group>"; };
 		5B843C731C7110A600048552 /* Mediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mediator.swift; sourceTree = "<group>"; };
 		5B843C751C71167700048552 /* Performance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Performance.swift; sourceTree = "<group>"; };
 		5B843C771C71179400048552 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
-		5B843C791C7119DD00048552 /* PerformancesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformancesViewController.swift; sourceTree = "<group>"; };
+		5B843C791C7119DD00048552 /* PerformanceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceListViewController.swift; sourceTree = "<group>"; };
 		5B843C7D1C77C47F00048552 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5B843C7F1C77CED400048552 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5B843C811C787CC300048552 /* PerformanceFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceFilterView.swift; sourceTree = "<group>"; };
@@ -116,15 +116,15 @@
 			name = Contests;
 			sourceTree = "<group>";
 		};
-		5B843C711C71104C00048552 /* Performances */ = {
+		5B843C711C71104C00048552 /* Performance List */ = {
 			isa = PBXGroup;
 			children = (
-				5B843C6F1C71104200048552 /* PerformancesMediator.swift */,
-				5B843C791C7119DD00048552 /* PerformancesViewController.swift */,
+				5B843C6F1C71104200048552 /* PerformanceListMediator.swift */,
+				5B843C791C7119DD00048552 /* PerformanceListViewController.swift */,
 				5B843C811C787CC300048552 /* PerformanceFilterView.swift */,
 				5B843C911C79DCAA00048552 /* PerformanceCell.swift */,
 			);
-			name = Performances;
+			name = "Performance List";
 			sourceTree = "<group>";
 		};
 		5B843C721C71109700048552 /* Common */ = {
@@ -151,7 +151,7 @@
 			children = (
 				5B843C721C71109700048552 /* Common */,
 				5B843C6E1C71102F00048552 /* Contests */,
-				5B843C711C71104C00048552 /* Performances */,
+				5B843C711C71104C00048552 /* Performance List */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -371,7 +371,7 @@
 				5BAC51F81C6FEDF00098B9C8 /* StoreType.swift in Sources */,
 				5BAC51E61C6F6D9E0098B9C8 /* Contest.swift in Sources */,
 				5BC71F131C6F5F66005E90C8 /* AppDelegate.swift in Sources */,
-				5B843C7A1C7119DD00048552 /* PerformancesViewController.swift in Sources */,
+				5B843C7A1C7119DD00048552 /* PerformanceListViewController.swift in Sources */,
 				5B843C801C77CED400048552 /* Color.swift in Sources */,
 				5BAC51EC1C6F77320098B9C8 /* Venue.swift in Sources */,
 				5BAC51FE1C70D8820098B9C8 /* ContestCell.swift in Sources */,
@@ -381,7 +381,7 @@
 				5B843C761C71167700048552 /* Performance.swift in Sources */,
 				5BAC52001C70E4E80098B9C8 /* Localization.swift in Sources */,
 				5BAC51E31C6F6D650098B9C8 /* Constant.swift in Sources */,
-				5B843C701C71104200048552 /* PerformancesMediator.swift in Sources */,
+				5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */,
 				5BAC51EA1C6F71A80098B9C8 /* ContestsMediator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
