@@ -22,28 +22,12 @@ struct Contest {
 
 extension Contest: Decodable {
     static func decode(json: JSON) -> Decoded<Contest> {
-        let toTimeZone: String -> Decoded<NSTimeZone> = {
-            .fromOptional(NSTimeZone(name: $0))
-        }
-
-        let jsonDateFormatter: NSDateFormatter = {
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-            return dateFormatter
-        }()
-
-        let toNSDate: String -> Decoded<NSDate> = {
-            .fromOptional(jsonDateFormatter.dateFromString($0))
-        }
-
         return curry(self.init)
             <^> json <| "id"
             <*> json <| "name"
-            <*> (json <| "time_zone" >>- toTimeZone)
-            <*> (json <| "start_date" >>- toNSDate)
-            <*> (json <| "end_date" >>- toNSDate)
+            <*> json <| "time_zone"
+            <*> json <| "start_date"
+            <*> json <| "end_date"
             <*> json <|| "venues"
     }
 }
