@@ -18,12 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.tintColor = Color.primaryColor
 
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UINavigationBar.appearance().barTintColor = Color.barTintColor
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.whiteColor()
-        ]
+        customizeAppAppearance()
 
         let store = Store()
         let contestsMediator = ContestsMediator(store: store)
@@ -33,5 +28,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         return true
+    }
+
+    // MARK: - Private Helpers
+
+    private func customizeAppAppearance() {
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UINavigationBar.appearance().barTintColor = Color.barTintColor
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: Font.fontWithWeight(.Bold, style: .Normal, size: .Large),
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ]
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            NSFontAttributeName: Font.fontWithWeight(.Regular, style: .Normal, size: .Medium)
+        ], forState: .Normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([
+            NSFontAttributeName: Font.fontWithWeight(.Regular, style: .Normal, size: .Small)
+        ], forState: .Normal)
     }
 }

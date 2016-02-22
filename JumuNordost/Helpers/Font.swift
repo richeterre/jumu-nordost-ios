@@ -9,7 +9,9 @@
 import UIKit
 
 enum FontSize: CGFloat {
+    case Small = 14
     case Medium = 16
+    case Large = 19
 }
 
 enum FontStyle {
