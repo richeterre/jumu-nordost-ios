@@ -125,10 +125,13 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(performanceCellIdentifier, forIndexPath: indexPath) as! PerformanceCell
 
-        let time = mediator.timeForPerformanceAtIndexPath(indexPath)
-        let category = mediator.categoryNameForPerformanceAtIndexPath(indexPath)
-        let ageGroup = mediator.ageGroupForPerformanceAtIndexPath(indexPath)
-        cell.configure(time: time, category: category, ageGroup: ageGroup)
+        cell.configure(
+            time: mediator.timeForPerformanceAtIndexPath(indexPath),
+            category: mediator.categoryNameForPerformanceAtIndexPath(indexPath),
+            ageGroup: mediator.ageGroupForPerformanceAtIndexPath(indexPath),
+            appearances: mediator.appearancesForPerformanceAtIndexPath(indexPath),
+            predecessorHostName: mediator.predecessorHostNameForPerformanceAtIndexPath(indexPath)
+        )
 
         cell.accessoryType = .DisclosureIndicator
 

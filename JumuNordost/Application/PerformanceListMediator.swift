@@ -133,6 +133,18 @@ class PerformanceListMediator: Mediator {
         return "AG " + performanceAtIndexPath(indexPath).ageGroup
     }
 
+    func predecessorHostNameForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String? {
+        return performanceAtIndexPath(indexPath).predecessorHostName
+    }
+
+    func appearancesForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
+        let appearances = performanceAtIndexPath(indexPath).appearances
+        return appearances.map { appearance in
+            return "\(appearance.participantName), \(appearance.instrument)"
+        }.joinWithSeparator("\n")
+    }
+
+
     // MARK: - Mediators
 
     func mediatorForPerformanceAtIndexPath(indexPath: NSIndexPath) -> PerformanceMediator {

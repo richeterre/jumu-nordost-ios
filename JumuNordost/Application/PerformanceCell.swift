@@ -11,19 +11,21 @@ import Cartography
 class PerformanceCell: UITableViewCell {
 
     private let timeLabel = UILabel()
-    private let categoryLabel = UILabel()
-    private let ageGroupLabel = UILabel()
-    private let predecessorHostNameLabel = UILabel()
+    private let categoryInfoLabel = UILabel()
+    private let appearancesInfoLabel = UILabel()
+    private let predecessorInfoLabel = UILabel()
 
     // MARK: - Lifecycle
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Default, reuseIdentifier: reuseIdentifier)
 
+        appearancesInfoLabel.numberOfLines = 0
+
         contentView.addSubview(timeLabel)
-        contentView.addSubview(categoryLabel)
-        contentView.addSubview(ageGroupLabel)
-        contentView.addSubview(predecessorHostNameLabel)
+        contentView.addSubview(categoryInfoLabel)
+        contentView.addSubview(predecessorInfoLabel)
+        contentView.addSubview(appearancesInfoLabel)
 
         makeConstraints()
     }
@@ -35,26 +37,32 @@ class PerformanceCell: UITableViewCell {
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(contentView, timeLabel, categoryLabel, ageGroupLabel) { contentView, timeLabel, categoryLabel, ageGroupLabel in
+        constrain(contentView, timeLabel, categoryInfoLabel, predecessorInfoLabel, appearancesInfoLabel) { contentView, timeLabel, categoryInfoLabel, predecessorInfoLabel, appearancesInfoLabel in
             timeLabel.top == contentView.topMargin
             timeLabel.left == contentView.leftMargin
+            timeLabel.width == 50
 
-            align(top: timeLabel, categoryLabel)
+            align(top: timeLabel, categoryInfoLabel)
 
-            categoryLabel.left == timeLabel.right + 16
+            categoryInfoLabel.left == timeLabel.right + 8
+            categoryInfoLabel.right == contentView.rightMargin
 
-            align(left: categoryLabel, ageGroupLabel)
+            align(left: categoryInfoLabel, appearancesInfoLabel, predecessorInfoLabel)
+            align(right: categoryInfoLabel, appearancesInfoLabel, predecessorInfoLabel)
 
-            ageGroupLabel.top == categoryLabel.bottom
-            ageGroupLabel.bottom == contentView.bottomMargin
+            appearancesInfoLabel.top == categoryInfoLabel.bottom + 8
+
+            predecessorInfoLabel.top == appearancesInfoLabel.bottom + 8
+            predecessorInfoLabel.bottom == contentView.bottomMargin
         }
     }
 
     // MARK: - Content
 
-    func configure(time time: String, category: String, ageGroup: String) {
+    func configure(time time: String, category: String, ageGroup: String, appearances: String, predecessorHostName: String?) {
         timeLabel.text = time
-        categoryLabel.text = category
-        ageGroupLabel.text = ageGroup
+        categoryInfoLabel.text = "\(category), \(ageGroup)"
+        appearancesInfoLabel.text = appearances
+        predecessorInfoLabel.text = predecessorHostName
     }
 }
