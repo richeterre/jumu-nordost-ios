@@ -32,7 +32,7 @@ class ContestsMediator: Mediator {
         refreshTrigger
             .on(next: { _ in isLoading.value = true })
             .flatMap(.Latest) { _ in
-                return store.fetchContests(currentOnly: true)
+                return store.fetchContests(currentOnly: false)
                     .flatMapError { error in
                         return SignalProducer(value: [])
                 }
