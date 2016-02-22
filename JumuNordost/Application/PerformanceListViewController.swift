@@ -130,7 +130,7 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
             category: mediator.categoryNameForPerformanceAtIndexPath(indexPath),
             ageGroup: mediator.ageGroupForPerformanceAtIndexPath(indexPath),
             appearances: mediator.appearancesForPerformanceAtIndexPath(indexPath),
-            predecessorHostName: mediator.predecessorHostNameForPerformanceAtIndexPath(indexPath)
+            predecessorInfo: mediator.predecessorInfoForPerformanceAtIndexPath(indexPath)
         )
 
         cell.accessoryType = .DisclosureIndicator

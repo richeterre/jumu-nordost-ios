@@ -133,8 +133,17 @@ class PerformanceListMediator: Mediator {
         return "AG " + performanceAtIndexPath(indexPath).ageGroup
     }
 
-    func predecessorHostNameForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String? {
-        return performanceAtIndexPath(indexPath).predecessorHostName
+    func predecessorInfoForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String? {
+        let performance = performanceAtIndexPath(indexPath)
+        let name = performance.predecessorHostName
+        let flag = performance.predecessorHostCountry?.toCountryFlag()
+
+        switch (name, flag) {
+          case let (name?, flag?):
+            return "\(flag) \(name)"
+          default:
+            return name
+        }
     }
 
     func appearancesForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {

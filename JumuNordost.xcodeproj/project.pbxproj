@@ -24,6 +24,7 @@
 		5B843C9B1C7A438C00048552 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C9A1C7A438C00048552 /* Appearance.swift */; };
 		5B843CA51C7B5AC600048552 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 5B843CA41C7B5AC600048552 /* Fonts */; };
 		5B843CA71C7B5E3300048552 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843CA61C7B5E3300048552 /* Font.swift */; };
+		5BA61A091C7BD2FC0055E5DC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA61A081C7BD2FC0055E5DC /* String.swift */; };
 		5BAC51D41C6F67510098B9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D21C6F67510098B9C8 /* Assets.xcassets */; };
 		5BAC51D81C6F67A90098B9C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */; };
 		5BAC51DB1C6F68430098B9C8 /* ContestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51DA1C6F68430098B9C8 /* ContestsViewController.swift */; };
@@ -71,6 +72,7 @@
 		5B843C9A1C7A438C00048552 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		5B843CA41C7B5AC600048552 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		5B843CA61C7B5E3300048552 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		5BA61A081C7BD2FC0055E5DC /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		5BAC51D21C6F67510098B9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BAC51D71C6F67A90098B9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BAC51DA1C6F68430098B9C8 /* ContestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestsViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				5B843C931C7A02CE00048552 /* Decodables.swift */,
 				5B843CA61C7B5E3300048552 /* Font.swift */,
 				5BAC51FF1C70E4E80098B9C8 /* Localization.swift */,
+				5BA61A081C7BD2FC0055E5DC /* String.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				5B843C7A1C7119DD00048552 /* PerformanceListViewController.swift in Sources */,
 				5B843C801C77CED400048552 /* Color.swift in Sources */,
 				5BAC51EC1C6F77320098B9C8 /* Venue.swift in Sources */,
+				5BA61A091C7BD2FC0055E5DC /* String.swift in Sources */,
 				5BAC51FE1C70D8820098B9C8 /* ContestCell.swift in Sources */,
 				5B843C741C7110A600048552 /* Mediator.swift in Sources */,
 				5B843C7E1C77C47F00048552 /* BaseViewController.swift in Sources */,
