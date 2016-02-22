@@ -20,7 +20,14 @@ class PerformanceCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Default, reuseIdentifier: reuseIdentifier)
 
+        timeLabel.font = Font.fontWithWeight(.Bold, style: .Normal, size: .Medium)
+
+        categoryInfoLabel.font = Font.fontWithWeight(.Bold, style: .Normal, size: .Medium)
+
+        appearancesInfoLabel.font = Font.fontWithWeight(.Regular, style: .Normal, size: .Medium)
         appearancesInfoLabel.numberOfLines = 0
+
+        predecessorInfoLabel.font = Font.fontWithWeight(.Regular, style: .Normal, size: .Medium)
 
         contentView.addSubview(timeLabel)
         contentView.addSubview(categoryInfoLabel)
@@ -40,7 +47,7 @@ class PerformanceCell: UITableViewCell {
         constrain(contentView, timeLabel, categoryInfoLabel, predecessorInfoLabel, appearancesInfoLabel) { contentView, timeLabel, categoryInfoLabel, predecessorInfoLabel, appearancesInfoLabel in
             timeLabel.top == contentView.topMargin
             timeLabel.left == contentView.leftMargin
-            timeLabel.width == 50
+            timeLabel.width == 45
 
             align(top: timeLabel, categoryInfoLabel)
 
