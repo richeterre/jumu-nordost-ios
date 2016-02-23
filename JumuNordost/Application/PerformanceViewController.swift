@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PerformanceViewController: UIViewController {
+class PerformanceViewController: BaseViewController {
 
     private let mediator: PerformanceMediator
 
@@ -30,5 +30,13 @@ class PerformanceViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.whiteColor()
+
+        makeBindings()
+    }
+
+    // MARK: - Bindings
+
+    private func makeBindings() {
+        self.title = mediator.title
     }
 }

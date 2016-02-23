@@ -10,7 +10,19 @@ import Foundation
 
 class PerformanceMediator: Mediator {
 
+    // MARK: - Outputs
+
+    var title: String {
+        get {
+            return performance.categoryName
+        }
+    }
+
+    // MARK: - Private Properties
+
     private let performance: Performance
+
+    // MARK: - Lifecycle
 
     init(store: StoreType, performance: Performance) {
         self.performance = performance
