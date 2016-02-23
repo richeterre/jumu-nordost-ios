@@ -10,9 +10,9 @@ import Argo
 import Curry
 
 enum ParticipantRole: String {
-    case Soloist = "S"
-    case Ensemblist = "E"
-    case Accompanist = "B"
+    case Soloist = "soloist"
+    case Ensemblist = "ensemblist"
+    case Accompanist = "accompanist"
 }
 
 struct Appearance {
