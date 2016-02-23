@@ -20,6 +20,10 @@ class PerformanceMediator: Mediator {
         return performance.categoryName
     }
 
+    var ageGroup: String {
+        return String(format: localize("FORMAT.AGE_GROUP"), performance.ageGroup)
+    }
+
     // MARK: - Private Properties
 
     private let performance: Performance

@@ -7,3 +7,6 @@
 */
 
 "NAV_TITLE.CONTESTS" = "Wettbewerb wählen";
+
+"FORMAT.AGE_GROUP" = "Altersgruppe %@";
+"FORMAT.AGE_GROUP_SHORT" = "AG %@";

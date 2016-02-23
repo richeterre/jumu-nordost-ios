@@ -7,3 +7,6 @@
 */
 
 "NAV_TITLE.CONTESTS" = "Pick a Contest";
+
+"FORMAT.AGE_GROUP" = "Age group %@";
+"FORMAT.AGE_GROUP_SHORT" = "AG %@";

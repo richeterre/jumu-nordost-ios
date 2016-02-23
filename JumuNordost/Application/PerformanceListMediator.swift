@@ -139,7 +139,7 @@ class PerformanceListMediator: Mediator {
     }
 
     func ageGroupForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
-        return "AG " + performanceAtIndexPath(indexPath).ageGroup
+        return String(format: localize("FORMAT.AGE_GROUP_SHORT"), performanceAtIndexPath(indexPath).ageGroup)
     }
 
     func predecessorInfoForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String? {

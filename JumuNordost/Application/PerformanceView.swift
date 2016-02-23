@@ -15,7 +15,13 @@ class PerformanceView: UIView {
         set { categoryLabel.text = newValue }
     }
 
+    var ageGroup: String? {
+        get { return ageGroupLabel.text }
+        set { ageGroupLabel.text = newValue }
+    }
+
     private let categoryLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Large)
+    private let ageGroupLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Large)
 
     // MARK: - Lifecycle
 
@@ -23,6 +29,7 @@ class PerformanceView: UIView {
         super.init(frame: frame)
 
         addSubview(categoryLabel)
+        addSubview(ageGroupLabel)
 
         makeConstraints()
     }
@@ -34,11 +41,17 @@ class PerformanceView: UIView {
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(self, categoryLabel) { superview, categoryLabel in
+        constrain(self, categoryLabel, ageGroupLabel) { superview, categoryLabel, ageGroupLabel in
             categoryLabel.top == superview.top
             categoryLabel.left == superview.left
             categoryLabel.right <= superview.right
-            categoryLabel.bottom == superview.bottom
+
+            ageGroupLabel.top == categoryLabel.bottom
+            ageGroupLabel.right <= superview.right
+
+            align(left: categoryLabel, ageGroupLabel)
+
+            ageGroupLabel.bottom == superview.bottom
         }
     }
 }
