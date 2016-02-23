@@ -10,24 +10,17 @@ import Cartography
 
 class PerformanceCell: UITableViewCell {
 
-    private let timeLabel = UILabel()
-    private let categoryInfoLabel = UILabel()
-    private let appearancesInfoLabel = UILabel()
-    private let predecessorInfoLabel = UILabel()
+    private let timeLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Medium)
+    private let categoryInfoLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Medium)
+    private let appearancesInfoLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let predecessorInfoLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
 
     // MARK: - Lifecycle
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Default, reuseIdentifier: reuseIdentifier)
 
-        timeLabel.font = Font.fontWithWeight(.Bold, style: .Normal, size: .Medium)
-
-        categoryInfoLabel.font = Font.fontWithWeight(.Bold, style: .Normal, size: .Medium)
-
-        appearancesInfoLabel.font = Font.fontWithWeight(.Regular, style: .Normal, size: .Medium)
         appearancesInfoLabel.numberOfLines = 0
-
-        predecessorInfoLabel.font = Font.fontWithWeight(.Regular, style: .Normal, size: .Medium)
 
         contentView.addSubview(timeLabel)
         contentView.addSubview(categoryInfoLabel)

@@ -10,6 +10,7 @@ import UIKit
 
 struct Color {
     static let primaryColor = UIColor(hex: 0xC82432)
+    static let primaryTextColor = UIColor(hex: 0x333333)
     static let barTintColor = UIColor(hex: 0xBD0215)
 }
 
