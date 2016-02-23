@@ -6,11 +6,13 @@
 //  Copyright © 2016 Martin Richter. All rights reserved.
 //
 
-import UIKit
+import ReactiveCocoa
+import Cartography
 
 class PerformanceViewController: BaseViewController {
 
     private let mediator: PerformanceMediator
+    private let performanceView = PerformanceView()
 
     // MARK: - Lifecycle
 
@@ -31,12 +33,31 @@ class PerformanceViewController: BaseViewController {
 
         view.backgroundColor = UIColor.whiteColor()
 
+        view.addSubview(performanceView)
+
+        makeConstraints()
         makeBindings()
+    }
+
+    // MARK: - Layout
+
+    private func makeConstraints() {
+        performanceView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 16).active = true
+
+        constrain(view, performanceView) { superview, performanceView in
+            performanceView.left == superview.leftMargin
+            performanceView.right == superview.rightMargin
+            performanceView.bottom <= superview.bottomMargin
+        }
     }
 
     // MARK: - Bindings
 
     private func makeBindings() {
         self.title = mediator.title
+
+        mediator.active <~ isActive
+
+        performanceView.categoryName = mediator.categoryName
     }
 }

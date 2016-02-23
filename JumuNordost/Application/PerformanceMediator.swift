@@ -13,9 +13,11 @@ class PerformanceMediator: Mediator {
     // MARK: - Outputs
 
     var title: String {
-        get {
-            return performance.categoryName
-        }
+        return performance.categoryName
+    }
+
+    var categoryName: String {
+        return performance.categoryName
     }
 
     // MARK: - Private Properties
@@ -29,5 +31,4 @@ class PerformanceMediator: Mediator {
 
         super.init(store: store)
     }
-
 }

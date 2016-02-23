@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B2B5B7C1C7D0EF6002E576F /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7B1C7D0EF6002E576F /* Piece.swift */; };
+		5B2B5B7E1C7D1713002E576F /* PerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7D1C7D1713002E576F /* PerformanceView.swift */; };
 		5B2B5B801C7D1746002E576F /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7F1C7D1746002E576F /* Label.swift */; };
 		5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C6F1C71104200048552 /* PerformanceListMediator.swift */; };
 		5B843C741C7110A600048552 /* Mediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C731C7110A600048552 /* Mediator.swift */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		5B2B5B7B1C7D0EF6002E576F /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		5B2B5B7D1C7D1713002E576F /* PerformanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceView.swift; sourceTree = "<group>"; };
 		5B2B5B7F1C7D1746002E576F /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		5B843C6F1C71104200048552 /* PerformanceListMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceListMediator.swift; sourceTree = "<group>"; };
 		5B843C731C7110A600048552 /* Mediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mediator.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				5B843C981C7A40B400048552 /* PerformanceMediator.swift */,
 				5B843C961C7A408E00048552 /* PerformanceViewController.swift */,
+				5B2B5B7D1C7D1713002E576F /* PerformanceView.swift */,
 			);
 			name = Performance;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				5BAC51E31C6F6D650098B9C8 /* Constant.swift in Sources */,
 				5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */,
 				5B2B5B801C7D1746002E576F /* Label.swift in Sources */,
+				5B2B5B7E1C7D1713002E576F /* PerformanceView.swift in Sources */,
 				5BAC51EA1C6F71A80098B9C8 /* ContestsMediator.swift in Sources */,
 				5B843C971C7A408E00048552 /* PerformanceViewController.swift in Sources */,
 			);
