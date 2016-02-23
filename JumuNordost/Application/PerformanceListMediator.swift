@@ -75,7 +75,16 @@ class PerformanceListMediator: Mediator {
         contestDayFormatter.timeZone = contest.timeZone
 
         // Set contest day format according to amount of days
-        let template = contestDays.count > 2 ? "EEEMMMMd" : "EEEEMMMMd"
+        let template: String = {
+            switch contestDays.count {
+              case 0...2:
+                return "EEEEMMMMd"
+              case 3:
+                return "EEEEMd"
+              default:
+                return "EEEMd"
+            }
+        }()
         let locale = NSLocale.autoupdatingCurrentLocale()
         contestDayFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate(template, options: 0, locale: locale)
 
