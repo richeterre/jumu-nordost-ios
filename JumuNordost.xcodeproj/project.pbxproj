@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B2B5B7C1C7D0EF6002E576F /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7B1C7D0EF6002E576F /* Piece.swift */; };
 		5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C6F1C71104200048552 /* PerformanceListMediator.swift */; };
 		5B843C741C7110A600048552 /* Mediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C731C7110A600048552 /* Mediator.swift */; };
 		5B843C761C71167700048552 /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C751C71167700048552 /* Performance.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B2B5B7B1C7D0EF6002E576F /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		5B843C6F1C71104200048552 /* PerformanceListMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceListMediator.swift; sourceTree = "<group>"; };
 		5B843C731C7110A600048552 /* Mediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mediator.swift; sourceTree = "<group>"; };
 		5B843C751C71167700048552 /* Performance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Performance.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				5B843C9A1C7A438C00048552 /* Appearance.swift */,
 				5BAC51E51C6F6D9E0098B9C8 /* Contest.swift */,
 				5B843C751C71167700048552 /* Performance.swift */,
+				5B2B5B7B1C7D0EF6002E576F /* Piece.swift */,
 				5BAC51EB1C6F77320098B9C8 /* Venue.swift */,
 			);
 			path = Models;
@@ -403,6 +406,7 @@
 				5BC71F131C6F5F66005E90C8 /* AppDelegate.swift in Sources */,
 				5B843C7A1C7119DD00048552 /* PerformanceListViewController.swift in Sources */,
 				5B843C801C77CED400048552 /* Color.swift in Sources */,
+				5B2B5B7C1C7D0EF6002E576F /* Piece.swift in Sources */,
 				5BAC51EC1C6F77320098B9C8 /* Venue.swift in Sources */,
 				5BA61A091C7BD2FC0055E5DC /* String.swift in Sources */,
 				5BAC51FE1C70D8820098B9C8 /* ContestCell.swift in Sources */,
