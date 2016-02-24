@@ -40,6 +40,8 @@ class ContestsViewController: BaseViewController, UITableViewDataSource, UITable
 
         view.backgroundColor = UIColor.whiteColor()
 
+        tableView.rowHeight = ContestCell.height
+
         tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
@@ -93,10 +95,12 @@ class ContestsViewController: BaseViewController, UITableViewDataSource, UITable
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath) as! ContestCell
 
-        cell.textLabel?.text = mediator.nameForContestAtIndexPath(indexPath)
-        cell.detailTextLabel?.text = mediator.datesForContestAtIndexPath(indexPath)
+        cell.configure(
+            name: mediator.nameForContestAtIndexPath(indexPath),
+            dates: mediator.datesForContestAtIndexPath(indexPath)
+        )
         cell.accessoryType = .DisclosureIndicator
 
         return cell
