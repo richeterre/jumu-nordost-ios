@@ -1,5 +1,5 @@
 //
-//  ContestsViewController.swift
+//  ContestListViewController.swift
 //  JumuNordost
 //
 //  Created by Martin Richter on 13/02/16.
@@ -10,18 +10,18 @@ import Cartography
 import ReactiveCocoa
 import Result
 
-class ContestsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class ContestListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Private Properties
 
-    private let mediator: ContestsMediator
+    private let mediator: ContestListMediator
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private let contestCellIdentifier = "ContestCell"
 
     // MARK: - Lifecycle
 
-    init(mediator: ContestsMediator) {
+    init(mediator: ContestListMediator) {
         self.mediator = mediator
         super.init(nibName: nil, bundle: nil)
     }

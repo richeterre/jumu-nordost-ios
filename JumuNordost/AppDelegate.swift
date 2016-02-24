@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeAppAppearance()
 
         let store = Store()
-        let contestsMediator = ContestsMediator(store: store)
-        let contestsViewController = ContestsViewController(mediator: contestsMediator)
-        window?.rootViewController = UINavigationController(rootViewController: contestsViewController)
+        let contestListMediator = ContestListMediator(store: store)
+        let contestListViewController = ContestListViewController(mediator: contestListMediator)
+        window?.rootViewController = UINavigationController(rootViewController: contestListViewController)
 
         window?.makeKeyAndVisible()
 

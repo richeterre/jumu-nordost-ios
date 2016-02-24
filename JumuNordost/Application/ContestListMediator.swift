@@ -1,5 +1,5 @@
 //
-//  ContestsMediator.swift
+//  ContestListMediator.swift
 //  JumuNordost
 //
 //  Created by Martin Richter on 13/02/16.
@@ -9,7 +9,7 @@
 import ReactiveCocoa
 import Result
 
-class ContestsMediator: Mediator {
+class ContestListMediator: Mediator {
 
     // MARK: - Private Properties
 
