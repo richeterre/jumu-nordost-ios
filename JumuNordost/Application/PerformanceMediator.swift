@@ -12,17 +12,11 @@ class PerformanceMediator: Mediator {
 
     // MARK: - Outputs
 
-    var title: String {
-        return performance.categoryName
-    }
+    let title: String
 
-    var categoryName: String {
-        return performance.categoryName
-    }
-
-    var ageGroup: String {
-        return String(format: localize("FORMAT.AGE_GROUP"), performance.ageGroup)
-    }
+    let categoryName: String
+    let ageGroup: String
+    let stageTime: String
 
     // MARK: - Private Properties
 
@@ -30,8 +24,31 @@ class PerformanceMediator: Mediator {
 
     // MARK: - Lifecycle
 
-    init(store: StoreType, performance: Performance) {
+    init(store: StoreType, performance: Performance, contest: Contest) {
         self.performance = performance
+
+        let titleFormatter: NSDateFormatter = {
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = .MediumStyle
+            formatter.timeStyle = .ShortStyle
+            formatter.locale = NSLocale.autoupdatingCurrentLocale()
+            formatter.timeZone = contest.timeZone
+            return formatter
+        }()
+        title = titleFormatter.stringFromDate(performance.stageTime)
+
+        categoryName = performance.categoryName
+        ageGroup = String(format: localize("FORMAT.AGE_GROUP"), performance.ageGroup)
+
+        let stageTimeFormatter: NSDateFormatter = {
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = .FullStyle
+            formatter.timeStyle = .ShortStyle
+            formatter.locale = NSLocale.autoupdatingCurrentLocale()
+            formatter.timeZone = contest.timeZone
+            return formatter
+        }()
+        stageTime = stageTimeFormatter.stringFromDate(performance.stageTime)
 
         super.init(store: store)
     }

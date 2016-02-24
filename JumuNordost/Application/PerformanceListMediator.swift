@@ -131,7 +131,7 @@ class PerformanceListMediator: Mediator {
 
     func mediatorForPerformanceAtIndexPath(indexPath: NSIndexPath) -> PerformanceMediator {
         let performance = performanceAtIndexPath(indexPath)
-        return PerformanceMediator(store: store, performance: performance)
+        return PerformanceMediator(store: store, performance: performance, contest: contest)
     }
 
     // MARK: - Private Helpers
