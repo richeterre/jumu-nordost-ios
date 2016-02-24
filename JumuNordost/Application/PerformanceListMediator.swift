@@ -37,13 +37,6 @@ class PerformanceListMediator: Mediator {
         formatter.locale = NSLocale.autoupdatingCurrentLocale()
         return formatter
     }()
-    private lazy var stageTimeFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale.autoupdatingCurrentLocale()
-        formatter.dateStyle = .NoStyle
-        formatter.timeStyle = .ShortStyle
-        return formatter
-    }()
 
     // MARK: - Lifecycle
 
@@ -129,39 +122,10 @@ class PerformanceListMediator: Mediator {
         return performances.count
     }
 
-    func timeForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
-        let time = performanceAtIndexPath(indexPath).stageTime
-        return stageTimeFormatter.stringFromDate(time)
-    }
-
-    func categoryNameForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
-        return performanceAtIndexPath(indexPath).categoryName
-    }
-
-    func ageGroupForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
-        return String(format: localize("FORMAT.AGE_GROUP_SHORT"), performanceAtIndexPath(indexPath).ageGroup)
-    }
-
-    func predecessorInfoForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String? {
+    func formattedPerformanceForIndexPath(indexPath: NSIndexPath) -> FormattedPerformance {
         let performance = performanceAtIndexPath(indexPath)
-        let name = performance.predecessorHostName
-        let flag = performance.predecessorHostCountry?.toCountryFlag()
-
-        switch (name, flag) {
-          case let (name?, flag?):
-            return "\(flag) \(name)"
-          default:
-            return name
-        }
+        return PerformanceFormatter.formattedPerformance(performance)
     }
-
-    func appearancesForPerformanceAtIndexPath(indexPath: NSIndexPath) -> String {
-        let appearances = performanceAtIndexPath(indexPath).appearances
-        return appearances.map { appearance in
-            return "\(appearance.participantName), \(appearance.instrument)"
-        }.joinWithSeparator("\n")
-    }
-
 
     // MARK: - Mediators
 
