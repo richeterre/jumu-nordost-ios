@@ -45,8 +45,8 @@ class ContestCell: UITableViewCell {
 
     // MARK: - Content
 
-    func configure(name name: String, dates: String) {
-        nameLabel.text = name
-        datesLabel.text = dates
+    func configure(formattedContest: FormattedContest) {
+        nameLabel.text = formattedContest.name
+        datesLabel.text = formattedContest.dates
     }
 }

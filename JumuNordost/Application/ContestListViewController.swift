@@ -97,10 +97,7 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath) as! ContestCell
 
-        cell.configure(
-            name: mediator.nameForContestAtIndexPath(indexPath),
-            dates: mediator.datesForContestAtIndexPath(indexPath)
-        )
+        cell.configure(mediator.formattedContestForIndexPath(indexPath))
         cell.accessoryType = .DisclosureIndicator
 
         return cell

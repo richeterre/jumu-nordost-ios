@@ -14,13 +14,6 @@ class ContestListMediator: Mediator {
     // MARK: - Private Properties
 
     private var contests = [Contest]()
-    private lazy var dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .LongStyle
-        formatter.timeStyle = .NoStyle
-        formatter.locale = NSLocale.autoupdatingCurrentLocale()
-        return formatter
-    }()
 
     // MARK: - Lifecycle
 
@@ -50,21 +43,9 @@ class ContestListMediator: Mediator {
         return contests.count
     }
 
-    func nameForContestAtIndexPath(indexPath: NSIndexPath) -> String {
-        return contestAtIndexPath(indexPath).name
-    }
-
-    func datesForContestAtIndexPath(indexPath: NSIndexPath) -> String {
+    func formattedContestForIndexPath(indexPath: NSIndexPath) -> FormattedContest {
         let contest = contestAtIndexPath(indexPath)
-        dateFormatter.timeZone = contest.timeZone
-
-        let (startDate, endDate) = (contest.startDate, contest.endDate)
-
-        if startDate == endDate {
-            return dateFormatter.stringFromDate(startDate)
-        } else {
-            return "\(dateFormatter.stringFromDate(startDate)) – \(dateFormatter.stringFromDate(endDate))"
-        }
+        return ContestFormatter.formattedContest(contest)
     }
 
     // MARK: - Mediators
