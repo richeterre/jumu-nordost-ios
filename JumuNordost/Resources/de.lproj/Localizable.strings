@@ -8,5 +8,7 @@
 
 "NAV_TITLE.CONTESTS" = "Wettbewerb wählen";
 
+"BACK_TITLE.PERFORMANCE_LIST" = "Vorspielplan";
+
 "FORMAT.AGE_GROUP" = "Altersgruppe %@";
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";

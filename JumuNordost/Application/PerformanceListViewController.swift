@@ -43,6 +43,12 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.whiteColor()
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: localize("BACK_TITLE.PERFORMANCE_LIST"),
+            style: .Plain,
+            target: nil,
+            action: nil
+        )
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
 
         tableView.rowHeight = UITableViewAutomaticDimension

@@ -8,5 +8,7 @@
 
 "NAV_TITLE.CONTESTS" = "Pick a Contest";
 
+"BACK_TITLE.PERFORMANCE_LIST" = "Timetable";
+
 "FORMAT.AGE_GROUP" = "Age group %@";
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";
