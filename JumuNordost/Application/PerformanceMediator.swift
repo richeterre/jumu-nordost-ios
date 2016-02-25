@@ -18,6 +18,7 @@ class PerformanceMediator: Mediator {
     let ageGroup: String
     let stageTime: String
     let venue: String
+    let mainAppearances: String
 
     // MARK: - Private Properties
 
@@ -52,6 +53,10 @@ class PerformanceMediator: Mediator {
         stageTime = stageTimeFormatter.stringFromDate(performance.stageTime)
 
         self.venue = venue.name
+        mainAppearances = performance.appearances
+            .filter { $0.participantRole != .Accompanist }
+            .map { "\($0.participantName), \($0.instrument)" }
+            .joinWithSeparator("\n")
 
         super.init(store: store)
     }

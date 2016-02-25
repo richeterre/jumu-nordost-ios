@@ -30,17 +30,25 @@ class PerformanceView: UIView {
         set { venueLabel.text = newValue }
     }
 
+    var mainAppearances: String? {
+        get { return mainAppearancesLabel.text }
+        set { mainAppearancesLabel.text = newValue }
+    }
+
     private let categoryLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Large)
     private let ageGroupLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Large)
     private let stageTimeIcon = UIImageView(image: UIImage(named: "IconDate"))
     private let stageTimeLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let venueIcon = UIImageView(image: UIImage(named: "IconLocation"))
     private let venueLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let mainAppearancesLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Medium)
 
     // MARK: - Lifecycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        mainAppearancesLabel.numberOfLines = 0
 
         addSubview(categoryLabel)
         addSubview(ageGroupLabel)
@@ -48,6 +56,7 @@ class PerformanceView: UIView {
         addSubview(stageTimeLabel)
         addSubview(venueIcon)
         addSubview(venueLabel)
+        addSubview(mainAppearancesLabel)
 
         makeConstraints()
     }
@@ -71,7 +80,7 @@ class PerformanceView: UIView {
         }
 
         constrain(stageTimeIcon, stageTimeLabel, ageGroupLabel) { stageTimeIcon, stageTimeLabel, ageGroupLabel in
-            stageTimeLabel.top == ageGroupLabel.bottom + 8
+            stageTimeLabel.top == ageGroupLabel.bottom + 16
             stageTimeLabel.left == stageTimeIcon.right + 8
             align(centerY: stageTimeIcon, stageTimeLabel)
         }
@@ -82,12 +91,17 @@ class PerformanceView: UIView {
             align(centerY: venueIcon, venueLabel)
         }
 
-        constrain(venueLabel, self) { venueLabel, superview in
-            venueLabel.bottom == superview.bottom
+        constrain(mainAppearancesLabel, venueLabel, self) { mainAppearancesLabel, venueLabel, superview in
+            mainAppearancesLabel.top == venueLabel.bottom + 16
+            mainAppearancesLabel.right <= superview.right
         }
 
-        constrain(categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon) { categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon in
-            align(left: categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon)
+        constrain(mainAppearancesLabel, self) { mainAppearancesLabel, superview in
+            mainAppearancesLabel.bottom == superview.bottom
+        }
+
+        constrain(categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon, mainAppearancesLabel) { categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon, mainAppearancesLabel in
+            align(left: categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon, mainAppearancesLabel)
         }
     }
 }
