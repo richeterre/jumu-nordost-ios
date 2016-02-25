@@ -25,9 +25,15 @@ class PerformanceView: UIView {
         set { stageTimeLabel.text = newValue }
     }
 
+    var venue: String? {
+        get { return venueLabel.text }
+        set { venueLabel.text = newValue }
+    }
+
     private let categoryLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Large)
     private let ageGroupLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Large)
     private let stageTimeLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let venueLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
 
     // MARK: - Lifecycle
 
@@ -37,6 +43,7 @@ class PerformanceView: UIView {
         addSubview(categoryLabel)
         addSubview(ageGroupLabel)
         addSubview(stageTimeLabel)
+        addSubview(venueLabel)
 
         makeConstraints()
     }
@@ -48,7 +55,7 @@ class PerformanceView: UIView {
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(self, categoryLabel, ageGroupLabel, stageTimeLabel) { superview, categoryLabel, ageGroupLabel, stageTimeLabel in
+        constrain(self, categoryLabel, ageGroupLabel, stageTimeLabel, venueLabel) { superview, categoryLabel, ageGroupLabel, stageTimeLabel, venueLabel in
             categoryLabel.top == superview.top
             categoryLabel.left == superview.left
             categoryLabel.right <= superview.right
@@ -57,9 +64,11 @@ class PerformanceView: UIView {
             ageGroupLabel.right <= superview.right
 
             stageTimeLabel.top == ageGroupLabel.bottom + 8
-            stageTimeLabel.bottom == superview.bottom
 
-            align(left: categoryLabel, ageGroupLabel, stageTimeLabel)
+            venueLabel.top == stageTimeLabel.bottom
+            venueLabel.bottom == superview.bottom
+
+            align(left: categoryLabel, ageGroupLabel, stageTimeLabel, venueLabel)
         }
     }
 }

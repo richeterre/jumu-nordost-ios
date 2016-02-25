@@ -17,6 +17,7 @@ class PerformanceMediator: Mediator {
     let category: String
     let ageGroup: String
     let stageTime: String
+    let venue: String
 
     // MARK: - Private Properties
 
@@ -24,7 +25,7 @@ class PerformanceMediator: Mediator {
 
     // MARK: - Lifecycle
 
-    init(store: StoreType, performance: Performance, contest: Contest) {
+    init(store: StoreType, performance: Performance, contest: Contest, venue: Venue) {
         self.performance = performance
 
         let titleFormatter: NSDateFormatter = {
@@ -49,6 +50,8 @@ class PerformanceMediator: Mediator {
             return formatter
         }()
         stageTime = stageTimeFormatter.stringFromDate(performance.stageTime)
+
+        self.venue = venue.name
 
         super.init(store: store)
     }

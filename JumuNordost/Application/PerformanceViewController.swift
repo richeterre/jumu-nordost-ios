@@ -61,5 +61,6 @@ class PerformanceViewController: BaseViewController {
         performanceView.category = mediator.category
         performanceView.ageGroup = mediator.ageGroup
         performanceView.stageTime = mediator.stageTime
+        performanceView.venue = mediator.venue
     }
 }

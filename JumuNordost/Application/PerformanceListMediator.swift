@@ -131,7 +131,9 @@ class PerformanceListMediator: Mediator {
 
     func mediatorForPerformanceAtIndexPath(indexPath: NSIndexPath) -> PerformanceMediator {
         let performance = performanceAtIndexPath(indexPath)
-        return PerformanceMediator(store: store, performance: performance, contest: contest)
+        let venue = selectedVenue.value! // This being nil here is a programming error
+
+        return PerformanceMediator(store: store, performance: performance, contest: contest, venue: venue)
     }
 
     // MARK: - Private Helpers
