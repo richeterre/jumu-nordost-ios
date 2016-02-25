@@ -10,7 +10,7 @@ import Cartography
 
 class PerformanceView: UIView {
 
-    var categoryName: String? {
+    var category: String? {
         get { return categoryLabel.text }
         set { categoryLabel.text = newValue }
     }

@@ -14,7 +14,7 @@ class PerformanceMediator: Mediator {
 
     let title: String
 
-    let categoryName: String
+    let category: String
     let ageGroup: String
     let stageTime: String
 
@@ -37,7 +37,7 @@ class PerformanceMediator: Mediator {
         }()
         title = titleFormatter.stringFromDate(performance.stageTime)
 
-        categoryName = performance.categoryName
+        category = performance.categoryName
         ageGroup = String(format: localize("FORMAT.AGE_GROUP"), performance.ageGroup)
 
         let stageTimeFormatter: NSDateFormatter = {
