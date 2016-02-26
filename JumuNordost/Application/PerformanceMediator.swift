@@ -19,6 +19,7 @@ class PerformanceMediator: Mediator {
     let stageTime: String
     let venue: String
     let mainAppearances: String
+    let accompanists: String
 
     // MARK: - Private Properties
 
@@ -53,10 +54,15 @@ class PerformanceMediator: Mediator {
         stageTime = stageTimeFormatter.stringFromDate(performance.stageTime)
 
         self.venue = venue.name
-        mainAppearances = performance.appearances
-            .filter { $0.participantRole != .Accompanist }
-            .map { "\($0.participantName), \($0.instrument)" }
-            .joinWithSeparator("\n")
+
+        func formattedAppearances(appearances: [Appearance], roles: [ParticipantRole]) -> String {
+            return appearances.filter { roles.contains($0.participantRole) }
+                .map { "\($0.participantName), \($0.instrument)" }
+                .joinWithSeparator("\n")
+        }
+
+        mainAppearances = formattedAppearances(performance.appearances, roles: [.Soloist, .Ensemblist])
+        accompanists = formattedAppearances(performance.appearances, roles: [.Accompanist])
 
         super.init(store: store)
     }

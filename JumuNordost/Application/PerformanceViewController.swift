@@ -63,5 +63,6 @@ class PerformanceViewController: BaseViewController {
         performanceView.stageTime = mediator.stageTime
         performanceView.venue = mediator.venue
         performanceView.mainAppearances = mediator.mainAppearances
+        performanceView.accompanists = mediator.accompanists
     }
 }
