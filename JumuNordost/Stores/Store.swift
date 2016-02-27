@@ -35,7 +35,7 @@ class Store: StoreType {
 
         let queryItems = [
             NSURLQueryItem(name: "venue_id", value: venue.id),
-            NSURLQueryItem(name: "local_date", value: dateString)
+            NSURLQueryItem(name: "date", value: dateString)
         ]
 
         let path = String(format: "contests/%@/performances", arguments: [contest.id])
