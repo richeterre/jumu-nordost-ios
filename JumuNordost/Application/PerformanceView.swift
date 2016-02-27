@@ -16,8 +16,8 @@ class PerformanceView: UIView {
     private let stageTimeLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let venueIcon = UIImageView(image: UIImage(named: "IconLocation"))
     private let venueLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
-    private let mainAppearancesLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Large)
-    private let accompanistsLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Large)
+    private let mainAppearancesLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Medium)
+    private let accompanistsLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let appearancesSeparator = SeparatorView()
     private let piecesSeparator = SeparatorView()
     private let piecesStackView: UIStackView
