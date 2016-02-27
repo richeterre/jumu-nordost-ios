@@ -12,6 +12,7 @@ import Cartography
 class PerformanceViewController: BaseViewController {
 
     private let mediator: PerformanceMediator
+    private let scrollView = UIScrollView()
     private let performanceView: PerformanceView
 
     // MARK: - Lifecycle
@@ -34,7 +35,11 @@ class PerformanceViewController: BaseViewController {
 
         view.backgroundColor = UIColor.whiteColor()
 
-        view.addSubview(performanceView)
+        scrollView.alwaysBounceVertical = true
+        scrollView.layoutMargins = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
+
+        scrollView.addSubview(performanceView)
+        view.addSubview(scrollView)
 
         makeConstraints()
         makeBindings()
@@ -43,12 +48,13 @@ class PerformanceViewController: BaseViewController {
     // MARK: - Layout
 
     private func makeConstraints() {
-        performanceView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 16).active = true
+        constrain(view, scrollView, performanceView) { superview, scrollView, performanceView in
+            scrollView.edges == superview.edges
 
-        constrain(view, performanceView) { superview, performanceView in
+            performanceView.top == scrollView.topMargin
             performanceView.left == superview.leftMargin
             performanceView.right == superview.rightMargin
-            performanceView.bottom <= superview.bottomMargin
+            performanceView.bottom == scrollView.bottomMargin
         }
     }
 
