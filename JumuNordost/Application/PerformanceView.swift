@@ -18,6 +18,8 @@ class PerformanceView: UIView {
     private let venueLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let mainAppearancesLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Large)
     private let accompanistsLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Large)
+    private let appearancesSeparator = SeparatorView()
+    private let piecesSeparator = SeparatorView()
     private let piecesStackView: UIStackView
 
     // MARK: - Lifecycle
@@ -47,8 +49,10 @@ class PerformanceView: UIView {
         addSubview(stageTimeLabel)
         addSubview(venueIcon)
         addSubview(venueLabel)
+        addSubview(appearancesSeparator)
         addSubview(mainAppearancesLabel)
         addSubview(accompanistsLabel)
+        addSubview(piecesSeparator)
         addSubview(piecesStackView)
 
         makeConstraints()
@@ -84,8 +88,14 @@ class PerformanceView: UIView {
             align(centerY: venueIcon, venueLabel)
         }
 
-        constrain(mainAppearancesLabel, venueLabel, self) { mainAppearancesLabel, venueLabel, superview in
-            mainAppearancesLabel.top == venueLabel.bottom + 16
+        constrain(appearancesSeparator, venueLabel, self) { appearancesSeparator, venueLabel, superview in
+            appearancesSeparator.top == venueLabel.bottom + 16
+            appearancesSeparator.centerX == superview.centerXWithinMargins
+            appearancesSeparator.width == superview.width * 0.7
+        }
+
+        constrain(mainAppearancesLabel, appearancesSeparator, self) { mainAppearancesLabel, appearancesSeparator, superview in
+            mainAppearancesLabel.top == appearancesSeparator.bottom + 16
             mainAppearancesLabel.right <= superview.right
         }
 
@@ -94,8 +104,12 @@ class PerformanceView: UIView {
             accompanistsLabel.right <= superview.right
         }
 
-        constrain(piecesStackView, accompanistsLabel, self) { piecesStackView, accompanistsLabel, superview in
-            piecesStackView.top == accompanistsLabel.bottom + 16
+        constrain(piecesSeparator, accompanistsLabel, self) { piecesSeparator, accompanistsLabel, superview in
+            piecesSeparator.top == accompanistsLabel.bottom + 16
+        }
+
+        constrain(piecesStackView, piecesSeparator, self) { piecesStackView, piecesSeparator, superview in
+            piecesStackView.top == piecesSeparator.bottom + 16
             piecesStackView.right <= superview.right
         }
 
@@ -109,6 +123,11 @@ class PerformanceView: UIView {
 
         constrain(mainAppearancesLabel, accompanistsLabel, piecesStackView) { mainAppearancesLabel, accompanistsLabel, piecesStackView in
             align(left: mainAppearancesLabel, accompanistsLabel, piecesStackView)
+        }
+
+        constrain(appearancesSeparator, piecesSeparator) { appearancesSeparator, piecesSeparator in
+            align(left: appearancesSeparator, piecesSeparator)
+            align(right: appearancesSeparator, piecesSeparator)
         }
     }
 }

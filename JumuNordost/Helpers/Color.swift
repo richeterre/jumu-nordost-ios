@@ -13,6 +13,7 @@ struct Color {
     static let primaryTextColor = UIColor(hex: 0x333333)
     static let secondaryTextColor = UIColor(hex: 0x666666)
     static let barTintColor = UIColor(hex: 0xBD0215)
+    static let separatorColor = UIColor(hex: 0xE9E9E9)
 }
 
 extension UIColor {
