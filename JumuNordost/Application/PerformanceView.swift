@@ -18,12 +18,11 @@ class PerformanceView: UIView {
     private let venueLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let mainAppearancesLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Large)
     private let accompanistsLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Large)
+    private let piecesStackView: UIStackView
 
     // MARK: - Lifecycle
 
     init(performance: FormattedPerformance) {
-        super.init(frame: CGRectZero)
-
         mainAppearancesLabel.numberOfLines = 0
         accompanistsLabel.numberOfLines = 0
         accompanistsLabel.textColor = Color.secondaryTextColor
@@ -35,6 +34,13 @@ class PerformanceView: UIView {
         mainAppearancesLabel.text = performance.mainAppearances
         accompanistsLabel.text = performance.accompanists
 
+        let pieceViews = performance.pieces.map(PieceView.init)
+        piecesStackView = UIStackView(arrangedSubviews: pieceViews)
+        piecesStackView.axis = .Vertical
+        piecesStackView.spacing = 8
+
+        super.init(frame: CGRectZero)
+
         addSubview(categoryLabel)
         addSubview(ageGroupLabel)
         addSubview(stageTimeIcon)
@@ -43,6 +49,7 @@ class PerformanceView: UIView {
         addSubview(venueLabel)
         addSubview(mainAppearancesLabel)
         addSubview(accompanistsLabel)
+        addSubview(piecesStackView)
 
         makeConstraints()
     }
@@ -87,16 +94,21 @@ class PerformanceView: UIView {
             accompanistsLabel.right <= superview.right
         }
 
-        constrain(accompanistsLabel, self) { accompanistsLabel, superview in
-            accompanistsLabel.bottom == superview.bottom
+        constrain(piecesStackView, accompanistsLabel, self) { piecesStackView, accompanistsLabel, superview in
+            piecesStackView.top == accompanistsLabel.bottom + 16
+            piecesStackView.right <= superview.right
+        }
+
+        constrain(piecesStackView, self) { piecesStackView, superview in
+            piecesStackView.bottom == superview.bottom
         }
 
         constrain(categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon, mainAppearancesLabel) { categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon, mainAppearancesLabel in
             align(left: categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon, mainAppearancesLabel)
         }
 
-        constrain(mainAppearancesLabel, accompanistsLabel) { mainAppearancesLabel, accompanistsLabel in
-            align(left: mainAppearancesLabel, accompanistsLabel)
+        constrain(mainAppearancesLabel, accompanistsLabel, piecesStackView) { mainAppearancesLabel, accompanistsLabel, piecesStackView in
+            align(left: mainAppearancesLabel, accompanistsLabel, piecesStackView)
         }
     }
 }
