@@ -25,7 +25,7 @@ class ContestListMediator: Mediator {
         refreshTrigger
             .on(next: { _ in isLoading.value = true })
             .flatMap(.Latest) { _ in
-                return store.fetchContests(currentOnly: false)
+                return store.fetchContests(currentOnly: false, timetablesPublic: true)
                     .flatMapError { error in
                         return SignalProducer(value: [])
                 }

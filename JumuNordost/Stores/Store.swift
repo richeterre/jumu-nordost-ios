@@ -10,10 +10,11 @@ import Argo
 import ReactiveCocoa
 
 class Store: StoreType {
-    func fetchContests(currentOnly currentOnly: Bool) -> SignalProducer<[Contest], NSError> {
+    func fetchContests(currentOnly currentOnly: Bool, timetablesPublic: Bool) -> SignalProducer<[Contest], NSError> {
 
         let queryItems = [
-            NSURLQueryItem(name: "current", value: queryValueForBool(currentOnly))
+            NSURLQueryItem(name: "current_only", value: queryValueForBool(currentOnly)),
+            NSURLQueryItem(name: "timetables_public", value: queryValueForBool(timetablesPublic))
         ]
         let request = requestForPath("contests", queryItems: queryItems)
 
