@@ -35,7 +35,6 @@ class PerformanceViewController: BaseViewController {
 
         view.backgroundColor = UIColor.whiteColor()
 
-        scrollView.alwaysBounceVertical = true
         scrollView.layoutMargins = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
 
         scrollView.addSubview(performanceView)
