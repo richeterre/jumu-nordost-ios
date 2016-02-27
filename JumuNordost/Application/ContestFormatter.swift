@@ -15,8 +15,8 @@ struct FormattedContest {
 
 class ContestFormatter {
 
-    private static let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
+    private static let dateIntervalFormatter: NSDateIntervalFormatter = {
+        let formatter = NSDateIntervalFormatter()
         formatter.dateStyle = .LongStyle
         formatter.timeStyle = .NoStyle
         formatter.locale = NSLocale.autoupdatingCurrentLocale()
@@ -27,21 +27,11 @@ class ContestFormatter {
 
     static func formattedContest(contest: Contest) -> FormattedContest {
 
-        dateFormatter.timeZone = contest.timeZone // TODO: Eliminate this state
-
-        let (startDate, endDate) = (contest.startDate, contest.endDate)
-
-        let dates: String = {
-            if startDate == endDate {
-                return dateFormatter.stringFromDate(startDate)
-            } else {
-                return [startDate, endDate].map(dateFormatter.stringFromDate).joinWithSeparator(" – ")
-            }
-        }()
+        dateIntervalFormatter.timeZone = contest.timeZone // TODO: Eliminate this state
 
         return FormattedContest(
             name: contest.name,
-            dates: dates
+            dates: dateIntervalFormatter.stringFromDate(contest.startDate, toDate: contest.endDate)
         )
     }
 }
