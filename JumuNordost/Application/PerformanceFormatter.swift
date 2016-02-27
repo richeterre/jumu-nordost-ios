@@ -15,6 +15,7 @@ struct FormattedPerformance {
     let venue: String
     let mainAppearances: String
     let accompanists: String
+    let pieces: [FormattedPiece]
 }
 
 class PerformanceFormatter {
@@ -22,9 +23,6 @@ class PerformanceFormatter {
     // MARK: - Formatting
 
     static func formattedPerformance(performance: Performance, contest: Contest, venue: Venue) -> FormattedPerformance {
-
-        let category = performance.categoryName
-        let ageGroup = String(format: localize("FORMAT.AGE_GROUP"), performance.ageGroup)
 
         let stageTimeFormatter: NSDateFormatter = {
             let formatter = NSDateFormatter()
@@ -34,9 +32,6 @@ class PerformanceFormatter {
             formatter.timeZone = contest.timeZone
             return formatter
         }()
-        let stageTime = stageTimeFormatter.stringFromDate(performance.stageTime)
-
-        let venue = venue.name
 
         func formattedAppearances(appearances: [Appearance], roles: [ParticipantRole]) -> String {
             return appearances.filter { roles.contains($0.participantRole) }
@@ -44,16 +39,14 @@ class PerformanceFormatter {
                 .joinWithSeparator("\n")
         }
 
-        let mainAppearances = formattedAppearances(performance.appearances, roles: [.Soloist, .Ensemblist])
-        let accompanists = formattedAppearances(performance.appearances, roles: [.Accompanist])
-
         return FormattedPerformance(
-            category: category,
-            ageGroup: ageGroup,
-            stageTime: stageTime,
-            venue: venue,
-            mainAppearances: mainAppearances,
-            accompanists: accompanists
+            category: performance.categoryName,
+            ageGroup: String(format: localize("FORMAT.AGE_GROUP"), performance.ageGroup),
+            stageTime: stageTimeFormatter.stringFromDate(performance.stageTime),
+            venue: venue.name,
+            mainAppearances: formattedAppearances(performance.appearances, roles: [.Soloist, .Ensemblist]),
+            accompanists: formattedAppearances(performance.appearances, roles: [.Accompanist]),
+            pieces: performance.pieces.map(PieceFormatter.formattedPiece)
         )
     }
 }
