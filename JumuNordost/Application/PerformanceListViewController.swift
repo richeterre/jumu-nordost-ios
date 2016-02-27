@@ -131,7 +131,7 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(performanceCellIdentifier, forIndexPath: indexPath) as! PerformanceCell
 
-        cell.configure(mediator.formattedPerformanceForIndexPath(indexPath))
+        cell.configure(mediator.formattedListPerformanceForIndexPath(indexPath))
         cell.accessoryType = .DisclosureIndicator
 
         return cell

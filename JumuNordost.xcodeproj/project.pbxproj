@@ -44,7 +44,7 @@
 		5BAC52001C70E4E80098B9C8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC51FF1C70E4E80098B9C8 /* Localization.swift */; };
 		5BC71F131C6F5F66005E90C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F121C6F5F66005E90C8 /* AppDelegate.swift */; };
 		5BC71F281C6F5F66005E90C8 /* JumuNordostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F271C6F5F66005E90C8 /* JumuNordostTests.swift */; };
-		5BC848EC1C7E66F800D4CA43 /* PerformanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC848EB1C7E66F800D4CA43 /* PerformanceFormatter.swift */; };
+		5BC848EC1C7E66F800D4CA43 /* ListPerformanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC848EB1C7E66F800D4CA43 /* ListPerformanceFormatter.swift */; };
 		5BC848EE1C7E6A9000D4CA43 /* ContestFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC848ED1C7E6A9000D4CA43 /* ContestFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,7 +101,7 @@
 		5BC71F231C6F5F66005E90C8 /* JumuNordostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumuNordostTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC71F271C6F5F66005E90C8 /* JumuNordostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumuNordostTests.swift; sourceTree = "<group>"; };
 		5BC71F291C6F5F66005E90C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5BC848EB1C7E66F800D4CA43 /* PerformanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceFormatter.swift; sourceTree = "<group>"; };
+		5BC848EB1C7E66F800D4CA43 /* ListPerformanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPerformanceFormatter.swift; sourceTree = "<group>"; };
 		5BC848ED1C7E6A9000D4CA43 /* ContestFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5B843C6F1C71104200048552 /* PerformanceListMediator.swift */,
-				5BC848EB1C7E66F800D4CA43 /* PerformanceFormatter.swift */,
+				5BC848EB1C7E66F800D4CA43 /* ListPerformanceFormatter.swift */,
 				5B843C791C7119DD00048552 /* PerformanceListViewController.swift */,
 				5B843C811C787CC300048552 /* PerformanceFilterView.swift */,
 				5B843C911C79DCAA00048552 /* PerformanceCell.swift */,
@@ -413,7 +413,7 @@
 				5B843C941C7A02CE00048552 /* Decodables.swift in Sources */,
 				5BAC51E81C6F6DD40098B9C8 /* Store.swift in Sources */,
 				5BAC51F81C6FEDF00098B9C8 /* StoreType.swift in Sources */,
-				5BC848EC1C7E66F800D4CA43 /* PerformanceFormatter.swift in Sources */,
+				5BC848EC1C7E66F800D4CA43 /* ListPerformanceFormatter.swift in Sources */,
 				5BAC51E61C6F6D9E0098B9C8 /* Contest.swift in Sources */,
 				5B843C9B1C7A438C00048552 /* Appearance.swift in Sources */,
 				5BC71F131C6F5F66005E90C8 /* AppDelegate.swift in Sources */,

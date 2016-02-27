@@ -59,10 +59,10 @@ class PerformanceCell: UITableViewCell {
 
     // MARK: - Content
 
-    func configure(formattedPerformance: FormattedPerformance) {
-        timeLabel.text = formattedPerformance.stageTime
-        categoryInfoLabel.text = "\(formattedPerformance.category), \(formattedPerformance.ageGroup)"
-        appearancesInfoLabel.text = formattedPerformance.appearances
-        predecessorInfoLabel.text = formattedPerformance.predecessorInfo
+    func configure(performance: FormattedListPerformance) {
+        timeLabel.text = performance.stageTime
+        categoryInfoLabel.text = "\(performance.category), \(performance.ageGroup)"
+        appearancesInfoLabel.text = performance.appearances
+        predecessorInfoLabel.text = performance.predecessorInfo
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PerformanceFormatter.swift
+//  ListPerformanceFormatter.swift
 //  JumuNordost
 //
 //  Created by Martin Richter on 24/02/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FormattedPerformance {
+struct FormattedListPerformance {
     let stageTime: String
     let category: String
     let ageGroup: String
@@ -16,7 +16,7 @@ struct FormattedPerformance {
     let predecessorInfo: String?
 }
 
-class PerformanceFormatter {
+class ListPerformanceFormatter {
 
     private static let stageTimeFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
@@ -28,12 +28,12 @@ class PerformanceFormatter {
 
     // MARK: - Formatting
 
-    static func formattedPerformance(performance: Performance) -> FormattedPerformance {
+    static func formattedListPerformance(performance: Performance) -> FormattedListPerformance {
         let appearances = performance.appearances.map { appearance in
             return "\(appearance.participantName), \(appearance.instrument)"
         }.joinWithSeparator("\n")
 
-        return FormattedPerformance(
+        return FormattedListPerformance(
             stageTime: stageTimeFormatter.stringFromDate(performance.stageTime),
             category: performance.categoryName,
             ageGroup: String(format: localize("FORMAT.AGE_GROUP_SHORT"), performance.ageGroup),
