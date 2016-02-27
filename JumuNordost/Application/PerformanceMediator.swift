@@ -13,13 +13,7 @@ class PerformanceMediator: Mediator {
     // MARK: - Outputs
 
     let title: String
-
-    let category: String
-    let ageGroup: String
-    let stageTime: String
-    let venue: String
-    let mainAppearances: String
-    let accompanists: String
+    let formattedPerformance: FormattedPerformance
 
     // MARK: - Private Properties
 
@@ -40,29 +34,7 @@ class PerformanceMediator: Mediator {
         }()
         title = titleFormatter.stringFromDate(performance.stageTime)
 
-        category = performance.categoryName
-        ageGroup = String(format: localize("FORMAT.AGE_GROUP"), performance.ageGroup)
-
-        let stageTimeFormatter: NSDateFormatter = {
-            let formatter = NSDateFormatter()
-            formatter.dateStyle = .FullStyle
-            formatter.timeStyle = .ShortStyle
-            formatter.locale = NSLocale.autoupdatingCurrentLocale()
-            formatter.timeZone = contest.timeZone
-            return formatter
-        }()
-        stageTime = stageTimeFormatter.stringFromDate(performance.stageTime)
-
-        self.venue = venue.name
-
-        func formattedAppearances(appearances: [Appearance], roles: [ParticipantRole]) -> String {
-            return appearances.filter { roles.contains($0.participantRole) }
-                .map { "\($0.participantName), \($0.instrument)" }
-                .joinWithSeparator("\n")
-        }
-
-        mainAppearances = formattedAppearances(performance.appearances, roles: [.Soloist, .Ensemblist])
-        accompanists = formattedAppearances(performance.appearances, roles: [.Accompanist])
+        formattedPerformance = PerformanceFormatter.formattedPerformance(performance, contest: contest, venue: venue)
 
         super.init(store: store)
     }

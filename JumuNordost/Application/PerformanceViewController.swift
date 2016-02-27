@@ -12,12 +12,13 @@ import Cartography
 class PerformanceViewController: BaseViewController {
 
     private let mediator: PerformanceMediator
-    private let performanceView = PerformanceView()
+    private let performanceView: PerformanceView
 
     // MARK: - Lifecycle
 
     init(mediator: PerformanceMediator) {
         self.mediator = mediator
+        performanceView = PerformanceView(performance: mediator.formattedPerformance)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -57,12 +58,5 @@ class PerformanceViewController: BaseViewController {
         self.title = mediator.title
 
         mediator.active <~ isActive
-
-        performanceView.category = mediator.category
-        performanceView.ageGroup = mediator.ageGroup
-        performanceView.stageTime = mediator.stageTime
-        performanceView.venue = mediator.venue
-        performanceView.mainAppearances = mediator.mainAppearances
-        performanceView.accompanists = mediator.accompanists
     }
 }

@@ -10,36 +10,6 @@ import Cartography
 
 class PerformanceView: UIView {
 
-    var category: String? {
-        get { return categoryLabel.text }
-        set { categoryLabel.text = newValue }
-    }
-
-    var ageGroup: String? {
-        get { return ageGroupLabel.text }
-        set { ageGroupLabel.text = newValue }
-    }
-
-    var stageTime: String? {
-        get { return stageTimeLabel.text }
-        set { stageTimeLabel.text = newValue }
-    }
-
-    var venue: String? {
-        get { return venueLabel.text }
-        set { venueLabel.text = newValue }
-    }
-
-    var mainAppearances: String? {
-        get { return mainAppearancesLabel.text }
-        set { mainAppearancesLabel.text = newValue }
-    }
-
-    var accompanists: String? {
-        get { return accompanistsLabel.text }
-        set { accompanistsLabel.text = newValue }
-    }
-
     private let categoryLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Large)
     private let ageGroupLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Large)
     private let stageTimeIcon = UIImageView(image: UIImage(named: "IconDate"))
@@ -51,12 +21,19 @@ class PerformanceView: UIView {
 
     // MARK: - Lifecycle
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(performance: FormattedPerformance) {
+        super.init(frame: CGRectZero)
 
         mainAppearancesLabel.numberOfLines = 0
         accompanistsLabel.numberOfLines = 0
         accompanistsLabel.textColor = Color.secondaryTextColor
+
+        categoryLabel.text = performance.category
+        ageGroupLabel.text = performance.ageGroup
+        stageTimeLabel.text = performance.stageTime
+        venueLabel.text = performance.venue
+        mainAppearancesLabel.text = performance.mainAppearances
+        accompanistsLabel.text = performance.accompanists
 
         addSubview(categoryLabel)
         addSubview(ageGroupLabel)
