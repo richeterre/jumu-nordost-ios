@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         customizeAppAppearance()
 
-        let store = Store()
+        let store = Store(baseURL: Constant.localBaseURL)
         let contestListMediator = ContestListMediator(store: store)
         let contestListViewController = ContestListViewController(mediator: contestListMediator)
         window?.rootViewController = UINavigationController(rootViewController: contestListViewController)

@@ -10,6 +10,17 @@ import Argo
 import ReactiveCocoa
 
 class Store: StoreType {
+
+    private let baseURL: NSURL
+
+    // MARK: - Lifecycle
+
+    required init(baseURL: NSURL) {
+        self.baseURL = baseURL
+    }
+
+    // MARK: - Contests
+
     func fetchContests(currentOnly currentOnly: Bool, timetablesPublic: Bool) -> SignalProducer<[Contest], NSError> {
 
         let queryItems = [
@@ -28,6 +39,8 @@ class Store: StoreType {
                 }
             }
     }
+
+    // MARK: - Performances
 
     func fetchPerformances(contest contest: Contest, venue: Venue, day: ContestDay) -> SignalProducer<[Performance], NSError> {
 
@@ -55,7 +68,7 @@ class Store: StoreType {
     // MARK: - Private Helpers
 
     private func requestForPath(path: String, queryItems: [NSURLQueryItem] = []) -> NSURLRequest {
-        let url = NSURL(string: path, relativeToURL: Constant.baseURL)!
+        let url = NSURL(string: path, relativeToURL: baseURL)!
         let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)!
 
         components.queryItems = queryItems

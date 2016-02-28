@@ -9,5 +9,6 @@
 import Foundation
 
 struct Constant {
-    static let baseURL = NSURL(string: "http://localhost:5000/api/v1/")!
+    static let localBaseURL = NSURL(string: "http://localhost:5000/api/v1/")!
+    static let remoteBaseURL = NSURL(string: "http://www.jumu-nordost.eu/api/v1/")!
 }

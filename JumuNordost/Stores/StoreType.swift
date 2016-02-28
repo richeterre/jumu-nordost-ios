@@ -12,6 +12,8 @@ typealias ContestDay = NSDateComponents
 
 protocol StoreType {
 
+    init(baseURL: NSURL)
+
     // MARK: - Contests
 
     func fetchContests(currentOnly currentOnly: Bool, timetablesPublic: Bool) -> SignalProducer<[Contest], NSError>
