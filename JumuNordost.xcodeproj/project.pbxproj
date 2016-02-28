@@ -585,7 +585,7 @@
 				);
 				INFOPLIST_FILE = JumuNordost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.martinrichter.jumu-nordost";
+				PRODUCT_BUNDLE_IDENTIFIER = "jugend-musiziert.jumu-nordost";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -601,7 +601,7 @@
 				);
 				INFOPLIST_FILE = JumuNordost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.martinrichter.jumu-nordost";
+				PRODUCT_BUNDLE_IDENTIFIER = "jugend-musiziert.jumu-nordost";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
