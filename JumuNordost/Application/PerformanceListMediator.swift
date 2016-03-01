@@ -124,7 +124,7 @@ class PerformanceListMediator: Mediator {
 
     func formattedListPerformanceForIndexPath(indexPath: NSIndexPath) -> FormattedListPerformance {
         let performance = performanceAtIndexPath(indexPath)
-        return ListPerformanceFormatter.formattedListPerformance(performance)
+        return ListPerformanceFormatter.formattedListPerformance(performance, contest: contest)
     }
 
     // MARK: - Mediators

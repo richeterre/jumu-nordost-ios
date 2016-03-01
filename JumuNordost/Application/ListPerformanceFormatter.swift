@@ -29,7 +29,10 @@ class ListPerformanceFormatter {
 
     // MARK: - Formatting
 
-    static func formattedListPerformance(performance: Performance) -> FormattedListPerformance {
+    static func formattedListPerformance(performance: Performance, contest: Contest) -> FormattedListPerformance {
+
+        stageTimeFormatter.timeZone = contest.timeZone
+
         return FormattedListPerformance(
             stageTime: stageTimeFormatter.stringFromDate(performance.stageTime),
             category: performance.categoryName,
