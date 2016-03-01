@@ -17,6 +17,7 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
     private let mediator: ContestListMediator
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
+    private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
     private let contestCellIdentifier = "ContestCell"
 
     // MARK: - Lifecycle
@@ -36,7 +37,9 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
 
         self.title = localize("NAV_TITLE.CONTESTS")
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
         view.backgroundColor = UIColor.whiteColor()
 
@@ -70,8 +73,11 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
         mediator.isLoading.producer
             .observeOn(UIScheduler())
             .startWithNext({ [weak self] isLoading in
-                if !isLoading {
+                if isLoading {
+                    self?.spinner.startAnimating()
+                } else {
                     self?.refreshControl.endRefreshing()
+                    self?.spinner.stopAnimating()
                 }
             })
 
