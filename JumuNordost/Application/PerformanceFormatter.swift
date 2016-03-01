@@ -15,6 +15,7 @@ struct FormattedPerformance {
     let venue: String
     let mainAppearances: String
     let accompanists: String
+    let predecessorInfo: String?
     let pieces: [FormattedPiece]
 }
 
@@ -40,7 +41,22 @@ class PerformanceFormatter {
             venue: venue.name,
             mainAppearances: AppearanceFormatter.formattedMainAppearances(performance: performance),
             accompanists: AppearanceFormatter.formattedAccompanists(performance: performance, highlightAgeGroup: true),
+            predecessorInfo: predecessorInfoForPerformance(performance),
             pieces: performance.pieces.map(PieceFormatter.formattedPiece)
         )
+    }
+
+    // MARK: - Private Helpers
+
+    private static func predecessorInfoForPerformance(performance: Performance) -> String? {
+        let name = performance.predecessorHostName
+        let flag = performance.predecessorHostCountry?.toCountryFlag()
+
+        switch (name, flag) {
+        case let (name?, flag?):
+            return "\(flag) \(name)"
+        default:
+            return name
+        }
     }
 }

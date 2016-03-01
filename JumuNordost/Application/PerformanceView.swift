@@ -16,9 +16,10 @@ class PerformanceView: UIView {
     private let stageTimeLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let venueIcon = UIImageView(image: UIImage(named: "IconLocation"))
     private let venueLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let appearancesSeparator = SeparatorView()
     private let mainAppearancesLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Medium)
     private let accompanistsLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
-    private let appearancesSeparator = SeparatorView()
+    private let predecessorInfoLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let piecesSeparator = SeparatorView()
     private let piecesStackView: UIStackView
 
@@ -35,6 +36,7 @@ class PerformanceView: UIView {
         venueLabel.text = performance.venue
         mainAppearancesLabel.text = performance.mainAppearances
         accompanistsLabel.text = performance.accompanists
+        predecessorInfoLabel.text = performance.predecessorInfo
 
         let pieceViews = performance.pieces.map(PieceView.init)
         piecesStackView = UIStackView(arrangedSubviews: pieceViews)
@@ -52,6 +54,7 @@ class PerformanceView: UIView {
         addSubview(appearancesSeparator)
         addSubview(mainAppearancesLabel)
         addSubview(accompanistsLabel)
+        addSubview(predecessorInfoLabel)
         addSubview(piecesSeparator)
         addSubview(piecesStackView)
 
@@ -104,8 +107,13 @@ class PerformanceView: UIView {
             accompanistsLabel.right <= superview.right
         }
 
-        constrain(piecesSeparator, accompanistsLabel, self) { piecesSeparator, accompanistsLabel, superview in
-            piecesSeparator.top == accompanistsLabel.bottom + 16
+        constrain(predecessorInfoLabel, accompanistsLabel, self) { predecessorInfoLabel, accompanistsLabel, superview in
+            predecessorInfoLabel.top == accompanistsLabel.bottom + 8
+            predecessorInfoLabel.right <= superview.right
+        }
+
+        constrain(piecesSeparator, predecessorInfoLabel, self) { piecesSeparator, predecessorInfoLabel, superview in
+            piecesSeparator.top == predecessorInfoLabel.bottom + 16
         }
 
         constrain(piecesStackView, piecesSeparator, self) { piecesStackView, piecesSeparator, superview in
@@ -121,8 +129,8 @@ class PerformanceView: UIView {
             align(left: categoryLabel, ageGroupLabel, stageTimeIcon, venueIcon, mainAppearancesLabel)
         }
 
-        constrain(mainAppearancesLabel, accompanistsLabel, piecesStackView) { mainAppearancesLabel, accompanistsLabel, piecesStackView in
-            align(left: mainAppearancesLabel, accompanistsLabel, piecesStackView)
+        constrain(mainAppearancesLabel, accompanistsLabel, predecessorInfoLabel, piecesStackView) { mainAppearancesLabel, accompanistsLabel, predecessorInfoLabel, piecesStackView in
+            align(left: mainAppearancesLabel, accompanistsLabel, predecessorInfoLabel, piecesStackView)
         }
 
         constrain(appearancesSeparator, piecesSeparator) { appearancesSeparator, piecesSeparator in
