@@ -12,7 +12,8 @@ class PerformanceCell: UITableViewCell {
 
     private let timeLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Medium)
     private let categoryInfoLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Medium)
-    private let appearancesInfoLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let mainAppearancesLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let accompanistsLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let predecessorInfoLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
 
     // MARK: - Lifecycle
@@ -20,12 +21,15 @@ class PerformanceCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Default, reuseIdentifier: reuseIdentifier)
 
-        appearancesInfoLabel.numberOfLines = 0
+        mainAppearancesLabel.numberOfLines = 0
+        accompanistsLabel.numberOfLines = 0
+        accompanistsLabel.textColor = Color.secondaryTextColor
 
         contentView.addSubview(timeLabel)
         contentView.addSubview(categoryInfoLabel)
         contentView.addSubview(predecessorInfoLabel)
-        contentView.addSubview(appearancesInfoLabel)
+        contentView.addSubview(mainAppearancesLabel)
+        contentView.addSubview(accompanistsLabel)
 
         makeConstraints()
     }
@@ -37,22 +41,27 @@ class PerformanceCell: UITableViewCell {
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(contentView, timeLabel, categoryInfoLabel, predecessorInfoLabel, appearancesInfoLabel) { contentView, timeLabel, categoryInfoLabel, predecessorInfoLabel, appearancesInfoLabel in
+        constrain(contentView, timeLabel) { contentView, timeLabel in
             timeLabel.top == contentView.topMargin
             timeLabel.left == contentView.leftMargin
             timeLabel.width == 45
+        }
 
+        constrain(categoryInfoLabel, timeLabel, contentView) { categoryInfoLabel, timeLabel, contentView in
             align(top: timeLabel, categoryInfoLabel)
 
             categoryInfoLabel.left == timeLabel.right + 8
             categoryInfoLabel.right == contentView.rightMargin
+        }
 
-            align(left: categoryInfoLabel, appearancesInfoLabel, predecessorInfoLabel)
-            align(right: categoryInfoLabel, appearancesInfoLabel, predecessorInfoLabel)
+        constrain(categoryInfoLabel, mainAppearancesLabel, accompanistsLabel, predecessorInfoLabel, contentView) { categoryInfoLabel, mainAppearancesLabel, accompanistsLabel, predecessorInfoLabel, contentView in
+            align(left: categoryInfoLabel, mainAppearancesLabel, accompanistsLabel, predecessorInfoLabel)
+            align(right: categoryInfoLabel, mainAppearancesLabel, accompanistsLabel, predecessorInfoLabel)
 
-            appearancesInfoLabel.top == categoryInfoLabel.bottom + 8
+            mainAppearancesLabel.top == categoryInfoLabel.bottom + 8
+            accompanistsLabel.top == mainAppearancesLabel.bottom
 
-            predecessorInfoLabel.top == appearancesInfoLabel.bottom + 8
+            predecessorInfoLabel.top == accompanistsLabel.bottom + 8
             predecessorInfoLabel.bottom == contentView.bottomMargin
         }
     }
@@ -62,7 +71,8 @@ class PerformanceCell: UITableViewCell {
     func configure(performance: FormattedListPerformance) {
         timeLabel.text = performance.stageTime
         categoryInfoLabel.text = "\(performance.category), \(performance.ageGroup)"
-        appearancesInfoLabel.text = performance.appearances
+        mainAppearancesLabel.text = performance.mainAppearances
+        accompanistsLabel.text = performance.accompanists
         predecessorInfoLabel.text = performance.predecessorInfo
     }
 }

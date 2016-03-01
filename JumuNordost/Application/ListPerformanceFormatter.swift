@@ -12,7 +12,8 @@ struct FormattedListPerformance {
     let stageTime: String
     let category: String
     let ageGroup: String
-    let appearances: String
+    let mainAppearances: String
+    let accompanists: String
     let predecessorInfo: String?
 }
 
@@ -29,15 +30,27 @@ class ListPerformanceFormatter {
     // MARK: - Formatting
 
     static func formattedListPerformance(performance: Performance) -> FormattedListPerformance {
-        let appearances = performance.appearances.map { appearance in
+
+        func formattedAppearance(appearance: Appearance) -> String {
             return "\(appearance.participantName), \(appearance.instrument)"
-        }.joinWithSeparator("\n")
+        }
+
+        let mainAppearances = performance.appearances
+            .filter { [.Soloist, .Ensemblist].contains($0.participantRole) }
+            .map(formattedAppearance)
+            .joinWithSeparator("\n")
+
+        let accompanists = performance.appearances
+            .filter { $0.participantRole == .Accompanist }
+            .map(formattedAppearance)
+            .joinWithSeparator("\n")
 
         return FormattedListPerformance(
             stageTime: stageTimeFormatter.stringFromDate(performance.stageTime),
             category: performance.categoryName,
             ageGroup: String(format: localize("FORMAT.AGE_GROUP_SHORT"), performance.ageGroup),
-            appearances: appearances,
+            mainAppearances: mainAppearances,
+            accompanists: accompanists,
             predecessorInfo: predecessorInfoForPerformance(performance)
         )
     }
