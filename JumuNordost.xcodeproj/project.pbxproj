@@ -50,6 +50,7 @@
 		5BC71F281C6F5F66005E90C8 /* JumuNordostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71F271C6F5F66005E90C8 /* JumuNordostTests.swift */; };
 		5BC848EC1C7E66F800D4CA43 /* ListPerformanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC848EB1C7E66F800D4CA43 /* ListPerformanceFormatter.swift */; };
 		5BC848EE1C7E6A9000D4CA43 /* ContestFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC848ED1C7E6A9000D4CA43 /* ContestFormatter.swift */; };
+		5BDEDE261C8646E300F1F1E1 /* AppearanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEDE251C8646E300F1F1E1 /* AppearanceFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		5BC71F291C6F5F66005E90C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BC848EB1C7E66F800D4CA43 /* ListPerformanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPerformanceFormatter.swift; sourceTree = "<group>"; };
 		5BC848ED1C7E6A9000D4CA43 /* ContestFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestFormatter.swift; sourceTree = "<group>"; };
+		5BDEDE251C8646E300F1F1E1 /* AppearanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				5B843C731C7110A600048552 /* Mediator.swift */,
+				5BDEDE251C8646E300F1F1E1 /* AppearanceFormatter.swift */,
 				5B843C7D1C77C47F00048552 /* BaseViewController.swift */,
 				5B2B5B7F1C7D1746002E576F /* Label.swift */,
 			);
@@ -438,6 +441,7 @@
 				5BAC51EC1C6F77320098B9C8 /* Venue.swift in Sources */,
 				5BA61A091C7BD2FC0055E5DC /* String.swift in Sources */,
 				5BAC51FE1C70D8820098B9C8 /* ContestCell.swift in Sources */,
+				5BDEDE261C8646E300F1F1E1 /* AppearanceFormatter.swift in Sources */,
 				5B843C741C7110A600048552 /* Mediator.swift in Sources */,
 				5B843C7E1C77C47F00048552 /* BaseViewController.swift in Sources */,
 				5BC06AC41C81CBD5007A9026 /* PerformanceFormatter.swift in Sources */,

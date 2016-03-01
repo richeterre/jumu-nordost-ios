@@ -30,27 +30,12 @@ class ListPerformanceFormatter {
     // MARK: - Formatting
 
     static func formattedListPerformance(performance: Performance) -> FormattedListPerformance {
-
-        func formattedAppearance(appearance: Appearance) -> String {
-            return "\(appearance.participantName), \(appearance.instrument)"
-        }
-
-        let mainAppearances = performance.appearances
-            .filter { [.Soloist, .Ensemblist].contains($0.participantRole) }
-            .map(formattedAppearance)
-            .joinWithSeparator("\n")
-
-        let accompanists = performance.appearances
-            .filter { $0.participantRole == .Accompanist }
-            .map(formattedAppearance)
-            .joinWithSeparator("\n")
-
         return FormattedListPerformance(
             stageTime: stageTimeFormatter.stringFromDate(performance.stageTime),
             category: performance.categoryName,
             ageGroup: String(format: localize("FORMAT.AGE_GROUP_SHORT"), performance.ageGroup),
-            mainAppearances: mainAppearances,
-            accompanists: accompanists,
+            mainAppearances: AppearanceFormatter.formattedMainAppearances(performance: performance),
+            accompanists: AppearanceFormatter.formattedAccompanists(performance: performance, highlightAgeGroup: false),
             predecessorInfo: predecessorInfoForPerformance(performance)
         )
     }
