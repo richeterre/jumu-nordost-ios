@@ -34,8 +34,18 @@ class PerformanceFormatter {
         }()
 
         func formattedAppearances(appearances: [Appearance], roles: [ParticipantRole]) -> String {
+
+            func formattedAppearance(appearance: Appearance) -> String {
+                var text = "\(appearance.participantName), \(appearance.instrument)"
+                // Append age group if it differs from performance's age group
+                if appearance.ageGroup != performance.ageGroup {
+                    text += " (\(String(format: localize("FORMAT.AGE_GROUP_SHORT"), appearance.ageGroup)))"
+                }
+                return text
+            }
+
             return appearances.filter { roles.contains($0.participantRole) }
-                .map { "\($0.participantName), \($0.instrument)" }
+                .map(formattedAppearance)
                 .joinWithSeparator("\n")
         }
 

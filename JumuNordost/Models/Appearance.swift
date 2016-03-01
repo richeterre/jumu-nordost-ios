@@ -19,6 +19,7 @@ struct Appearance {
     let participantName: String
     let participantRole: ParticipantRole
     let instrument: String
+    let ageGroup: String
 }
 
 // MARK: - Decodable
@@ -31,5 +32,6 @@ extension Appearance: Decodable {
             <^> json <| "participant_name"
             <*> json <| "participant_role"
             <*> json <| "instrument_name"
+            <*> json <| "age_group"
     }
 }
