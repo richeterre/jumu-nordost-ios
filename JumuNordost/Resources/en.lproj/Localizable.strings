@@ -10,6 +10,9 @@
 
 "BACK_TITLE.PERFORMANCE_LIST" = "Timetable";
 
+"BUTTON.SHOW_ALL" = "Show all";
+"BUTTON.SHOW_CURRENT" = "Show current";
+
 "FORMAT.AGE_GROUP" = "Age group %@";
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";
 

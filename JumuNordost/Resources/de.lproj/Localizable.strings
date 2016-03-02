@@ -10,6 +10,9 @@
 
 "BACK_TITLE.PERFORMANCE_LIST" = "Vorspielplan";
 
+"BUTTON.SHOW_ALL" = "Alle zeigen";
+"BUTTON.SHOW_CURRENT" = "Aktuelle zeigen";
+
 "FORMAT.AGE_GROUP" = "Altersgruppe %@";
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";
 

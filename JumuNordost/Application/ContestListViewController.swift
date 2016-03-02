@@ -19,6 +19,7 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
     private let refreshControl = UIRefreshControl()
     private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
     private let contestCellIdentifier = "ContestCell"
+    private var filterToggleButton: UIBarButtonItem?
 
     // MARK: - Lifecycle
 
@@ -38,6 +39,14 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
 
         self.title = localize("NAV_TITLE.CONTESTS")
 
+        filterToggleButton = UIBarButtonItem(
+            title: nil,
+            style: .Plain,
+            target: self,
+            action: Selector("filterToggleButtonTapped")
+        )
+
+        navigationItem.leftBarButtonItem = filterToggleButton
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
@@ -88,12 +97,24 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
             .observeNext { [weak self] in
                 self?.tableView.reloadData()
             }
+
+        mediator.showCurrentOnly.producer
+            .observeOn(UIScheduler())
+            .startWithNext { [weak self] currentOnly in
+                self?.filterToggleButton?.title = currentOnly
+                    ? localize("BUTTON.SHOW_ALL")
+                    : localize("BUTTON.SHOW_CURRENT")
+            }
     }
 
     // MARK: - User Interaction
 
     func refreshControlFired() {
         mediator.refreshObserver.sendNext(())
+    }
+
+    func filterToggleButtonTapped() {
+        mediator.toggleFilterState()
     }
 
     // MARK: - UITableViewDataSource

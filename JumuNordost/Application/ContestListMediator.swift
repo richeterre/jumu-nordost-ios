@@ -11,6 +11,10 @@ import Result
 
 class ContestListMediator: Mediator {
 
+    // MARK: - Inputs
+
+    let showCurrentOnly = MutableProperty<Bool>(true)
+
     // MARK: - Private Properties
 
     private var contests = [Contest]()
@@ -22,10 +26,12 @@ class ContestListMediator: Mediator {
 
         let isLoading = self.isLoading
 
-        refreshTrigger
+        let combinedRefreshTriggers = combineLatest(refreshTrigger, showCurrentOnly.producer)
+
+        combinedRefreshTriggers
             .on(next: { _ in isLoading.value = true })
-            .flatMap(.Latest) { _ in
-                return store.fetchContests(currentOnly: false, timetablesPublic: true)
+            .flatMap(.Latest) { (_, currentOnly) in
+                return store.fetchContests(currentOnly: currentOnly, timetablesPublic: true)
                     .flatMapError { error in
                         return SignalProducer(value: [])
                 }
@@ -35,6 +41,12 @@ class ContestListMediator: Mediator {
                 self?.contests = contests
                 self?.contentChangedObserver.sendNext(())
         }
+    }
+
+    // MARK: - User Interaction
+
+    func toggleFilterState() {
+        showCurrentOnly.value = !showCurrentOnly.value
     }
 
     // MARK: - Contests
