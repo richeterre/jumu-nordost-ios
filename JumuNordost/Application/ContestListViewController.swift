@@ -44,6 +44,7 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
         view.backgroundColor = UIColor.whiteColor()
 
         tableView.tableHeaderView = configuredTableHeaderView()
+        tableView.tableFooterView = UIView()
         tableView.rowHeight = ContestCell.height
 
         tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
