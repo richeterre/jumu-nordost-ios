@@ -43,6 +43,7 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
 
         view.backgroundColor = UIColor.whiteColor()
 
+        tableView.tableHeaderView = configuredTableHeaderView()
         tableView.rowHeight = ContestCell.height
 
         tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
@@ -117,6 +118,19 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
     }
 
     // MARK: - Private Helpers
+
+    private func configuredTableHeaderView() -> ContestListHeaderView {
+        let headerView = ContestListHeaderView(text: localize("LABEL.PICK_CONTEST"))
+        headerView.setNeedsLayout()
+        headerView.layoutIfNeeded()
+        let height = headerView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+
+        var headerViewFrame = headerView.frame
+        headerViewFrame.size.height = height
+        headerView.frame = headerViewFrame
+
+        return headerView
+    }
 
     private func navigateToContestAtIndexPath(indexPath: NSIndexPath) {
         let performanceListMediator = mediator.performanceListMediatorForContestAtIndexPath(indexPath)

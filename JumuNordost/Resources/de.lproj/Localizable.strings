@@ -6,9 +6,11 @@
   Copyright © 2016 Martin Richter. All rights reserved.
 */
 
-"NAV_TITLE.CONTESTS" = "Wähle einen Wettbewerb";
+"NAV_TITLE.CONTESTS" = "Wettbewerbe";
 
 "BACK_TITLE.PERFORMANCE_LIST" = "Vorspielplan";
 
 "FORMAT.AGE_GROUP" = "Altersgruppe %@";
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";
+
+"LABEL.PICK_CONTEST" = "Willkommen! Bitte wähle einen Wettbewerb:";
