@@ -95,7 +95,7 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
         mediator.contentChanges
             .observeOn(UIScheduler())
             .observeNext { [weak self] changeset in
-                self?.tableView.updateWithChangeset(changeset)
+                self?.tableView.updateWithChangeset(changeset, animation: .Automatic)
             }
 
         mediator.showCurrentOnly.producer

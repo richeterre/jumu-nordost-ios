@@ -11,11 +11,11 @@ import UIKit
 extension UITableView {
 
     /// Performs a batch update on the table view for the given changes.
-    func updateWithChangeset<E: Equatable>(changeset: Changeset<E>) {
+    func updateWithChangeset<E: Equatable>(changeset: Changeset<E>, animation: UITableViewRowAnimation) {
         self.beginUpdates()
-        self.deleteRowsAtIndexPaths(changeset.deletions, withRowAnimation: .Automatic)
-        self.reloadRowsAtIndexPaths(changeset.modifications, withRowAnimation: .Automatic)
-        self.insertRowsAtIndexPaths(changeset.insertions, withRowAnimation: .Automatic)
+        self.deleteRowsAtIndexPaths(changeset.deletions, withRowAnimation: animation)
+        self.reloadRowsAtIndexPaths(changeset.modifications, withRowAnimation: animation)
+        self.insertRowsAtIndexPaths(changeset.insertions, withRowAnimation: animation)
         self.endUpdates()
     }
 }
