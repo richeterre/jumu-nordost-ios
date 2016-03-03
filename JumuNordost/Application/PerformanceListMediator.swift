@@ -142,6 +142,14 @@ class PerformanceListMediator: Mediator {
         return performances.count
     }
 
+    func numberOfAppearancesForPerformanceAtIndexPath(indexPath: NSIndexPath) -> Int {
+        return performanceAtIndexPath(indexPath).appearances.count
+    }
+
+    func predecessorInfoPresentForPerformanceAtIndexPath(indexPath: NSIndexPath) -> Bool {
+        return performanceAtIndexPath(indexPath).predecessorHostName != nil
+    }
+
     func formattedListPerformanceForIndexPath(indexPath: NSIndexPath) -> FormattedListPerformance {
         let performance = performanceAtIndexPath(indexPath)
         return ListPerformanceFormatter.formattedListPerformance(performance, contest: contest)

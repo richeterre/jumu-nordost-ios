@@ -52,7 +52,6 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
 
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 62.5 // TODO: Find better value
 
         tableView.registerClass(PerformanceCell.self, forCellReuseIdentifier: performanceCellIdentifier)
         tableView.dataSource = self
@@ -143,6 +142,25 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
     }
 
     // MARK: - UITableViewDelegate
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+
+        // Calculate height based on number of appearances and predecessor info
+
+        let number = mediator.numberOfAppearancesForPerformanceAtIndexPath(indexPath)
+        let baseHeight: CGFloat = {
+            switch number {
+            case 1: return 77
+            case 2: return 96
+            case 3: return 115
+            case 4: return 134
+            default: return 77
+            }
+        }()
+
+        let hasPredecessorInfo = mediator.predecessorInfoPresentForPerformanceAtIndexPath(indexPath)
+        return hasPredecessorInfo ? baseHeight + 20 : baseHeight
+    }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
