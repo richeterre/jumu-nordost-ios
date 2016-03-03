@@ -52,6 +52,8 @@
 		5BC848EC1C7E66F800D4CA43 /* ListPerformanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC848EB1C7E66F800D4CA43 /* ListPerformanceFormatter.swift */; };
 		5BC848EE1C7E6A9000D4CA43 /* ContestFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC848ED1C7E6A9000D4CA43 /* ContestFormatter.swift */; };
 		5BDEDE261C8646E300F1F1E1 /* AppearanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEDE251C8646E300F1F1E1 /* AppearanceFormatter.swift */; };
+		5BFA75FD1C87B4D900EF8B5C /* Changeset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA75FC1C87B4D900EF8B5C /* Changeset.swift */; };
+		5BFA75FF1C87B4F700EF8B5C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA75FE1C87B4F700EF8B5C /* Array.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		5BC848EB1C7E66F800D4CA43 /* ListPerformanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPerformanceFormatter.swift; sourceTree = "<group>"; };
 		5BC848ED1C7E6A9000D4CA43 /* ContestFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestFormatter.swift; sourceTree = "<group>"; };
 		5BDEDE251C8646E300F1F1E1 /* AppearanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceFormatter.swift; sourceTree = "<group>"; };
+		5BFA75FC1C87B4D900EF8B5C /* Changeset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Changeset.swift; sourceTree = "<group>"; };
+		5BFA75FE1C87B4F700EF8B5C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +218,7 @@
 		5BAC51DE1C6F6A710098B9C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA75FE1C87B4F700EF8B5C /* Array.swift */,
 				5B843C7F1C77CED400048552 /* Color.swift */,
 				5BAC51E21C6F6D650098B9C8 /* Constant.swift */,
 				5B843C931C7A02CE00048552 /* Decodables.swift */,
@@ -237,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				5B843C9A1C7A438C00048552 /* Appearance.swift */,
+				5BFA75FC1C87B4D900EF8B5C /* Changeset.swift */,
 				5BAC51E51C6F6D9E0098B9C8 /* Contest.swift */,
 				5B843C751C71167700048552 /* Performance.swift */,
 				5B2B5B7B1C7D0EF6002E576F /* Piece.swift */,
@@ -432,6 +438,7 @@
 				5B843C941C7A02CE00048552 /* Decodables.swift in Sources */,
 				5BC06AC61C81CEF2007A9026 /* PieceView.swift in Sources */,
 				5BAC51E81C6F6DD40098B9C8 /* Store.swift in Sources */,
+				5BFA75FD1C87B4D900EF8B5C /* Changeset.swift in Sources */,
 				5BAC51F81C6FEDF00098B9C8 /* StoreType.swift in Sources */,
 				5BC848EC1C7E66F800D4CA43 /* ListPerformanceFormatter.swift in Sources */,
 				5BC06AC81C81CFBC007A9026 /* PieceFormatter.swift in Sources */,
@@ -442,6 +449,7 @@
 				5B843C801C77CED400048552 /* Color.swift in Sources */,
 				5B2B5B7C1C7D0EF6002E576F /* Piece.swift in Sources */,
 				5BAC51EC1C6F77320098B9C8 /* Venue.swift in Sources */,
+				5BFA75FF1C87B4F700EF8B5C /* Array.swift in Sources */,
 				5BA61A091C7BD2FC0055E5DC /* String.swift in Sources */,
 				5BAC51FE1C70D8820098B9C8 /* ContestCell.swift in Sources */,
 				5BDEDE261C8646E300F1F1E1 /* AppearanceFormatter.swift in Sources */,
