@@ -9,6 +9,7 @@
 import Argo
 
 struct Performance {
+    let id: String
     let stageTime: NSDate
     let categoryName: String
     let ageGroup: String
@@ -18,11 +19,20 @@ struct Performance {
     let pieces: [Piece]
 }
 
+// MARK: - Equatable
+
+extension Performance: Equatable {}
+
+func ==(lhs: Performance, rhs: Performance) -> Bool {
+    return lhs.id == rhs.id
+}
+
 // MARK: - Decodable
 
 extension Performance: Decodable {
-    private static func create(stageTime: NSDate)(categoryName: String)(ageGroup: String)(predecessorHostName: String?)(predecessorHostCountry: String?)(appearances: [Appearance])(pieces: [Piece]) -> Performance {
+    private static func create(id: String)(stageTime: NSDate)(categoryName: String)(ageGroup: String)(predecessorHostName: String?)(predecessorHostCountry: String?)(appearances: [Appearance])(pieces: [Piece]) -> Performance {
         return Performance(
+            id: id,
             stageTime: stageTime,
             categoryName: categoryName,
             ageGroup: ageGroup,
@@ -35,7 +45,8 @@ extension Performance: Decodable {
 
     static func decode(json: JSON) -> Decoded<Performance> {
         return create // curry(self.init) is currently too complex to compile
-            <^> json <| "stage_time"
+            <^> json <| "id"
+            <*> json <| "stage_time"
             <*> json <| "category_name"
             <*> json <| "age_group"
             <*> json <|? "predecessor_host_name"
