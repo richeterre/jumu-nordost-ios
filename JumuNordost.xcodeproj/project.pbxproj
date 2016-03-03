@@ -54,6 +54,7 @@
 		5BDEDE261C8646E300F1F1E1 /* AppearanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEDE251C8646E300F1F1E1 /* AppearanceFormatter.swift */; };
 		5BFA75FD1C87B4D900EF8B5C /* Changeset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA75FC1C87B4D900EF8B5C /* Changeset.swift */; };
 		5BFA75FF1C87B4F700EF8B5C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA75FE1C87B4F700EF8B5C /* Array.swift */; };
+		5BFA76011C87BB4B00EF8B5C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA76001C87BB4B00EF8B5C /* UITableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		5BDEDE251C8646E300F1F1E1 /* AppearanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceFormatter.swift; sourceTree = "<group>"; };
 		5BFA75FC1C87B4D900EF8B5C /* Changeset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Changeset.swift; sourceTree = "<group>"; };
 		5BFA75FE1C87B4F700EF8B5C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		5BFA76001C87BB4B00EF8B5C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				5B843CA61C7B5E3300048552 /* Font.swift */,
 				5BAC51FF1C70E4E80098B9C8 /* Localization.swift */,
 				5BA61A081C7BD2FC0055E5DC /* String.swift */,
+				5BFA76001C87BB4B00EF8B5C /* UITableView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				5BC06AC41C81CBD5007A9026 /* PerformanceFormatter.swift in Sources */,
 				5BAC51DB1C6F68430098B9C8 /* ContestListViewController.swift in Sources */,
 				5B843C761C71167700048552 /* Performance.swift in Sources */,
+				5BFA76011C87BB4B00EF8B5C /* UITableView.swift in Sources */,
 				5BAC52001C70E4E80098B9C8 /* Localization.swift in Sources */,
 				5BAC51E31C6F6D650098B9C8 /* Constant.swift in Sources */,
 				5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */,

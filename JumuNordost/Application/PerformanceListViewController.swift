@@ -103,11 +103,11 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
                 }
             })
 
-        mediator.contentChanged
+        mediator.contentChanges
             .observeOn(UIScheduler())
-            .observeNext { [weak self] in
-                self?.tableView.reloadData()
-        }
+            .observeNext { [weak self] changeset in
+                self?.tableView.updateWithChangeset(changeset)
+            }
 
         filterView.selectedDateIndex.value = mediator.selectedDayIndex.value // Set initial value
         mediator.selectedDayIndex <~ filterView.selectedDateIndex // Create binding for future values

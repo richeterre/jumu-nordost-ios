@@ -19,13 +19,11 @@ class Mediator {
     // MARK: - Outputs
 
     let isLoading: MutableProperty<Bool>
-    let contentChanged: Signal<Void, NoError>
 
     // MARK: - Internal Properties
 
     let store: StoreType
     let refreshTrigger: SignalProducer<Void, NoError>
-    let contentChangedObserver: Observer<Void, NoError>
 
     // MARK: - Lifecycle
 
@@ -36,7 +34,6 @@ class Mediator {
 
         let isLoading = MutableProperty<Bool>(false)
         self.isLoading = isLoading
-        (contentChanged, contentChangedObserver) = Signal<Void, NoError>.pipe()
 
         active.producer
             .filter { $0 }

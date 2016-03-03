@@ -11,22 +11,38 @@ import Result
 
 class ContestListMediator: Mediator {
 
+    typealias ContestChangeset = Changeset<Contest>
+
     // MARK: - Inputs
 
     let showCurrentOnly = MutableProperty<Bool>(true)
 
+    // MARK: - Outputs
+
+    let contentChanges: Signal<ContestChangeset, NoError>
+
     // MARK: - Private Properties
 
+    private let contentChangesObserver: Observer<ContestChangeset, NoError>
     private var contests = [Contest]()
 
     // MARK: - Lifecycle
 
     override init(store: StoreType) {
+        (contentChanges, contentChangesObserver) = Signal<ContestChangeset, NoError>.pipe()
+
         super.init(store: store)
 
         let isLoading = self.isLoading
 
         let combinedRefreshTriggers = combineLatest(refreshTrigger, showCurrentOnly.producer)
+
+        func displayedContentMatches(lhs: Contest, rhs: Contest) -> Bool {
+            return lhs.name == rhs.name
+                && lhs.timeZone == rhs.timeZone
+                && lhs.startDate == rhs.startDate
+                && lhs.endDate == rhs.endDate
+        }
 
         combinedRefreshTriggers
             .on(next: { _ in isLoading.value = true })
@@ -37,10 +53,18 @@ class ContestListMediator: Mediator {
                 }
             }
             .on(next: { _ in isLoading.value = false })
-            .startWithNext { [weak self] contests in
-                self?.contests = contests
-                self?.contentChangedObserver.sendNext(())
-        }
+            .combinePrevious([]) // needed to calculate changeset
+            .startWithNext { [weak self] (oldContests, newContests) in
+                self?.contests = newContests
+                if let observer = self?.contentChangesObserver {
+                    let changeset = Changeset(
+                        oldItems: oldContests,
+                        newItems: newContests,
+                        contentMatches: displayedContentMatches
+                    )
+                    observer.sendNext(changeset)
+                }
+            }
     }
 
     // MARK: - User Interaction

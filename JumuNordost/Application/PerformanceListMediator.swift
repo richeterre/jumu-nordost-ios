@@ -7,8 +7,11 @@
 //
 
 import ReactiveCocoa
+import Result
 
 class PerformanceListMediator: Mediator {
+
+    typealias PerformanceChangeset = Changeset<Performance>
 
     // MARK: - Inputs
 
@@ -16,6 +19,8 @@ class PerformanceListMediator: Mediator {
     var selectedVenueIndex: MutableProperty<Int?>
 
     // MARK: - Outputs
+
+    let contentChanges: Signal<PerformanceChangeset, NoError>
 
     var title: String {
         get {
@@ -29,6 +34,7 @@ class PerformanceListMediator: Mediator {
     private let contestDays: [ContestDay]
     private let selectedDay = MutableProperty<ContestDay?>(nil)
     private let selectedVenue = MutableProperty<Venue?>(nil)
+    private let contentChangesObserver: Observer<PerformanceChangeset, NoError>
 
     private var performances = [Performance]()
 
@@ -62,6 +68,8 @@ class PerformanceListMediator: Mediator {
             return contest.venues[index]
         }
 
+        (contentChanges, contentChangesObserver) = Signal<PerformanceChangeset, NoError>.pipe()
+
         super.init(store: store)
 
         // Dates are shown in contest's, not user's time zone
@@ -87,6 +95,10 @@ class PerformanceListMediator: Mediator {
         let venueSelection = selectedVenue.producer.ignoreNil()
         let combinedRefreshTriggers = combineLatest(refreshTrigger, daySelection, venueSelection)
 
+        func displayedContentMatches(lhs: Performance, rhs: Performance) -> Bool {
+            return false // TODO: Compare performance content
+        }
+
         combinedRefreshTriggers
             .on(next: { _ in isLoading.value = true })
             .flatMap(.Latest) { _, day, venue in
@@ -96,9 +108,17 @@ class PerformanceListMediator: Mediator {
                     }
             }
             .on(next: { _ in isLoading.value = false })
-            .startWithNext { [weak self] performances in
-                self?.performances = performances
-                self?.contentChangedObserver.sendNext(())
+            .combinePrevious([]) // needed to calculate changeset
+            .startWithNext { [weak self] (oldPerformances, newPerformances) in
+                self?.performances = newPerformances
+                if let observer = self?.contentChangesObserver {
+                    let changeset = Changeset(
+                        oldItems: oldPerformances,
+                        newItems: newPerformances,
+                        contentMatches: displayedContentMatches
+                    )
+                    observer.sendNext(changeset)
+                }
             }
     }
 
