@@ -19,6 +19,7 @@ class ContestListHeaderView: UIView {
 
         self.layoutMargins = UIEdgeInsets(top: 24, left: 16, bottom: 8, right: 16)
 
+        textLabel.numberOfLines = 0
         textLabel.textAlignment = .Center
         textLabel.textColor = Color.secondaryTextColor
         textLabel.text = text

@@ -15,6 +15,7 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
     // MARK: - Private Properties
 
     private let mediator: ContestListMediator
+    private let headerView = ContestListHeaderView(text: localize("LABEL.PICK_CONTEST"))
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
@@ -52,7 +53,6 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
 
         view.backgroundColor = UIColor.whiteColor()
 
-        tableView.tableHeaderView = configuredTableHeaderView()
         tableView.tableFooterView = UIView()
         tableView.rowHeight = ContestCell.height
 
@@ -61,7 +61,9 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
         tableView.delegate = self
 
         refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
+
         tableView.addSubview(refreshControl)
+        view.addSubview(headerView)
         view.addSubview(tableView)
 
         makeConstraints()
@@ -71,8 +73,18 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(view, tableView) { superview, tableView in
-            tableView.edges == superview.edges
+        headerView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
+
+        constrain(view, headerView, tableView) { superview, headerView, tableView in
+            headerView.left == superview.left
+            headerView.right == superview.right
+
+            tableView.top == headerView.bottom
+
+            align(left: headerView, tableView)
+            align(right: headerView, tableView)
+
+            tableView.bottom == superview.bottom
         }
     }
 
@@ -140,19 +152,6 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
     }
 
     // MARK: - Private Helpers
-
-    private func configuredTableHeaderView() -> ContestListHeaderView {
-        let headerView = ContestListHeaderView(text: localize("LABEL.PICK_CONTEST"))
-        headerView.setNeedsLayout()
-        headerView.layoutIfNeeded()
-        let height = headerView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-
-        var headerViewFrame = headerView.frame
-        headerViewFrame.size.height = height
-        headerView.frame = headerViewFrame
-
-        return headerView
-    }
 
     private func navigateToContestAtIndexPath(indexPath: NSIndexPath) {
         let performanceListMediator = mediator.performanceListMediatorForContestAtIndexPath(indexPath)
