@@ -18,6 +18,14 @@ struct Contest {
     let venues: [Venue]
 }
 
+// MARK: - Equatable
+
+extension Contest: Equatable {}
+
+func ==(lhs: Contest, rhs: Contest) -> Bool {
+    return lhs.id == rhs.id
+}
+
 // MARK: - Decodable
 
 extension Contest: Decodable {
