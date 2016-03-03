@@ -107,6 +107,11 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
             .observeOn(UIScheduler())
             .observeNext { [weak self] changeset in
                 self?.tableView.updateWithChangeset(changeset, animation: .Fade)
+
+                // TODO: Detect venue/date changes in a better way
+                if changeset.insertions.count > 0 || changeset.deletions.count > 0 {
+                    self?.tableView.scrollToTop(animated: true)
+                }
             }
 
         filterView.selectedDateIndex.value = mediator.selectedDayIndex.value // Set initial value
