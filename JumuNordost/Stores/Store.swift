@@ -8,10 +8,16 @@
 
 import Argo
 import ReactiveCocoa
+import Result
 
 class Store: StoreType {
 
     private let baseURL: NSURL
+    private let errorDomain = "StoreError"
+
+    private enum StoreError: Int {
+        case ParsingError
+    }
 
     // MARK: - Lifecycle
 
@@ -55,14 +61,7 @@ class Store: StoreType {
         let request = requestForPath(path, queryItems: queryItems)
 
         return NSURLSession.sharedSession().rac_dataWithRequest(request)
-            .map { data, response in
-                if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
-                    performances: [Performance] = decode(json) {
-                        return performances
-                } else {
-                    return []
-                }
-            }
+            .attemptMap(decodePerformances)
     }
 
     // MARK: - Private Helpers
@@ -74,6 +73,16 @@ class Store: StoreType {
         components.queryItems = queryItems
 
         return NSURLRequest(URL: components.URL!)
+    }
+
+    private func decodePerformances(data data: NSData, response: NSURLResponse) -> Result<[Performance], NSError> {
+        if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
+            performances: [Performance] = decode(json) {
+                return .Success(performances)
+        } else {
+            let error = NSError(domain: errorDomain, code: StoreError.ParsingError.rawValue, userInfo: nil)
+            return .Failure(error)
+        }
     }
 }
 
