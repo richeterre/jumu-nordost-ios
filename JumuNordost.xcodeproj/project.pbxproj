@@ -55,6 +55,7 @@
 		5BFA75FD1C87B4D900EF8B5C /* Changeset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA75FC1C87B4D900EF8B5C /* Changeset.swift */; };
 		5BFA75FF1C87B4F700EF8B5C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA75FE1C87B4F700EF8B5C /* Array.swift */; };
 		5BFA76011C87BB4B00EF8B5C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA76001C87BB4B00EF8B5C /* UITableView.swift */; };
+		5BFA76031C8A42A100EF8B5C /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFA76021C8A42A100EF8B5C /* DZNEmptyDataSet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		5BFA75FC1C87B4D900EF8B5C /* Changeset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Changeset.swift; sourceTree = "<group>"; };
 		5BFA75FE1C87B4F700EF8B5C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		5BFA76001C87BB4B00EF8B5C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		5BFA76021C8A42A100EF8B5C /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				5BAC51F51C6F7C450098B9C8 /* Argo.framework in Frameworks */,
 				5B843C841C78836800048552 /* Cartography.framework in Frameworks */,
 				5B843C781C71179400048552 /* Curry.framework in Frameworks */,
+				5BFA76031C8A42A100EF8B5C /* DZNEmptyDataSet.framework in Frameworks */,
 				5BAC51FB1C6FF0350098B9C8 /* ReactiveCocoa.framework in Frameworks */,
 				5BAC51FC1C6FF0350098B9C8 /* Result.framework in Frameworks */,
 			);
@@ -260,6 +263,7 @@
 				5BAC51F41C6F7C450098B9C8 /* Argo.framework */,
 				5B843C831C78836800048552 /* Cartography.framework */,
 				5B843C771C71179400048552 /* Curry.framework */,
+				5BFA76021C8A42A100EF8B5C /* DZNEmptyDataSet.framework */,
 				5BAC51F91C6FF0350098B9C8 /* ReactiveCocoa.framework */,
 				5BAC51FA1C6FF0350098B9C8 /* Result.framework */,
 			);
@@ -419,6 +423,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Curry.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Cartography.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
 			);
 			outputPaths = (
 			);

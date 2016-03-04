@@ -1,5 +1,6 @@
 github "thoughtbot/Argo" "v2.2.0"
 github "robb/Cartography" "0.6.0"
 github "thoughtbot/Curry" "v1.4.0"
+github "dzenbot/DZNEmptyDataSet" "v1.7.3"
 github "antitypical/Result" "1.0.2"
 github "ReactiveCocoa/ReactiveCocoa" "v4.0.1"
