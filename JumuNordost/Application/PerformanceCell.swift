@@ -23,7 +23,6 @@ class PerformanceCell: UITableViewCell {
 
         mainAppearancesLabel.numberOfLines = 0
         accompanistsLabel.numberOfLines = 0
-        accompanistsLabel.textColor = Color.secondaryTextColor
 
         contentView.addSubview(timeLabel)
         contentView.addSubview(categoryInfoLabel)
