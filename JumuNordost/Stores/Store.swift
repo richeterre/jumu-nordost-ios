@@ -36,14 +36,7 @@ class Store: StoreType {
         let request = requestForPath("contests", queryItems: queryItems)
 
         return NSURLSession.sharedSession().rac_dataWithRequest(request)
-            .map { data, response in
-                if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
-                    contests: [Contest] = decode(json) {
-                        return contests
-                } else {
-                    return []
-                }
-            }
+            .attemptMap(decodeModels)
     }
 
     // MARK: - Performances
@@ -61,7 +54,7 @@ class Store: StoreType {
         let request = requestForPath(path, queryItems: queryItems)
 
         return NSURLSession.sharedSession().rac_dataWithRequest(request)
-            .attemptMap(decodePerformances)
+            .attemptMap(decodeModels)
     }
 
     // MARK: - Private Helpers
@@ -75,10 +68,10 @@ class Store: StoreType {
         return NSURLRequest(URL: components.URL!)
     }
 
-    private func decodePerformances(data data: NSData, response: NSURLResponse) -> Result<[Performance], NSError> {
+    private func decodeModels<Model: Decodable where Model == Model.DecodedType>(data data: NSData, response: NSURLResponse) -> Result<[Model], NSError> {
         if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
-            performances: [Performance] = decode(json) {
-                return .Success(performances)
+            models: [Model] = decode(json) {
+                return .Success(models)
         } else {
             let error = NSError(domain: errorDomain, code: StoreError.ParsingError.rawValue, userInfo: nil)
             return .Failure(error)
