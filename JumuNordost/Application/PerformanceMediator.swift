@@ -28,7 +28,7 @@ class PerformanceMediator: Mediator {
             let formatter = NSDateFormatter()
             formatter.dateStyle = .MediumStyle
             formatter.timeStyle = .ShortStyle
-            formatter.locale = NSLocale.autoupdatingCurrentLocale()
+            formatter.locale = NSLocale.localeMatchingAppLanguage()
             formatter.timeZone = contest.timeZone
             return formatter
         }()

@@ -21,7 +21,7 @@ class ListPerformanceFormatter {
 
     private static let stageTimeFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
-        formatter.locale = NSLocale.autoupdatingCurrentLocale()
+        formatter.locale = NSLocale.localeMatchingAppLanguage()
         formatter.dateStyle = .NoStyle
         formatter.timeStyle = .ShortStyle
         return formatter

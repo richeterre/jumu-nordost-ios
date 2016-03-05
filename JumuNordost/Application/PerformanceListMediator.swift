@@ -43,7 +43,7 @@ class PerformanceListMediator: Mediator {
 
     private lazy var contestDayFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
-        formatter.locale = NSLocale.autoupdatingCurrentLocale()
+        formatter.locale = NSLocale.localeMatchingAppLanguage()
         return formatter
     }()
 
@@ -89,7 +89,7 @@ class PerformanceListMediator: Mediator {
                 return "EEEMd"
             }
         }()
-        let locale = NSLocale.autoupdatingCurrentLocale()
+        let locale = NSLocale.localeMatchingAppLanguage()
         contestDayFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate(template, options: 0, locale: locale)
 
         let isLoading = self.isLoading

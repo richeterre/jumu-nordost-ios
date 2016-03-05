@@ -29,7 +29,7 @@ class PerformanceFormatter {
             let formatter = NSDateFormatter()
             formatter.dateStyle = .FullStyle
             formatter.timeStyle = .ShortStyle
-            formatter.locale = NSLocale.autoupdatingCurrentLocale()
+            formatter.locale = NSLocale.localeMatchingAppLanguage()
             formatter.timeZone = contest.timeZone
             return formatter
         }()

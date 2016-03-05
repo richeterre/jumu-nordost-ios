@@ -19,7 +19,7 @@ class ContestFormatter {
         let formatter = NSDateIntervalFormatter()
         formatter.dateStyle = .LongStyle
         formatter.timeStyle = .NoStyle
-        formatter.locale = NSLocale.autoupdatingCurrentLocale()
+        formatter.locale = NSLocale.localeMatchingAppLanguage()
         return formatter
     }()
 

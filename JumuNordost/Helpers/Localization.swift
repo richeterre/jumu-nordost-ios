@@ -12,3 +12,9 @@ import Foundation
 func localize(key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
+
+extension NSLocale {
+    static func localeMatchingAppLanguage() -> NSLocale {
+        return NSLocale(localeIdentifier: "de_DE")
+    }
+}
