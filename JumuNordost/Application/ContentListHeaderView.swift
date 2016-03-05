@@ -10,7 +10,7 @@ import Cartography
 
 class ContestListHeaderView: UIView {
 
-    private let textLabel = Label(fontWeight: .Regular, fontStyle: .Italic, fontSize: .Medium)
+    private let textLabel = Label(fontWeight: .Regular, fontStyle: .Italic, fontSize: .Large)
 
     // MARK: - Lifecycle
 
