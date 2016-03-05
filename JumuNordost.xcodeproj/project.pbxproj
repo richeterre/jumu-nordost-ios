@@ -81,7 +81,6 @@
 		5B843C811C787CC300048552 /* PerformanceFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceFilterView.swift; sourceTree = "<group>"; };
 		5B843C831C78836800048552 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 		5B843C8E1C79CA9200048552 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5B843C8F1C79CAC300048552 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B843C911C79DCAA00048552 /* PerformanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceCell.swift; sourceTree = "<group>"; };
 		5B843C931C7A02CE00048552 /* Decodables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodables.swift; sourceTree = "<group>"; };
 		5B843C961C7A408E00048552 /* PerformanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceViewController.swift; sourceTree = "<group>"; };
@@ -372,10 +371,9 @@
 			};
 			buildConfigurationList = 5BC71F0A1C6F5F66005E90C8 /* Build configuration list for PBXProject "JumuNordost" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 				de,
 			);
@@ -502,7 +500,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				5B843C8E1C79CA9200048552 /* de */,
-				5B843C8F1C79CAC300048552 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
