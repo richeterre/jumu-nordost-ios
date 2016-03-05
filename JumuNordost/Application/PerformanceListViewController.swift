@@ -7,10 +7,11 @@
 //
 
 import Cartography
+import DZNEmptyDataSet
 import ReactiveCocoa
 import Result
 
-class PerformanceListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class PerformanceListViewController: BaseViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Private Properties
 
@@ -56,6 +57,10 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
         tableView.registerClass(PerformanceCell.self, forCellReuseIdentifier: performanceCellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
 
         refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
@@ -124,6 +129,33 @@ class PerformanceListViewController: BaseViewController, UITableViewDataSource, 
 
     func refreshControlFired() {
         mediator.refreshObserver.sendNext(())
+    }
+
+    // MARK: - DZNEmptyDataSetDelegate
+
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -filterView.frame.height / 2
+    }
+
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+
+    // MARK: - DZNEmptyDataSetSource
+
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [
+            NSFontAttributeName: Font.fontWithWeight(.Regular, style: .Italic, size: .Large),
+            NSForegroundColorAttributeName: Color.secondaryTextColor
+        ]
+
+        if mediator.hasEmptyPerformanceList {
+            return NSAttributedString(string: localize("LABEL.NO_PERFORMANCES_FOUND"), attributes: attributes)
+        } else if mediator.hasError {
+            return NSAttributedString(string: localize("ERROR.NO_PERFORMANCES_FETCHED"), attributes: attributes)
+        } else {
+            return NSAttributedString(string: localize("LABEL.LOADING_PERFORMANCES"), attributes: attributes)
+        }
     }
 
     // MARK: - UITableViewDataSource

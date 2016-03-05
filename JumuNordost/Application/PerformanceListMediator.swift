@@ -22,10 +22,13 @@ class PerformanceListMediator: Mediator {
 
     let contentChanges: Signal<PerformanceChangeset, NoError>
 
+    var hasError: Bool = false
+    var hasEmptyPerformanceList: Bool {
+        return performances?.isEmpty ?? false
+    }
+
     var title: String {
-        get {
-            return contest.name
-        }
+        return contest.name
     }
 
     // MARK: - Private Properties
@@ -36,7 +39,7 @@ class PerformanceListMediator: Mediator {
     private let selectedVenue = MutableProperty<Venue?>(nil)
     private let contentChangesObserver: Observer<PerformanceChangeset, NoError>
 
-    private var performances = [Performance]()
+    private var performances: [Performance]? = nil // nil means nothing was fetched, [] no results
 
     private lazy var contestDayFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
@@ -101,20 +104,24 @@ class PerformanceListMediator: Mediator {
 
         combinedRefreshTriggers
             .on(next: { _ in isLoading.value = true })
-            .flatMap(.Latest) { _, day, venue in
+            .flatMap(.Latest) { (_, day, venue) -> SignalProducer<[Performance]?, NoError> in
                 return store.fetchPerformances(contest: contest, venue: venue, day: day)
+                    .map { .Some($0) }
                     .flatMapError { error in
-                        return SignalProducer(value: [])
+                        return SignalProducer(value: nil)
                     }
             }
-            .on(next: { _ in isLoading.value = false })
-            .combinePrevious([]) // needed to calculate changeset
+            .on(next: { [weak self] performances in
+                isLoading.value = false
+                self?.hasError = (performances == nil)
+            })
+            .combinePrevious(nil) // needed to calculate changeset
             .startWithNext { [weak self] (oldPerformances, newPerformances) in
                 self?.performances = newPerformances
                 if let observer = self?.contentChangesObserver {
                     let changeset = Changeset(
-                        oldItems: oldPerformances,
-                        newItems: newPerformances,
+                        oldItems: oldPerformances ?? [],
+                        newItems: newPerformances ?? [],
                         contentMatches: displayedContentMatches
                     )
                     observer.sendNext(changeset)
@@ -139,7 +146,7 @@ class PerformanceListMediator: Mediator {
     // MARK: - Performances
 
     func numberOfPerformances() -> Int {
-        return performances.count
+        return performances?.count ?? 0
     }
 
     func numberOfAppearancesForPerformanceAtIndexPath(indexPath: NSIndexPath) -> Int {
@@ -167,7 +174,7 @@ class PerformanceListMediator: Mediator {
     // MARK: - Private Helpers
 
     private func performanceAtIndexPath(indexPath: NSIndexPath) -> Performance {
-        return performances[indexPath.row]
+        return performances![indexPath.row]
     }
 }
 

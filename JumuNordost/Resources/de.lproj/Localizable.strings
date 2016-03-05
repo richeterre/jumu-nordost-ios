@@ -17,3 +17,7 @@
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";
 
 "LABEL.PICK_CONTEST" = "Willkommen! Bitte wähle einen Wettbewerb:";
+"LABEL.LOADING_PERFORMANCES" = "Einen Moment, bitte…";
+"LABEL.NO_PERFORMANCES_FOUND" = "An diesem Tag finden am ausgewählten Ort keine Vorspiele statt.";
+
+"ERROR.NO_PERFORMANCES_FETCHED" = "Der Vorspielplan konnte leider nicht geladen werden. 😕";
