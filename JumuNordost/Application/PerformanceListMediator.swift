@@ -84,7 +84,7 @@ class PerformanceListMediator: Mediator {
               case 0...2:
                 return "EEEEMMMMd"
               case 3:
-                return "EEEEMd"
+                return "EEEMMd"
               default:
                 return "EEEMd"
             }
