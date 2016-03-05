@@ -141,6 +141,10 @@ class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, 
         return true
     }
 
+    func emptyDataSetWillAppear(scrollView: UIScrollView!) {
+        scrollView.contentOffset = CGPointMake(0, 0)
+    }
+
     // MARK: - DZNEmptyDataSetSource
 
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
