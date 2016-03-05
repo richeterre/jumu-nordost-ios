@@ -43,7 +43,7 @@ class PerformanceCell: UITableViewCell {
         constrain(contentView, timeLabel) { contentView, timeLabel in
             timeLabel.top == contentView.topMargin
             timeLabel.left == contentView.leftMargin
-            timeLabel.width == 45
+            timeLabel.width == 43
         }
 
         constrain(categoryInfoLabel, timeLabel, contentView) { categoryInfoLabel, timeLabel, contentView in
