@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         customizeAppAppearance()
 
-        let store = Store(baseURL: Constant.localBaseURL)
+        let apiKey = CredentialsHelper.apiKey()! // Crash if no credentials were found
+        let store = Store(baseURL: Constant.localBaseURL, apiKey: apiKey)
+
         let contestListMediator = ContestListMediator(store: store)
         let contestListViewController = ContestListViewController(mediator: contestListMediator)
         window?.rootViewController = UINavigationController(rootViewController: contestListViewController)

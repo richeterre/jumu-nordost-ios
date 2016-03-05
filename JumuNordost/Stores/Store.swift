@@ -13,6 +13,7 @@ import Result
 class Store: StoreType {
 
     private let baseURL: NSURL
+    private let session: NSURLSession
     private let errorDomain = "StoreError"
 
     private enum StoreError: Int {
@@ -21,8 +22,13 @@ class Store: StoreType {
 
     // MARK: - Lifecycle
 
-    required init(baseURL: NSURL) {
+    required init(baseURL: NSURL, apiKey: String) {
         self.baseURL = baseURL
+        let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        sessionConfiguration.HTTPAdditionalHeaders = [
+            "X-Api-Key": apiKey
+        ]
+        self.session = NSURLSession(configuration: sessionConfiguration)
     }
 
     // MARK: - Contests
@@ -35,7 +41,7 @@ class Store: StoreType {
         ]
         let request = requestForPath("contests", queryItems: queryItems)
 
-        return NSURLSession.sharedSession().rac_dataWithRequest(request)
+        return session.rac_dataWithRequest(request)
             .attemptMap(decodeModels)
     }
 
@@ -53,7 +59,7 @@ class Store: StoreType {
         let path = String(format: "contests/%@/performances", arguments: [contest.id])
         let request = requestForPath(path, queryItems: queryItems)
 
-        return NSURLSession.sharedSession().rac_dataWithRequest(request)
+        return session.rac_dataWithRequest(request)
             .attemptMap(decodeModels)
     }
 

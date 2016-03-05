@@ -10,6 +10,8 @@
 		5B2B5B7C1C7D0EF6002E576F /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7B1C7D0EF6002E576F /* Piece.swift */; };
 		5B2B5B7E1C7D1713002E576F /* PerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7D1C7D1713002E576F /* PerformanceView.swift */; };
 		5B2B5B801C7D1746002E576F /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7F1C7D1746002E576F /* Label.swift */; };
+		5B7F1C291C8B6E7F003BBFC8 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B7F1C281C8B6E7F003BBFC8 /* Credentials.plist */; };
+		5B7F1C2B1C8B6F36003BBFC8 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F1C2A1C8B6F36003BBFC8 /* Credentials.swift */; };
 		5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C6F1C71104200048552 /* PerformanceListMediator.swift */; };
 		5B843C741C7110A600048552 /* Mediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C731C7110A600048552 /* Mediator.swift */; };
 		5B843C761C71167700048552 /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C751C71167700048552 /* Performance.swift */; };
@@ -72,6 +74,8 @@
 		5B2B5B7B1C7D0EF6002E576F /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		5B2B5B7D1C7D1713002E576F /* PerformanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceView.swift; sourceTree = "<group>"; };
 		5B2B5B7F1C7D1746002E576F /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		5B7F1C281C8B6E7F003BBFC8 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
+		5B7F1C2A1C8B6F36003BBFC8 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		5B843C6F1C71104200048552 /* PerformanceListMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceListMediator.swift; sourceTree = "<group>"; };
 		5B843C731C7110A600048552 /* Mediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mediator.swift; sourceTree = "<group>"; };
 		5B843C751C71167700048552 /* Performance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Performance.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				5B843CA41C7B5AC600048552 /* Fonts */,
 				5BAC51D61C6F67A90098B9C8 /* LaunchScreen.storyboard */,
 				5B843C8D1C79CA8D00048552 /* Localizable.strings */,
+				5B7F1C281C8B6E7F003BBFC8 /* Credentials.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				5BFA75FE1C87B4F700EF8B5C /* Array.swift */,
 				5B843C7F1C77CED400048552 /* Color.swift */,
 				5BAC51E21C6F6D650098B9C8 /* Constant.swift */,
+				5B7F1C2A1C8B6F36003BBFC8 /* Credentials.swift */,
 				5B843C931C7A02CE00048552 /* Decodables.swift */,
 				5B843CA61C7B5E3300048552 /* Font.swift */,
 				5BAC51FF1C70E4E80098B9C8 /* Localization.swift */,
@@ -394,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BAC51D41C6F67510098B9C8 /* Assets.xcassets in Resources */,
+				5B7F1C291C8B6E7F003BBFC8 /* Credentials.plist in Resources */,
 				5B843C8B1C79CA8D00048552 /* Localizable.strings in Resources */,
 				5BAC51D81C6F67A90098B9C8 /* LaunchScreen.storyboard in Resources */,
 				5B843CA51C7B5AC600048552 /* Fonts in Resources */,
@@ -466,6 +473,7 @@
 				5BAC51DB1C6F68430098B9C8 /* ContestListViewController.swift in Sources */,
 				5B843C761C71167700048552 /* Performance.swift in Sources */,
 				5BFA76011C87BB4B00EF8B5C /* UITableView.swift in Sources */,
+				5B7F1C2B1C8B6F36003BBFC8 /* Credentials.swift in Sources */,
 				5BAC52001C70E4E80098B9C8 /* Localization.swift in Sources */,
 				5BAC51E31C6F6D650098B9C8 /* Constant.swift in Sources */,
 				5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */,

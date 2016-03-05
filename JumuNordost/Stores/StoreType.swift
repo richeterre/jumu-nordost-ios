@@ -12,7 +12,7 @@ typealias ContestDay = NSDateComponents
 
 protocol StoreType {
 
-    init(baseURL: NSURL)
+    init(baseURL: NSURL, apiKey: String)
 
     // MARK: - Contests
 
