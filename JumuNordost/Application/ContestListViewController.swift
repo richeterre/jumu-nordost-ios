@@ -7,10 +7,11 @@
 //
 
 import Cartography
+import DZNEmptyDataSet
 import ReactiveCocoa
 import Result
 
-class ContestListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class ContestListViewController: BaseViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Private Properties
 
@@ -53,12 +54,14 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
 
         view.backgroundColor = UIColor.whiteColor()
 
-        tableView.tableFooterView = UIView()
-        tableView.rowHeight = ContestCell.height
-
         tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = ContestCell.height
 
         refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
 
@@ -127,6 +130,33 @@ class ContestListViewController: BaseViewController, UITableViewDataSource, UITa
 
     func filterToggleButtonTapped() {
         mediator.toggleFilterState()
+    }
+
+    // MARK: - DZNEmptyDataSetDelegate
+
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -headerView.frame.height / 2
+    }
+
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+
+    // MARK: - DZNEmptyDataSetSource
+
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [
+            NSFontAttributeName: Font.fontWithWeight(.Regular, style: .Italic, size: .Large),
+            NSForegroundColorAttributeName: Color.secondaryTextColor
+        ]
+
+        if mediator.hasEmptyContestList {
+            return NSAttributedString(string: localize("LABEL.NO_CONTESTS_FOUND"), attributes: attributes)
+        } else if mediator.hasError {
+            return NSAttributedString(string: localize("ERROR.NO_CONTESTS_FETCHED"), attributes: attributes)
+        } else {
+            return NSAttributedString(string: localize("LABEL.LOADING"), attributes: attributes)
+        }
     }
 
     // MARK: - UITableViewDataSource

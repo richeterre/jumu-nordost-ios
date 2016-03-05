@@ -17,7 +17,9 @@
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";
 
 "LABEL.PICK_CONTEST" = "Welcome! Please pick a contest:";
-"LABEL.LOADING_PERFORMANCES" = "One moment, please…";
+"LABEL.LOADING" = "One moment, please…";
+"LABEL.NO_CONTESTS_FOUND" = "Unfortunately, no suitable contests were found at this time.";
 "LABEL.NO_PERFORMANCES_FOUND" = "On this date, there are no performances at the venue you selected.";
 
+"ERROR.NO_CONTESTS_FETCHED" = "The contests couldn't be fetched. 😕";
 "ERROR.NO_PERFORMANCES_FETCHED" = "The timetable couldn't be fetched. 😕";

@@ -21,10 +21,15 @@ class ContestListMediator: Mediator {
 
     let contentChanges: Signal<ContestChangeset, NoError>
 
+    var hasError: Bool = false
+    var hasEmptyContestList: Bool {
+        return contests?.isEmpty ?? false
+    }
+
     // MARK: - Private Properties
 
     private let contentChangesObserver: Observer<ContestChangeset, NoError>
-    private var contests = [Contest]()
+    private var contests: [Contest]? = nil
 
     // MARK: - Lifecycle
 
@@ -34,6 +39,7 @@ class ContestListMediator: Mediator {
         super.init(store: store)
 
         let isLoading = self.isLoading
+        var hasError = self.hasError
 
         let combinedRefreshTriggers = combineLatest(refreshTrigger, showCurrentOnly.producer)
 
@@ -46,20 +52,24 @@ class ContestListMediator: Mediator {
 
         combinedRefreshTriggers
             .on(next: { _ in isLoading.value = true })
-            .flatMap(.Latest) { (_, currentOnly) in
+            .flatMap(.Latest) { (_, currentOnly) -> SignalProducer<[Contest]?, NoError> in
                 return store.fetchContests(currentOnly: currentOnly, timetablesPublic: true)
+                    .map { .Some($0) }
                     .flatMapError { error in
-                        return SignalProducer(value: [])
+                        return SignalProducer(value: nil)
                 }
             }
-            .on(next: { _ in isLoading.value = false })
-            .combinePrevious([]) // needed to calculate changeset
+            .on(next: { [weak self] contests in
+                isLoading.value = false
+                self?.hasError = (contests == nil)
+            })
+            .combinePrevious(nil) // needed to calculate changeset
             .startWithNext { [weak self] (oldContests, newContests) in
                 self?.contests = newContests
                 if let observer = self?.contentChangesObserver {
                     let changeset = Changeset(
-                        oldItems: oldContests,
-                        newItems: newContests,
+                        oldItems: oldContests ?? [],
+                        newItems: newContests ?? [],
                         contentMatches: displayedContentMatches
                     )
                     observer.sendNext(changeset)
@@ -76,7 +86,7 @@ class ContestListMediator: Mediator {
     // MARK: - Contests
 
     func numberOfContests() -> Int {
-        return contests.count
+        return contests?.count ?? 0
     }
 
     func formattedContestForIndexPath(indexPath: NSIndexPath) -> FormattedContest {
@@ -94,6 +104,6 @@ class ContestListMediator: Mediator {
     // MARK: - Private Helpers
 
     private func contestAtIndexPath(indexPath: NSIndexPath) -> Contest {
-        return contests[indexPath.row]
+        return contests![indexPath.row]
     }
 }

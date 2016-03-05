@@ -154,7 +154,7 @@ class PerformanceListViewController: BaseViewController, DZNEmptyDataSetDelegate
         } else if mediator.hasError {
             return NSAttributedString(string: localize("ERROR.NO_PERFORMANCES_FETCHED"), attributes: attributes)
         } else {
-            return NSAttributedString(string: localize("LABEL.LOADING_PERFORMANCES"), attributes: attributes)
+            return NSAttributedString(string: localize("LABEL.LOADING"), attributes: attributes)
         }
     }
 
