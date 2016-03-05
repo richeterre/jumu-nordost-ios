@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 import ReactiveCocoa
 import Result
 
-class PerformanceListViewController: BaseViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, UITableViewDataSource, UITableViewDelegate {
+class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Private Properties
 
@@ -94,7 +94,7 @@ class PerformanceListViewController: BaseViewController, DZNEmptyDataSetDelegate
     private func makeBindings() {
         self.title = mediator.title
 
-        mediator.active <~ isActive
+        mediator.active <~ isActive()
 
         mediator.isLoading.producer
             .observeOn(UIScheduler())

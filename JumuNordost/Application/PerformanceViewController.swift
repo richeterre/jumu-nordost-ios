@@ -9,7 +9,7 @@
 import ReactiveCocoa
 import Cartography
 
-class PerformanceViewController: BaseViewController {
+class PerformanceViewController: UIViewController {
 
     private let mediator: PerformanceMediator
     private let scrollView = UIScrollView()
@@ -62,6 +62,6 @@ class PerformanceViewController: BaseViewController {
     private func makeBindings() {
         self.title = mediator.title
 
-        mediator.active <~ isActive
+        mediator.active <~ isActive()
     }
 }

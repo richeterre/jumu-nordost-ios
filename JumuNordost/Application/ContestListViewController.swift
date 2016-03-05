@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 import ReactiveCocoa
 import Result
 
-class ContestListViewController: BaseViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, UITableViewDataSource, UITableViewDelegate {
+class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Private Properties
 
@@ -94,7 +94,7 @@ class ContestListViewController: BaseViewController, DZNEmptyDataSetDelegate, DZ
     // MARK: - Bindings
 
     private func makeBindings() {
-        mediator.active <~ isActive
+        mediator.active <~ isActive()
 
         mediator.isLoading.producer
             .observeOn(UIScheduler())
