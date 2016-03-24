@@ -1,7 +1,25 @@
 Jumu Nordost for iOS
 ====================
 
-More info will follow when it's showtime.
+This is a companion app for participants and audiences of the ["Jugend musiziert"][jugend-musiziert] music competition. It shows all available schedules and programmes for contests held at German schools abroad within the "Nord- und Osteuropa" competition region.
+
+[jugend-musiziert]: https://en.wikipedia.org/wiki/Jugend_musiziert
+
+Tech Specs
+----------
+
+The app runs on iOS 9+ and is currently implemented natively using Swift and [ReactiveCocoa 4][reactive-cocoa]. It follows an [MVVM-style][mvvm-sprynthesis] architecture, but uses the term _mediator_ instead of _view model_. This is to emphasize the active, agent-like role of such classes and because, frankly, the name "view model" [isn't very good][mvvm-is-not-very-good].
+
+[reactive-cocoa]: https://github.com/ReactiveCocoa/ReactiveCocoa
+[mvvm-sprynthesis]: http://www.sprynthesis.com/2014/12/06/reactivecocoa-mvvm-introduction/
+[mvvm-is-not-very-good]: http://khanlou.com/2015/12/mvvm-is-not-very-good/
+
+Features
+--------
+
+* [x] List contests
+* [x] Browse performances in contest by day and venue
+* [x] See performance details, such as participants and pieces
 
 Setup
 -----
