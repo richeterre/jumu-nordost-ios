@@ -10,9 +10,13 @@ Tech Specs
 
 The app runs on iOS 9+ and is currently implemented natively using Swift and [ReactiveCocoa 4][reactive-cocoa]. It follows an [MVVM-style][mvvm-sprynthesis] architecture, but uses the term _mediator_ instead of _view model_. This is to emphasize the active, agent-like role of such classes and because, frankly, the name "view model" [isn't very good][mvvm-is-not-very-good].
 
+I also built an open-source [Android version][jumu-nordost-rn] of the app using [React Native][react-native].
+
 [reactive-cocoa]: https://github.com/ReactiveCocoa/ReactiveCocoa
 [mvvm-sprynthesis]: http://www.sprynthesis.com/2014/12/06/reactivecocoa-mvvm-introduction/
 [mvvm-is-not-very-good]: http://khanlou.com/2015/12/mvvm-is-not-very-good/
+[jumu-nordost-rn]: https://github.com/richeterre/jumu-nordost-react-native
+[react-native]: https://facebook.github.io/react-native/
 
 Features
 --------
