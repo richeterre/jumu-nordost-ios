@@ -14,11 +14,12 @@ can be.
 ## Basic Usage ##
 
 - [Decoding your first model](Basic-Usage.md)
-- Relationships // TODO
+- [Relationships](Relationships.md)
 
 ## Advanced Usage ##
 
 - [Decoding root keys](Decode-Root-Keys.md)
+- [Decoding Enums](Decode-Enums.md)
 - Understanding the Decode operators // TODO
 - Interacting with the `JSON` enum // TODO
 - Writing your own custom parser // TODO

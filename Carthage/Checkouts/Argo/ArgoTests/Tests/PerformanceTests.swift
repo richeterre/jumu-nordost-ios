@@ -6,16 +6,23 @@ class PerformanceTests: XCTestCase {
     let json: AnyObject = JSONFromFile("big_data")!
 
     measureBlock {
-      JSON.parse(json)
+      _ = JSON(json)
     }
   }
 
   func testDecodePerformance() {
     let json: AnyObject = JSONFromFile("big_data")!
-    let j = JSON.parse(json)
+    let j = JSON(json)
 
     measureBlock {
-      j <|| "types" as Decoded<[TestModel]>
+      [TestModel].decode(j)
     }
+  }
+
+  func testBigDataDecodesCorrectly() {
+    let json: AnyObject = JSONFromFile("big_data")!
+    let j = JSON(json)
+    let models = [TestModel].decode(j)
+    XCTAssertEqual(models.value!.count, 10_000, "Decoded big_data should have 10_000 results.")
   }
 }

@@ -79,12 +79,11 @@ expectations, Argo will skip the `init` call and return a special failure state.
 
 Now, we make `User` conform to `Decodable` and implement the required `decode`
 function. We will implement this function by using some [functional
-concepts](functional_concepts),
+concepts](Functional-Concepts.md),
 specifically the `map` (`<^>`) and `apply` (`<*>`) operators, to conditionally
 pass the required parameters to the curried init function. The common pattern
 will look like this:
 
-[functional_concepts]: https://github.com/thoughtbot/Argo/blob/master/Documentation/Functional-Concepts.md
 
 ```swift
   static func decode(json: JSON) -> Decoded<DecodedType> {
@@ -186,7 +185,9 @@ properties in your model, and then the Swift compiler will infer the types that
 need to be sent to the curried `decode` function and therefore the types that
 need to be found in the JSON structure.
 
-For more Argo usage examples, see our [test suite](test_suite).
+You can decode custom types the same way, as long as the type also conforms to
+`Decodable`. This is how we implement [relationships].
 
+[relationships]: Relationships.md
 
-[test_suite]: https://github.com/thoughtbot/Argo/tree/master/ArgoTests
+For more Argo usage examples, see our [test suite](../ArgoTests).
