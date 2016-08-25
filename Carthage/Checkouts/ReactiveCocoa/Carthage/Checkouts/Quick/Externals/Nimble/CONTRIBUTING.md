@@ -38,6 +38,9 @@ Be sure to include in your issue:
 - Your Xcode version (eg - Xcode 7.0.1 7A1001)
 - Your version of Nimble (eg - v2.0.0 or git sha `20a3f3b4e63cc8d97c92c4164bf36f2a2c9a6e1b`)
 - What are the steps to reproduce this issue?
+- What platform are you using? (eg - OS X, iOS, watchOS, tvOS)
+- If the problem is on a UI Testing Bundle, Unit Testing Bundle, or some other target configuration
+- Are you using carthage or cocoapods?
 
 ## Building the Project
 
@@ -101,7 +104,9 @@ The process is relatively straight forward, but here's is a useful checklist for
 
 - Look at changes from the previously tagged release and write release notes: `git log v0.4.0...HEAD`
 - Run the release script: `./script/release A.B.C release-notes-file`
-- Go to [github releases](https://github.com/Quick/Nimble/releases) and mark the tagged commit as a release.
-  - Use the same release notes you created for the tag, but tweak up formatting for github.
-  - Attach the carthage release `Nimble.framework.zip` to the release.
+- The script will prompt you to create a new [GitHub release](https://github.com/Quick/Nimble/releases).
+  - Use the same release notes you created for the tag, but tweak up formatting for GitHub.
+- Update [Quick](https://github.com/Quick/Quick)
+  - Update Quick's submodule reference to the newly released Nimble version
+  - Update Nimble version in `README.md` and Documentation in [Quick](https://github.com/Quick/Quick) if it's not a patch version update.
 - Announce!

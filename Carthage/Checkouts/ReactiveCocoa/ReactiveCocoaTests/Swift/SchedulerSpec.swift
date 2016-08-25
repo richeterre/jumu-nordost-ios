@@ -26,7 +26,7 @@ class SchedulerSpec: QuickSpec {
 		}
 
 		describe("UIScheduler") {
-			func dispatchSyncInBackground(action: () -> ()) {
+			func dispatchSyncInBackground(action: () -> Void) {
 				let group = dispatch_group_create()
 				dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), action)
 				dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
@@ -151,7 +151,7 @@ class SchedulerSpec: QuickSpec {
 					for _ in 0..<5 {
 						scheduler.schedule {
 							expect(NSThread.isMainThread()) == false
-							value++
+							value += 1
 						}
 					}
 
@@ -183,7 +183,9 @@ class SchedulerSpec: QuickSpec {
 					disposable.innerDisposable = scheduler.scheduleAfter(NSDate(), repeatingEvery: 0.01, withLeeway: 0) {
 						expect(NSThread.isMainThread()) == false
 
-						if ++count == timesToRun {
+						count += 1
+
+						if count == timesToRun {
 							disposable.dispose()
 						}
 					}
@@ -234,14 +236,16 @@ class SchedulerSpec: QuickSpec {
 			it("should run actions when advanced past the target date") {
 				var string = ""
 
-				scheduler.scheduleAfter(15) {
+				scheduler.scheduleAfter(15) { [weak scheduler] in
 					string += "bar"
 					expect(NSThread.isMainThread()) == true
+					expect(scheduler?.currentDate).to(beCloseTo(startDate.dateByAddingTimeInterval(15), within: dateComparisonDelta))
 				}
 
-				scheduler.scheduleAfter(5) {
+				scheduler.scheduleAfter(5) { [weak scheduler] in
 					string += "foo"
 					expect(NSThread.isMainThread()) == true
+					expect(scheduler?.currentDate).to(beCloseTo(startDate.dateByAddingTimeInterval(5), within: dateComparisonDelta))
 				}
 
 				expect(string) == ""

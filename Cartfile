@@ -1,5 +1,5 @@
 github "dzenbot/DZNEmptyDataSet" == 1.7.3
-github "ReactiveCocoa/ReactiveCocoa" == 4.0.1
 github "robb/Cartography" == 0.6
 github "thoughtbot/Argo" == 2.2.0
 github "thoughtbot/Curry" == 1.4.0
+github "ReactiveCocoa/ReactiveCocoa" == 4.2.2

@@ -37,6 +37,9 @@ Be sure to include in your issue:
 - Your Xcode version (eg - Xcode 7.0.1 7A1001)
 - Your version of Quick / Nimble (eg - v0.7.0 or git sha `7d0b8c21357839a8c5228863b77faecf709254a9`)
 - What are the steps to reproduce this issue?
+- What platform are you using? (eg - OS X, iOS, watchOS, tvOS)
+- If the problem is on a UI Testing Bundle, Unit Testing Bundle, or some other target configuration
+- Are you using carthage or cocoapods?
 
 ## Building the Project
 
@@ -75,8 +78,6 @@ If a few of your pull requests have been merged, and you'd like a
 controlling stake in the project, file an issue asking for write access
 to the repository.
 
-### Code of Conduct
-
 Your conduct as a core member is your own responsibility, but here are
 some "ground rules":
 
@@ -103,7 +104,6 @@ The process is relatively straight forward, but here's is a useful checklist for
 
 - Look at changes from the previously tagged release and write release notes: `git log v0.4.0...HEAD`
 - Run the release script: `./script/release A.B.C release-notes-file`
-- Go to [github releases](https://github.com/Quick/Quick/releases) and mark the tagged commit as a release.
-  - Use the same release notes you created for the tag, but tweak up formatting for github.
-  - Attach the carthage release `Quick.framework.zip` to the release.
+- The script will prompt you to create a new [GitHub release](https://github.com/Quick/Quick/releases).
+  - Use the same release notes you created for the tag, but tweak up formatting for GitHub.
 - Announce!

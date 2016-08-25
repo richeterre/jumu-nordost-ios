@@ -14,10 +14,14 @@ extension UIViewController {
 
         // Track view appearance
 
-        let viewWillAppear = rac_signalForSelector(Selector("viewWillAppear:")).toSignalProducer()
-        let viewWillDisappear = rac_signalForSelector(Selector("viewWillDisappear:")).toSignalProducer()
+        let viewWillAppear = rac_signalForSelector(
+            #selector(viewWillAppear(_:))
+        ).toSignalProducer()
+        let viewWillDisappear = rac_signalForSelector(
+            #selector(viewWillDisappear(_:))
+        ).toSignalProducer()
 
-        let presented = SignalProducer(values: [
+        let presented = SignalProducer<SignalProducer<Bool, NSError>, NoError>(values: [
             viewWillAppear.map { _ in true },
             viewWillDisappear.map { _ in false }
         ]).flatten(.Merge)
@@ -34,7 +38,7 @@ extension UIViewController {
             .rac_addObserverForName(UIApplicationWillResignActiveNotification, object: nil)
             .toSignalProducer()
 
-        let appActive = SignalProducer(values: [
+        let appActive = SignalProducer<SignalProducer<Bool, NSError>, NoError>(values: [
             SignalProducer(value: true), // App is initially active (without notification)
             didBecomeActive.map { _ in true },
             didBecomeInactive.map { _ in false }
