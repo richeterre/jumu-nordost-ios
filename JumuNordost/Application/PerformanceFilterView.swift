@@ -33,8 +33,8 @@ class PerformanceFilterView: UIView {
             self?.venueSwitcher.selectedSegmentIndex = index ?? -1
         }
 
-        dateSwitcher.addTarget(self, action: Selector("dateSwitcherChanged:"), forControlEvents: .ValueChanged)
-        venueSwitcher.addTarget(self, action: Selector("venueSwitcherChanged:"), forControlEvents: .ValueChanged)
+        dateSwitcher.addTarget(self, action: #selector(dateSwitcherChanged(_:)), forControlEvents: .ValueChanged)
+        venueSwitcher.addTarget(self, action: #selector(venueSwitcherChanged(_:)), forControlEvents: .ValueChanged)
 
         addSubview(dateSwitcher)
         addSubview(venueSwitcher)

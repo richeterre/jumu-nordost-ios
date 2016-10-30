@@ -368,9 +368,13 @@
 				TargetAttributes = {
 					5BC71F0E1C6F5F66005E90C8 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 544BVFC682;
+						LastSwiftMigration = 0800;
 					};
 					5BC71F221C6F5F66005E90C8 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 544BVFC682;
+						LastSwiftMigration = 0800;
 						TestTargetID = 5BC71F0E1C6F5F66005E90C8;
 					};
 				};
@@ -609,6 +613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = "Jumu Nordost";
+				DEVELOPMENT_TEAM = 544BVFC682;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -617,6 +622,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jugend-musiziert.jumu-nordost";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -625,6 +631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = "Jumu Nordost";
+				DEVELOPMENT_TEAM = 544BVFC682;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -633,6 +640,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jugend-musiziert.jumu-nordost";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -640,10 +648,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 544BVFC682;
 				INFOPLIST_FILE = JumuNordostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.martinrichter.JumuNordostTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JumuNordost.app/JumuNordost";
 			};
 			name = Debug;
@@ -652,10 +662,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 544BVFC682;
 				INFOPLIST_FILE = JumuNordostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.martinrichter.JumuNordostTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JumuNordost.app/JumuNordost";
 			};
 			name = Release;

@@ -72,7 +72,7 @@ class EdgesSpec: QuickSpec {
             }
         }
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
         describe("on iOS only") {
             beforeEach {
                 window.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
@@ -88,6 +88,19 @@ class EdgesSpec: QuickSpec {
 
                    expect(view.frame).to(equal(CGRectMake(20, 10, 340, 360)))
                 }
+            }
+        }
+        
+        describe("on iOS only, inset using UIEdgeInsets") {
+            it("should inset all edges individually") {
+                constrain(view) { view in
+                    let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                    view.edges == inset(view.superview!.edges, insets)
+                }
+
+                window.layoutIfNeeded()
+
+                expect(view.frame).to(equal(CGRectMake(20, 10, 340, 360)))
             }
         }
 #endif

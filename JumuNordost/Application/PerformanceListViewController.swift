@@ -62,7 +62,7 @@ class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, 
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
 
-        refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
+      refreshControl.addTarget(self, action: #selector(refreshControlFired), forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
 
         view.addSubview(filterView)

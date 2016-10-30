@@ -45,7 +45,7 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
             title: nil,
             style: .Plain,
             target: self,
-            action: Selector("filterToggleButtonTapped")
+            action: #selector(filterToggleButtonTapped)
         )
 
         navigationItem.leftBarButtonItem = filterToggleButton
@@ -63,7 +63,7 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
         tableView.tableFooterView = UIView()
         tableView.rowHeight = ContestCell.height
 
-        refreshControl.addTarget(self, action: Selector("refreshControlFired"), forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshControlFired), forControlEvents: .ValueChanged)
 
         tableView.addSubview(refreshControl)
         view.addSubview(headerView)
