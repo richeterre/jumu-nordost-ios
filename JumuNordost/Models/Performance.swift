@@ -7,6 +7,7 @@
 //
 
 import Argo
+import Curry
 
 struct Performance {
     let id: String
@@ -30,21 +31,8 @@ func ==(lhs: Performance, rhs: Performance) -> Bool {
 // MARK: - Decodable
 
 extension Performance: Decodable {
-    private static func create(id: String)(stageTime: NSDate)(categoryName: String)(ageGroup: String)(predecessorHostName: String?)(predecessorHostCountry: String?)(appearances: [Appearance])(pieces: [Piece]) -> Performance {
-        return Performance(
-            id: id,
-            stageTime: stageTime,
-            categoryName: categoryName,
-            ageGroup: ageGroup,
-            predecessorHostName: predecessorHostName,
-            predecessorHostCountry: predecessorHostCountry,
-            appearances: appearances,
-            pieces: pieces
-        )
-    }
-
     static func decode(json: JSON) -> Decoded<Performance> {
-        return create // curry(self.init) is currently too complex to compile
+        return curry(self.init)
             <^> json <| "id"
             <*> json <| "stage_time"
             <*> json <| "category_name"
