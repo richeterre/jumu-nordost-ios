@@ -42,7 +42,7 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
         self.title = localize("NAV_TITLE.CONTESTS")
 
         filterToggleButton = UIBarButtonItem(
-            title: nil,
+            image: nil,
             style: .Plain,
             target: self,
             action: #selector(filterToggleButtonTapped)
@@ -115,9 +115,9 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
         mediator.showCurrentOnly.producer
             .observeOn(UIScheduler())
             .startWithNext { [weak self] currentOnly in
-                self?.filterToggleButton?.title = currentOnly
-                    ? localize("BUTTON.SHOW_ALL")
-                    : localize("BUTTON.SHOW_CURRENT")
+                self?.filterToggleButton?.image = currentOnly
+                    ? UIImage(named: "IconFilterFilled")
+                    : UIImage(named: "IconFilter")
                 self?.headerView.text = currentOnly
                     ? localize("LABEL.PICK_CURRENT_CONTEST")
                     : localize("LABEL.PICK_CONTEST")
