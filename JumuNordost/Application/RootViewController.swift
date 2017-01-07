@@ -87,10 +87,11 @@ class RootViewController: UITabBarController {
         let performanceListVC = PerformanceListViewController(mediator: mediator)
         performanceListVC.navigationItem.leftBarButtonItem = switchContestBarButtonItem()
         let performanceListNC = UINavigationController(rootViewController: performanceListVC)
+
         performanceListNC.tabBarItem = UITabBarItem(
             title: localize("TAB_TITLE.PERFORMANCE_LIST"),
-            image: nil,
-            selectedImage: nil
+            image: UIImage(named: "IconTimetable"),
+            selectedImage: UIImage(named: "IconTimetableFilled")
         )
 
         let resultListVC = UITableViewController()
@@ -98,8 +99,8 @@ class RootViewController: UITabBarController {
         let resultListNC = UINavigationController(rootViewController: resultListVC)
         resultListNC.tabBarItem = UITabBarItem(
             title: localize("TAB_TITLE.RESULT_LIST"),
-            image: nil,
-            selectedImage: nil
+            image: UIImage(named: "IconDiploma"),
+            selectedImage: UIImage(named: "IconDiplomaFilled")
         )
 
         viewControllers = [performanceListNC, resultListNC]
