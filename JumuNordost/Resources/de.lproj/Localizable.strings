@@ -22,5 +22,7 @@
 "LABEL.NO_CONTESTS_FOUND" = "Es wurden leider keine passenden Wettbewerbe gefunden.";
 "LABEL.NO_PERFORMANCES_FOUND" = "An diesem Tag finden am ausgewählten Ort keine Vorspiele statt.";
 
-"ERROR.NO_CONTESTS_FETCHED" = "Die Wettbewerbe konnten leider nicht geladen werden. 😕";
-"ERROR.NO_PERFORMANCES_FETCHED" = "Der Vorspielplan konnte leider nicht geladen werden. 😕";
+"ERROR.NO_CONTESTS_FETCHED" = "Die Wettbewerbe konnten leider nicht geladen werden. 😕\
+    \nPrüfe bitte auch, ob du die neueste Version der App verwendest!";
+"ERROR.NO_PERFORMANCES_FETCHED" = "Der Vorspielplan konnte leider nicht geladen werden. 😕\
+    \nPrüfe bitte auch, ob du die neueste Version der App verwendest!";
