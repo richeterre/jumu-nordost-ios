@@ -44,6 +44,8 @@ class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, 
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.whiteColor()
+
+        navigationItem.title = mediator.title
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: localize("BACK_TITLE.PERFORMANCE_LIST"),
             style: .Plain,
@@ -92,8 +94,6 @@ class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, 
     // MARK: - Bindings
 
     private func makeBindings() {
-        self.title = mediator.title
-
         mediator.active <~ isActive()
 
         mediator.isLoading.producer

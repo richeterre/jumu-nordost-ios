@@ -19,6 +19,7 @@ class ContestListMediator: Mediator {
 
     // MARK: - Outputs
 
+    let contestMediatorSelected: Signal<PerformanceListMediator, NoError>
     let contentChanges: Signal<ContestChangeset, NoError>
 
     var hasError: Bool = false
@@ -28,12 +29,16 @@ class ContestListMediator: Mediator {
 
     // MARK: - Private Properties
 
+    private let contestMediatorSelectedObserver: Observer<PerformanceListMediator, NoError>
     private let contentChangesObserver: Observer<ContestChangeset, NoError>
     private var contests: [Contest]? = nil
 
     // MARK: - Lifecycle
 
     override init(store: StoreType) {
+        (contestMediatorSelected, contestMediatorSelectedObserver)
+            = Signal<PerformanceListMediator, NoError>.pipe()
+
         (contentChanges, contentChangesObserver) = Signal<ContestChangeset, NoError>.pipe()
 
         super.init(store: store)
@@ -94,11 +99,12 @@ class ContestListMediator: Mediator {
         return ContestFormatter.formattedContest(contest)
     }
 
-    // MARK: - Mediators
+    // MARK: - Contest Selection
 
-    func performanceListMediatorForContestAtIndexPath(indexPath: NSIndexPath) -> PerformanceListMediator {
+    func selectContestAtIndexPath(indexPath: NSIndexPath) {
         let contest = contestAtIndexPath(indexPath)
-        return PerformanceListMediator(store: self.store, contest: contest)
+        let performanceListMediator = PerformanceListMediator(store: self.store, contest: contest)
+        contestMediatorSelectedObserver.sendNext(performanceListMediator)
     }
 
     // MARK: - Private Helpers

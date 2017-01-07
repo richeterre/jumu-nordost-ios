@@ -50,7 +50,6 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
 
         navigationItem.leftBarButtonItem = filterToggleButton
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
         view.backgroundColor = UIColor.whiteColor()
 
@@ -169,7 +168,6 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
         let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath) as! ContestCell
 
         cell.configure(mediator.formattedContestForIndexPath(indexPath))
-        cell.accessoryType = .DisclosureIndicator
 
         return cell
     }
@@ -178,14 +176,6 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        navigateToContestAtIndexPath(indexPath)
-    }
-
-    // MARK: - Private Helpers
-
-    private func navigateToContestAtIndexPath(indexPath: NSIndexPath) {
-        let performanceListMediator = mediator.performanceListMediatorForContestAtIndexPath(indexPath)
-        let performanceListViewController = PerformanceListViewController(mediator: performanceListMediator)
-        self.navigationController?.pushViewController(performanceListViewController, animated: true)
+        mediator.selectContestAtIndexPath(indexPath)
     }
 }

@@ -23,9 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let apiKey = CredentialsHelper.apiKey()! // Crash if no credentials were found
         let store = Store(baseURL: Constant.localBaseURL, apiKey: apiKey)
 
-        let contestListMediator = ContestListMediator(store: store)
-        let contestListViewController = ContestListViewController(mediator: contestListMediator)
-        window?.rootViewController = UINavigationController(rootViewController: contestListViewController)
+        let rootMediator = RootMediator(store: store)
+        let rootViewController = RootViewController(mediator: rootMediator)
+        window?.rootViewController = rootViewController
 
         window?.makeKeyAndVisible()
 
