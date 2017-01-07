@@ -108,7 +108,8 @@ class RootViewController: UITabBarController {
 
     private func switchContestBarButtonItem() -> UIBarButtonItem {
         return UIBarButtonItem(
-            barButtonSystemItem: .Bookmarks,
+            image: UIImage(named: "IconList"),
+            style: .Plain,
             target: self,
             action: #selector(switchContestButtonTapped)
         )
