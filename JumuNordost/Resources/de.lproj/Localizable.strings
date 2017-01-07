@@ -19,7 +19,8 @@
 "FORMAT.AGE_GROUP" = "Altersgruppe %@";
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";
 
-"LABEL.PICK_CONTEST" = "Willkommen! Bitte wähle einen Wettbewerb:";
+"LABEL.PICK_CONTEST" = "Willkommen!\nBitte wähle einen Wettbewerb:";
+"LABEL.PICK_CURRENT_CONTEST" = "Willkommen!\nBitte wähle einen aktuellen Wettbewerb:";
 "LABEL.LOADING" = "Einen Moment, bitte…";
 "LABEL.NO_CONTESTS_FOUND" = "Es wurden leider keine passenden Wettbewerbe gefunden.";
 "LABEL.NO_PERFORMANCES_FOUND" = "An diesem Tag finden am ausgewählten Ort keine Vorspiele statt.";

@@ -16,7 +16,7 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
     // MARK: - Private Properties
 
     private let mediator: ContestListMediator
-    private let headerView = ContestListHeaderView(text: localize("LABEL.PICK_CONTEST"))
+    private let headerView = ContestListHeaderView(text: nil)
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
@@ -118,6 +118,9 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
                 self?.filterToggleButton?.title = currentOnly
                     ? localize("BUTTON.SHOW_ALL")
                     : localize("BUTTON.SHOW_CURRENT")
+                self?.headerView.text = currentOnly
+                    ? localize("LABEL.PICK_CURRENT_CONTEST")
+                    : localize("LABEL.PICK_CONTEST")
             }
     }
 

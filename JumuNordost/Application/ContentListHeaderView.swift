@@ -10,11 +10,20 @@ import Cartography
 
 class ContestListHeaderView: UIView {
 
+    var text: String? {
+        get {
+            return textLabel.text
+        }
+        set(newText) {
+            textLabel.text = newText
+        }
+    }
+
     private let textLabel = Label(fontWeight: .Regular, fontStyle: .Italic, fontSize: .Medium)
 
     // MARK: - Lifecycle
 
-    convenience init(text: String) {
+    convenience init(text: String?) {
         self.init()
 
         self.layoutMargins = UIEdgeInsets(top: 24, left: 16, bottom: 8, right: 16)
