@@ -30,7 +30,7 @@ class ContestFormatter {
         dateIntervalFormatter.timeZone = contest.timeZone // TODO: Eliminate this state
 
         return FormattedContest(
-            name: contest.name,
+            name: "\(contest.hostCountry.toCountryFlag()) \(contest.name)",
             dates: dateIntervalFormatter.stringFromDate(contest.startDate, toDate: contest.endDate)
         )
     }

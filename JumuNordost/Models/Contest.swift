@@ -12,6 +12,7 @@ import Curry
 struct Contest {
     let id: String
     let name: String
+    let hostCountry: String
     let timeZone: NSTimeZone
     let startDate: NSDate
     let endDate: NSDate
@@ -33,6 +34,7 @@ extension Contest: Decodable {
         return curry(self.init)
             <^> json <| "id"
             <*> json <| "name"
+            <*> json <| "host_country"
             <*> json <| "time_zone"
             <*> json <| "start_date"
             <*> json <| "end_date"
