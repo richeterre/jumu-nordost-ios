@@ -19,7 +19,7 @@ class ContestListMediator: Mediator {
 
     // MARK: - Outputs
 
-    let contestMediatorSelected: Signal<PerformanceListMediator, NoError>
+    let contestMediatorsSelected: Signal<ContestMediators, NoError>
     let contentChanges: Signal<ContestChangeset, NoError>
 
     var hasError: Bool = false
@@ -29,15 +29,15 @@ class ContestListMediator: Mediator {
 
     // MARK: - Private Properties
 
-    private let contestMediatorSelectedObserver: Observer<PerformanceListMediator, NoError>
+    private let contestMediatorsSelectedObserver: Observer<ContestMediators, NoError>
     private let contentChangesObserver: Observer<ContestChangeset, NoError>
     private var contests: [Contest]? = nil
 
     // MARK: - Lifecycle
 
     override init(store: StoreType) {
-        (contestMediatorSelected, contestMediatorSelectedObserver)
-            = Signal<PerformanceListMediator, NoError>.pipe()
+        (contestMediatorsSelected, contestMediatorsSelectedObserver)
+            = Signal<ContestMediators, NoError>.pipe()
 
         (contentChanges, contentChangesObserver) = Signal<ContestChangeset, NoError>.pipe()
 
@@ -103,8 +103,12 @@ class ContestListMediator: Mediator {
 
     func selectContestAtIndexPath(indexPath: NSIndexPath) {
         let contest = contestAtIndexPath(indexPath)
+
         let performanceListMediator = PerformanceListMediator(store: self.store, contest: contest)
-        contestMediatorSelectedObserver.sendNext(performanceListMediator)
+        let resultListMediator = ResultListMediator(store: self.store, contest: contest)
+
+        let contestMediators = (performanceListMediator, resultListMediator)
+        contestMediatorsSelectedObserver.sendNext(contestMediators)
     }
 
     // MARK: - Private Helpers

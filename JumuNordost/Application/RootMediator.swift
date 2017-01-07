@@ -8,11 +8,13 @@
 
 import ReactiveCocoa
 
+typealias ContestMediators = (PerformanceListMediator, ResultListMediator)
+
 class RootMediator: Mediator {
 
     // MARK: - Outputs
 
-    let currentContestMediator = MutableProperty<PerformanceListMediator?>(nil)
+    let currentContestMediators = MutableProperty<ContestMediators?>(nil)
 
     // MARK: - Private Properties
 
@@ -22,7 +24,7 @@ class RootMediator: Mediator {
 
     override init(store: StoreType) {
         contestListMediator = ContestListMediator(store: store)
-        currentContestMediator <~ contestListMediator.contestMediatorSelected.map { .Some($0) }
+        currentContestMediators <~ contestListMediator.contestMediatorsSelected.map { .Some($0) }
 
         super.init(store: store)
     }

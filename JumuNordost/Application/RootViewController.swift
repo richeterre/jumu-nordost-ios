@@ -39,7 +39,7 @@ class RootViewController: UITabBarController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        if mediator.currentContestMediator.value == nil {
+        if mediator.currentContestMediators.value == nil {
             presentContestList(animated: false)
         }
     }
@@ -47,10 +47,10 @@ class RootViewController: UITabBarController {
     // MARK: - Bindings
 
     private func makeBindings() {
-        mediator.currentContestMediator.producer
+        mediator.currentContestMediators.producer
             .observeOn(UIScheduler())
-            .startWithNext { [weak self] contestMediator in
-                self?.updateViewWithNewMediator(contestMediator)
+            .startWithNext { [weak self] contestMediators in
+                self?.updateViewWithContestMediators(contestMediators)
             }
     }
 
@@ -73,18 +73,18 @@ class RootViewController: UITabBarController {
         )
     }
 
-    private func updateViewWithNewMediator(mediator: PerformanceListMediator?) {
+    private func updateViewWithContestMediators(mediators: ContestMediators?) {
         // Dismiss contest picker if shown
         if (presentedViewController != nil) {
             dismissViewControllerAnimated(true, completion: nil)
         }
 
-        guard let mediator = mediator else {
+        guard let (performanceListMediator, resultListMediator) = mediators else {
             viewControllers = []
             return
         }
 
-        let performanceListVC = PerformanceListViewController(mediator: mediator)
+        let performanceListVC = PerformanceListViewController(mediator: performanceListMediator)
         performanceListVC.navigationItem.leftBarButtonItem = switchContestBarButtonItem()
         let performanceListNC = UINavigationController(rootViewController: performanceListVC)
 
@@ -94,7 +94,7 @@ class RootViewController: UITabBarController {
             selectedImage: UIImage(named: "IconTimetableFilled")
         )
 
-        let resultListVC = UITableViewController()
+        let resultListVC = ResultListViewController(mediator: resultListMediator)
         resultListVC.navigationItem.leftBarButtonItem = switchContestBarButtonItem()
         let resultListNC = UINavigationController(rootViewController: resultListVC)
         resultListNC.tabBarItem = UITabBarItem(
