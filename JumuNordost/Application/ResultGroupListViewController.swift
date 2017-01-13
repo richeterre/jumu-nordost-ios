@@ -1,5 +1,5 @@
 //
-//  ResultListViewController.swift
+//  ResultGroupListViewController.swift
 //  JumuNordost
 //
 //  Created by Martin Richter on 07/01/2017.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class ResultListViewController: UITableViewController {
+class ResultGroupListViewController: UITableViewController {
 
     // MARK: - Private Properties
 
-    private let mediator: ResultListMediator
+    private let mediator: ResultGroupListMediator
     private let contestCategoryCellIdentifier = "ContestCategoryCell"
 
     // MARK: - Lifecycle
 
-    init(mediator: ResultListMediator) {
+    init(mediator: ResultGroupListMediator) {
         self.mediator = mediator
 
         super.init(nibName: nil, bundle: nil)

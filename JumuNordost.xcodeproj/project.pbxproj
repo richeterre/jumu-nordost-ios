@@ -14,8 +14,8 @@
 		5B2B5B801C7D1746002E576F /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7F1C7D1746002E576F /* Label.swift */; };
 		5B6BA2C81E21118A0063252C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BA2C71E21118A0063252C /* RootViewController.swift */; };
 		5B6BA2CA1E21564C0063252C /* RootMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BA2C91E21564C0063252C /* RootMediator.swift */; };
-		5B6BA2CD1E2193740063252C /* ResultListMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BA2CC1E2193740063252C /* ResultListMediator.swift */; };
-		5B6BA2CF1E2193890063252C /* ResultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BA2CE1E2193890063252C /* ResultListViewController.swift */; };
+		5B6BA2CD1E2193740063252C /* ResultGroupListMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BA2CC1E2193740063252C /* ResultGroupListMediator.swift */; };
+		5B6BA2CF1E2193890063252C /* ResultGroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BA2CE1E2193890063252C /* ResultGroupListViewController.swift */; };
 		5B7F1C291C8B6E7F003BBFC8 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B7F1C281C8B6E7F003BBFC8 /* Credentials.plist */; };
 		5B7F1C2B1C8B6F36003BBFC8 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F1C2A1C8B6F36003BBFC8 /* Credentials.swift */; };
 		5B843C701C71104200048552 /* PerformanceListMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B843C6F1C71104200048552 /* PerformanceListMediator.swift */; };
@@ -84,8 +84,8 @@
 		5B2B5B7F1C7D1746002E576F /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		5B6BA2C71E21118A0063252C /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		5B6BA2C91E21564C0063252C /* RootMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootMediator.swift; sourceTree = "<group>"; };
-		5B6BA2CC1E2193740063252C /* ResultListMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultListMediator.swift; sourceTree = "<group>"; };
-		5B6BA2CE1E2193890063252C /* ResultListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultListViewController.swift; sourceTree = "<group>"; };
+		5B6BA2CC1E2193740063252C /* ResultGroupListMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultGroupListMediator.swift; sourceTree = "<group>"; };
+		5B6BA2CE1E2193890063252C /* ResultGroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultGroupListViewController.swift; sourceTree = "<group>"; };
 		5B7F1C281C8B6E7F003BBFC8 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		5B7F1C2A1C8B6F36003BBFC8 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		5B843C6F1C71104200048552 /* PerformanceListMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceListMediator.swift; sourceTree = "<group>"; };
@@ -173,14 +173,14 @@
 			name = Root;
 			sourceTree = "<group>";
 		};
-		5B6BA2CB1E2193560063252C /* Result List */ = {
+		5B6BA2CB1E2193560063252C /* Result Group List */ = {
 			isa = PBXGroup;
 			children = (
-				5B6BA2CC1E2193740063252C /* ResultListMediator.swift */,
-				5B6BA2CE1E2193890063252C /* ResultListViewController.swift */,
+				5B6BA2CC1E2193740063252C /* ResultGroupListMediator.swift */,
+				5B6BA2CE1E2193890063252C /* ResultGroupListViewController.swift */,
 				0FDAC7681E28B3F600C175C5 /* ContestCategoryCell.swift */,
 			);
-			name = "Result List";
+			name = "Result Group List";
 			sourceTree = "<group>";
 		};
 		5B843C6E1C71102F00048552 /* Contests */ = {
@@ -217,7 +217,7 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
-		5B843C951C7A3F9700048552 /* Performance */ = {
+		5B843C951C7A3F9700048552 /* Performance Details */ = {
 			isa = PBXGroup;
 			children = (
 				5B843C981C7A40B400048552 /* PerformanceMediator.swift */,
@@ -228,7 +228,7 @@
 				5BC06AC51C81CEF2007A9026 /* PieceView.swift */,
 				5BC06AC91C81E061007A9026 /* SeparatorView.swift */,
 			);
-			name = Performance;
+			name = "Performance Details";
 			sourceTree = "<group>";
 		};
 		5BAC51D01C6F67030098B9C8 /* Resources */ = {
@@ -250,8 +250,8 @@
 				5B6BA2C61E2111760063252C /* Root */,
 				5B843C6E1C71102F00048552 /* Contests */,
 				5B843C711C71104C00048552 /* Performance List */,
-				5B843C951C7A3F9700048552 /* Performance */,
-				5B6BA2CB1E2193560063252C /* Result List */,
+				5B843C951C7A3F9700048552 /* Performance Details */,
+				5B6BA2CB1E2193560063252C /* Result Group List */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -484,8 +484,8 @@
 				5BC06ACA1C81E061007A9026 /* SeparatorView.swift in Sources */,
 				5B843C921C79DCAA00048552 /* PerformanceCell.swift in Sources */,
 				5B843C991C7A40B400048552 /* PerformanceMediator.swift in Sources */,
-				5B6BA2CD1E2193740063252C /* ResultListMediator.swift in Sources */,
-				5B6BA2CF1E2193890063252C /* ResultListViewController.swift in Sources */,
+				5B6BA2CD1E2193740063252C /* ResultGroupListMediator.swift in Sources */,
+				5B6BA2CF1E2193890063252C /* ResultGroupListViewController.swift in Sources */,
 				0FDAC7691E28B3F600C175C5 /* ContestCategoryCell.swift in Sources */,
 				5B6BA2CA1E21564C0063252C /* RootMediator.swift in Sources */,
 				5B843C821C787CC300048552 /* PerformanceFilterView.swift in Sources */,

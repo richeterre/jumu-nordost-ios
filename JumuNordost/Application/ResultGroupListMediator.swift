@@ -1,5 +1,5 @@
 //
-//  ResultListMediator.swift
+//  ResultGroupListMediator.swift
 //  JumuNordost
 //
 //  Created by Martin Richter on 07/01/2017.
@@ -9,7 +9,7 @@
 import ReactiveCocoa
 import Result
 
-class ResultListMediator: Mediator {
+class ResultGroupListMediator: Mediator {
 
     // MARK: - Outputs
 

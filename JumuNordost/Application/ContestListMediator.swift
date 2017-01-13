@@ -105,9 +105,9 @@ class ContestListMediator: Mediator {
         let contest = contestAtIndexPath(indexPath)
 
         let performanceListMediator = PerformanceListMediator(store: self.store, contest: contest)
-        let resultListMediator = ResultListMediator(store: self.store, contest: contest)
+        let resultGroupListMediator = ResultGroupListMediator(store: self.store, contest: contest)
 
-        let contestMediators = (performanceListMediator, resultListMediator)
+        let contestMediators = (performanceListMediator, resultGroupListMediator)
         contestMediatorsSelectedObserver.sendNext(contestMediators)
     }
 

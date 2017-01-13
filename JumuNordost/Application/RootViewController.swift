@@ -79,7 +79,7 @@ class RootViewController: UITabBarController {
             dismissViewControllerAnimated(true, completion: nil)
         }
 
-        guard let (performanceListMediator, resultListMediator) = mediators else {
+        guard let (performanceListMediator, resultGroupListMediator) = mediators else {
             viewControllers = []
             return
         }
@@ -94,16 +94,16 @@ class RootViewController: UITabBarController {
             selectedImage: UIImage(named: "IconTimetableFilled")
         )
 
-        let resultListVC = ResultListViewController(mediator: resultListMediator)
-        resultListVC.navigationItem.leftBarButtonItem = switchContestBarButtonItem()
-        let resultListNC = UINavigationController(rootViewController: resultListVC)
-        resultListNC.tabBarItem = UITabBarItem(
+        let resultGroupListVC = ResultGroupListViewController(mediator: resultGroupListMediator)
+        resultGroupListVC.navigationItem.leftBarButtonItem = switchContestBarButtonItem()
+        let resultGroupListNC = UINavigationController(rootViewController: resultGroupListVC)
+        resultGroupListNC.tabBarItem = UITabBarItem(
             title: localize("TAB_TITLE.RESULT_LIST"),
             image: UIImage(named: "IconDiploma"),
             selectedImage: UIImage(named: "IconDiplomaFilled")
         )
 
-        viewControllers = [performanceListNC, resultListNC]
+        viewControllers = [performanceListNC, resultGroupListNC]
     }
 
     private func switchContestBarButtonItem() -> UIBarButtonItem {

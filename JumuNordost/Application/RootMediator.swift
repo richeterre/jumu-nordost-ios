@@ -8,7 +8,7 @@
 
 import ReactiveCocoa
 
-typealias ContestMediators = (PerformanceListMediator, ResultListMediator)
+typealias ContestMediators = (PerformanceListMediator, ResultGroupListMediator)
 
 class RootMediator: Mediator {
 
