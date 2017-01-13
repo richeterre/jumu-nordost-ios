@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ResultListViewController: UIViewController {
+class ResultListViewController: UITableViewController {
 
     // MARK: - Private Properties
 
     private let mediator: ResultListMediator
+    private let contestCategoryCellIdentifier = "ContestCategoryCell"
 
     // MARK: - Lifecycle
 
@@ -32,5 +33,25 @@ class ResultListViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.title = mediator.title
+
+        tableView.registerClass(ContestCategoryCell.self, forCellReuseIdentifier: contestCategoryCellIdentifier)
+
+        tableView.allowsSelection = false
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
+    }
+
+    // MARK: - UITableViewDataSource
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mediator.numberOfContestCategories()
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(contestCategoryCellIdentifier, forIndexPath: indexPath) as! ContestCategoryCell
+
+        cell.configure(mediator.contestCategoryForIndexPath(indexPath))
+
+        return cell
     }
 }

@@ -28,4 +28,14 @@ class ResultListMediator: Mediator {
 
         super.init(store: store)
     }
+
+    // MARK: - Contest Categories
+
+    func numberOfContestCategories() -> Int {
+        return contest.contestCategories.count
+    }
+
+    func contestCategoryForIndexPath(indexPath: NSIndexPath) -> ContestCategory {
+        return contest.contestCategories[indexPath.row]
+    }
 }

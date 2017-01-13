@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0FDAC7671E28B2DA00C175C5 /* ContestCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAC7661E28B2DA00C175C5 /* ContestCategory.swift */; };
+		0FDAC7691E28B3F600C175C5 /* ContestCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAC7681E28B3F600C175C5 /* ContestCategoryCell.swift */; };
 		5B2B5B7C1C7D0EF6002E576F /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7B1C7D0EF6002E576F /* Piece.swift */; };
 		5B2B5B7E1C7D1713002E576F /* PerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7D1C7D1713002E576F /* PerformanceView.swift */; };
 		5B2B5B801C7D1746002E576F /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7F1C7D1746002E576F /* Label.swift */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		0FDAC7661E28B2DA00C175C5 /* ContestCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestCategory.swift; sourceTree = "<group>"; };
+		0FDAC7681E28B3F600C175C5 /* ContestCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestCategoryCell.swift; sourceTree = "<group>"; };
 		5B2B5B7B1C7D0EF6002E576F /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		5B2B5B7D1C7D1713002E576F /* PerformanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceView.swift; sourceTree = "<group>"; };
 		5B2B5B7F1C7D1746002E576F /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				5B6BA2CC1E2193740063252C /* ResultListMediator.swift */,
 				5B6BA2CE1E2193890063252C /* ResultListViewController.swift */,
+				0FDAC7681E28B3F600C175C5 /* ContestCategoryCell.swift */,
 			);
 			name = "Result List";
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				5B843C991C7A40B400048552 /* PerformanceMediator.swift in Sources */,
 				5B6BA2CD1E2193740063252C /* ResultListMediator.swift in Sources */,
 				5B6BA2CF1E2193890063252C /* ResultListViewController.swift in Sources */,
+				0FDAC7691E28B3F600C175C5 /* ContestCategoryCell.swift in Sources */,
 				5B6BA2CA1E21564C0063252C /* RootMediator.swift in Sources */,
 				5B843C821C787CC300048552 /* PerformanceFilterView.swift in Sources */,
 				5B843CA71C7B5E3300048552 /* Font.swift in Sources */,
