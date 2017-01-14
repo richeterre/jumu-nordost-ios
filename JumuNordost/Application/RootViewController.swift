@@ -98,7 +98,7 @@ class RootViewController: UITabBarController {
         resultGroupListVC.navigationItem.leftBarButtonItem = switchContestBarButtonItem()
         let resultGroupListNC = UINavigationController(rootViewController: resultGroupListVC)
         resultGroupListNC.tabBarItem = UITabBarItem(
-            title: localize("TAB_TITLE.RESULT_LIST"),
+            title: localize("TAB_TITLE.RESULT_GROUP_LIST"),
             image: UIImage(named: "IconDiploma"),
             selectedImage: UIImage(named: "IconDiplomaFilled")
         )

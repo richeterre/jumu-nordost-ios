@@ -11,7 +11,7 @@
 "BACK_TITLE.PERFORMANCE_LIST" = "Vorspielplan";
 
 "TAB_TITLE.PERFORMANCE_LIST" = "Vorspielplan";
-"TAB_TITLE.RESULT_LIST" = "Ergebnisse";
+"TAB_TITLE.RESULT_GROUP_LIST" = "Ergebnisse";
 
 "FORMAT.AGE_GROUP" = "Altersgruppe %@";
 "FORMAT.AGE_GROUP_SHORT" = "AG %@";
