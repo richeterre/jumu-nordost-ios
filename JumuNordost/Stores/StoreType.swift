@@ -21,4 +21,6 @@ protocol StoreType {
     // MARK: - Performances
 
     func fetchPerformances(contest contest: Contest, venue: Venue, day: ContestDay) -> SignalProducer<[Performance], NSError>
+
+    func fetchPerformances(contest contest: Contest, contestCategory: ContestCategory, resultsPublic: Bool) -> SignalProducer<[Performance], NSError>
 }

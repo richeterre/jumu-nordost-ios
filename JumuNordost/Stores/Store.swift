@@ -63,6 +63,20 @@ class Store: StoreType {
             .attemptMap(decodeModels)
     }
 
+    func fetchPerformances(contest contest: Contest, contestCategory: ContestCategory, resultsPublic: Bool) -> SignalProducer<[Performance], NSError> {
+
+        let queryItems = [
+            NSURLQueryItem(name: "contest_category_id", value: contestCategory.id),
+            NSURLQueryItem(name: "results_public", value: queryValueForBool(resultsPublic))
+        ]
+
+        let path = String(format: "contests/%@/performances", arguments: [contest.id])
+        let request = requestForPath(path, queryItems: queryItems)
+
+        return session.rac_dataWithRequest(request)
+            .attemptMap(decodeModels)
+    }
+
     // MARK: - Private Helpers
 
     private func requestForPath(path: String, queryItems: [NSURLQueryItem] = []) -> NSURLRequest {
