@@ -39,21 +39,7 @@ class ListPerformanceFormatter {
             ageGroup: String(format: localize("FORMAT.AGE_GROUP_SHORT"), performance.ageGroup),
             mainAppearances: AppearanceFormatter.formattedMainAppearances(performance: performance),
             accompanists: AppearanceFormatter.formattedAccompanists(performance: performance, highlightAgeGroup: false),
-            predecessorInfo: predecessorInfoForPerformance(performance)
+            predecessorInfo: PerformanceFormatter.predecessorInfoForPerformance(performance)
         )
-    }
-
-    // MARK: - Private Helpers
-
-    private static func predecessorInfoForPerformance(performance: Performance) -> String? {
-        let name = performance.predecessorHostName
-        let flag = performance.predecessorHostCountry?.toCountryFlag()
-
-        switch (name, flag) {
-        case let (name?, flag?):
-            return "\(flag) \(name)"
-        default:
-            return name
-        }
     }
 }

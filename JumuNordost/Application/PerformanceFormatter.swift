@@ -46,9 +46,7 @@ class PerformanceFormatter {
         )
     }
 
-    // MARK: - Private Helpers
-
-    private static func predecessorInfoForPerformance(performance: Performance) -> String? {
+    static func predecessorInfoForPerformance(performance: Performance) -> String? {
         let name = performance.predecessorHostName
         let flag = performance.predecessorHostCountry?.toCountryFlag()
 
