@@ -13,7 +13,7 @@ class ResultGroupListViewController: UITableViewController {
     // MARK: - Private Properties
 
     private let mediator: ResultGroupListMediator
-    private let contestCategoryCellIdentifier = "ContestCategoryCell"
+    private let cellIdentifier = "ContestCategoryCell"
 
     // MARK: - Lifecycle
 
@@ -33,10 +33,15 @@ class ResultGroupListViewController: UITableViewController {
         super.viewDidLoad()
 
         navigationItem.title = mediator.title
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: localize("BACK_TITLE.RESULT_GROUP_LIST"),
+            style: .Plain,
+            target: nil,
+            action: nil
+        )
 
-        tableView.registerClass(ContestCategoryCell.self, forCellReuseIdentifier: contestCategoryCellIdentifier)
+        tableView.registerClass(ContestCategoryCell.self, forCellReuseIdentifier: cellIdentifier)
 
-        tableView.allowsSelection = false
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
     }
@@ -48,10 +53,19 @@ class ResultGroupListViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(contestCategoryCellIdentifier, forIndexPath: indexPath) as! ContestCategoryCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContestCategoryCell
 
         cell.configure(mediator.contestCategoryForIndexPath(indexPath))
+        cell.accessoryType = .DisclosureIndicator
 
         return cell
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        let resultListMediator = mediator.resultListMediatorFotIndexPath(indexPath)
+        let resultListVC = ResultListViewController(mediator: resultListMediator)
+        navigationController?.pushViewController(resultListVC, animated: true)
     }
 }

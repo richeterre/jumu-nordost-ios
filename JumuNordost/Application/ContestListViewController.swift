@@ -20,7 +20,7 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
-    private let contestCellIdentifier = "ContestCell"
+    private let cellIdentifier = "ContestCell"
     private var filterToggleButton: UIBarButtonItem?
 
     // MARK: - Lifecycle
@@ -53,7 +53,7 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
 
         view.backgroundColor = UIColor.whiteColor()
 
-        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: contestCellIdentifier)
+        tableView.registerClass(ContestCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -168,7 +168,7 @@ class ContestListViewController: UIViewController, DZNEmptyDataSetDelegate, DZNE
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(contestCellIdentifier, forIndexPath: indexPath) as! ContestCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContestCell
 
         cell.configure(mediator.formattedContestForIndexPath(indexPath))
 

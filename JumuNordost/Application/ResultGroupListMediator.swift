@@ -36,6 +36,23 @@ class ResultGroupListMediator: Mediator {
     }
 
     func contestCategoryForIndexPath(indexPath: NSIndexPath) -> ContestCategory {
+        return contestCategoryAtIndexPath(indexPath)
+    }
+
+    // MARK: - Mediators
+
+    func resultListMediatorFotIndexPath(indexPath: NSIndexPath) -> ResultListMediator {
+        let contestCategory = contestCategoryAtIndexPath(indexPath)
+        return ResultListMediator(
+            store: self.store,
+            contest: self.contest,
+            contestCategory: contestCategory
+        )
+    }
+
+    // MARK: - Private Helpers
+
+    private func contestCategoryAtIndexPath(indexPath: NSIndexPath) -> ContestCategory {
         return contest.contestCategories[indexPath.row]
     }
 }

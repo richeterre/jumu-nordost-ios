@@ -20,7 +20,7 @@ class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, 
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
-    private let performanceCellIdentifier = "PerformanceCell"
+    private let cellIdentifier = "PerformanceCell"
 
     // MARK: - Lifecycle
 
@@ -56,7 +56,7 @@ class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, 
 
         tableView.rowHeight = UITableViewAutomaticDimension
 
-        tableView.registerClass(PerformanceCell.self, forCellReuseIdentifier: performanceCellIdentifier)
+        tableView.registerClass(PerformanceCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -169,7 +169,7 @@ class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, 
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(performanceCellIdentifier, forIndexPath: indexPath) as! PerformanceCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PerformanceCell
 
         cell.configure(mediator.formattedListPerformanceForIndexPath(indexPath))
         cell.accessoryType = .DisclosureIndicator
@@ -182,17 +182,8 @@ class PerformanceListViewController: UIViewController, DZNEmptyDataSetDelegate, 
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 
         // Calculate height based on number of appearances and predecessor info
-
-        let number = mediator.numberOfAppearancesForPerformanceAtIndexPath(indexPath)
-        let baseHeight: CGFloat = {
-            switch number {
-            case 1: return 77
-            case 2: return 96
-            case 3: return 115
-            case 4: return 134
-            default: return 77
-            }
-        }()
+        let appearanceCount = mediator.numberOfAppearancesForPerformanceAtIndexPath(indexPath)
+        let baseHeight = 77.0 + CGFloat((appearanceCount - 1)) * 19.0
 
         let hasPredecessorInfo = mediator.predecessorInfoPresentForPerformanceAtIndexPath(indexPath)
         return hasPredecessorInfo ? baseHeight + 20 : baseHeight
