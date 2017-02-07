@@ -95,9 +95,9 @@ class ResultListMediator: Mediator {
         return performanceAtIndexPath(indexPath).predecessorHostName != nil
     }
 
-    func formattedPerformanceResultForIndexPath(indexPath: NSIndexPath) -> FormattedPerformanceResult {
+    func formattedResultPerformanceForIndexPath(indexPath: NSIndexPath) -> FormattedResultPerformance {
         let performance = performanceAtIndexPath(indexPath)
-        return PerformanceResultFormatter.formattedPerformanceResult(performance, contest: contest)
+        return ResultPerformanceFormatter.formattedResultPerformance(performance, contest: contest)
     }
 
     // MARK: - Private Helpers

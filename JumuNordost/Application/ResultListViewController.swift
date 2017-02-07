@@ -17,7 +17,7 @@ class ResultListViewController: UITableViewController, DZNEmptyDataSetDelegate, 
 
     private let mediator: ResultListMediator
     private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
-    private let cellIdentifier = "PerformanceResultCell"
+    private let cellIdentifier = "ResultPerformanceCell"
 
     // MARK: - Lifecycle
 
@@ -42,7 +42,7 @@ class ResultListViewController: UITableViewController, DZNEmptyDataSetDelegate, 
         tableView.allowsSelection = false
         tableView.rowHeight = UITableViewAutomaticDimension
 
-        tableView.registerClass(PerformanceResultCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.registerClass(ResultPerformanceCell.self, forCellReuseIdentifier: cellIdentifier)
 
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
@@ -116,9 +116,9 @@ class ResultListViewController: UITableViewController, DZNEmptyDataSetDelegate, 
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PerformanceResultCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ResultPerformanceCell
 
-        cell.configure(mediator.formattedPerformanceResultForIndexPath(indexPath))
+        cell.configure(mediator.formattedResultPerformanceForIndexPath(indexPath))
 
         return cell
     }
