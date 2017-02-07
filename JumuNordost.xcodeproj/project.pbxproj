@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F6270961E4A4E3600EFDDE5 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6270951E4A4E3600EFDDE5 /* UIStackView.swift */; };
 		0F6270981E4A551800EFDDE5 /* AppearanceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6270971E4A551800EFDDE5 /* AppearanceResult.swift */; };
+		0F62709A1E4A58A900EFDDE5 /* ResultAppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6270991E4A58A900EFDDE5 /* ResultAppearanceView.swift */; };
 		0FDAC7671E28B2DA00C175C5 /* ContestCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAC7661E28B2DA00C175C5 /* ContestCategory.swift */; };
 		0FDAC7691E28B3F600C175C5 /* ContestCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAC7681E28B3F600C175C5 /* ContestCategoryCell.swift */; };
 		5B2B5B7C1C7D0EF6002E576F /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B5B7B1C7D0EF6002E576F /* Piece.swift */; };
@@ -85,6 +86,7 @@
 /* Begin PBXFileReference section */
 		0F6270951E4A4E3600EFDDE5 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		0F6270971E4A551800EFDDE5 /* AppearanceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceResult.swift; sourceTree = "<group>"; };
+		0F6270991E4A58A900EFDDE5 /* ResultAppearanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultAppearanceView.swift; sourceTree = "<group>"; };
 		0FDAC7661E28B2DA00C175C5 /* ContestCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestCategory.swift; sourceTree = "<group>"; };
 		0FDAC7681E28B3F600C175C5 /* ContestCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestCategoryCell.swift; sourceTree = "<group>"; };
 		5B2B5B7B1C7D0EF6002E576F /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				5B6BA32D1E2A3E080063252C /* ResultListViewController.swift */,
 				5B6BA3331E2BEA8D0063252C /* ResultPerformanceFormatter.swift */,
 				5B6BA3311E2BE9F90063252C /* ResultPerformanceCell.swift */,
+				0F6270991E4A58A900EFDDE5 /* ResultAppearanceView.swift */,
 			);
 			name = "Result List";
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				5B2B5B7E1C7D1713002E576F /* PerformanceView.swift in Sources */,
 				5B6BA32E1E2A3E080063252C /* ResultListViewController.swift in Sources */,
 				5BC848EE1C7E6A9000D4CA43 /* ContestFormatter.swift in Sources */,
+				0F62709A1E4A58A900EFDDE5 /* ResultAppearanceView.swift in Sources */,
 				0F6270961E4A4E3600EFDDE5 /* UIStackView.swift in Sources */,
 				0F6270981E4A551800EFDDE5 /* AppearanceResult.swift in Sources */,
 				5BAC51EA1C6F71A80098B9C8 /* ContestListMediator.swift in Sources */,

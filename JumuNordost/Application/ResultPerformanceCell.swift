@@ -64,21 +64,12 @@ class ResultPerformanceCell: UITableViewCell {
     func configure(resultPerformance: FormattedResultPerformance) {
         categoryInfoLabel.text = "\(resultPerformance.category), \(resultPerformance.ageGroup)"
 
-        resultPerformance.appearances.forEach({ result in
-            let label = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
-            label.text = textForResultAppearance(result)
-            appearancesView.addArrangedSubview(label)
+        resultPerformance.appearances.forEach({ appearance in
+            let appearanceView = ResultAppearanceView(appearance: appearance)
+            appearancesView.addArrangedSubview(appearanceView)
         })
 
         predecessorInfoLabel.text = resultPerformance.predecessorInfo
-    }
-
-    private func textForResultAppearance(appearance: FormattedResultAppearance) -> String {
-        if let points = appearance.points {
-            return "\(appearance.name), \(appearance.instrument)\t\(points)"
-        } else {
-            return "\(appearance.name), \(appearance.instrument)"
-        }
     }
 }
 
