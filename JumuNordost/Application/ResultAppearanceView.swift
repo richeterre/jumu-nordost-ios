@@ -49,7 +49,7 @@ class ResultAppearanceView: UIView {
 
             prizeLabel.left == pointsLabel.right + 8
             prizeLabel.right == superview.right
-            prizeLabel.width == 50
+            prizeLabel.width == 60
 
             align(top: participantLabel, pointsLabel, prizeLabel)
         }
