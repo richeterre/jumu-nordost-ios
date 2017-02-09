@@ -11,6 +11,7 @@ import Curry
 
 struct AppearanceResult {
     let points: Int
+    let prize: String?
 }
 
 // MARK: - Decodable
@@ -19,6 +20,7 @@ extension AppearanceResult: Decodable {
     static func decode(json: JSON) -> Decoded<AppearanceResult> {
         return curry(self.init)
             <^> json <| "points"
+            <*> json <|? "prize"
     }
 }
 

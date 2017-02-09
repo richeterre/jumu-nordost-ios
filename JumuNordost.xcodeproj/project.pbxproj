@@ -314,12 +314,12 @@
 			isa = PBXGroup;
 			children = (
 				5B843C9A1C7A438C00048552 /* Appearance.swift */,
+				0F6270971E4A551800EFDDE5 /* AppearanceResult.swift */,
 				5BFA75FC1C87B4D900EF8B5C /* Changeset.swift */,
 				5BAC51E51C6F6D9E0098B9C8 /* Contest.swift */,
 				0FDAC7661E28B2DA00C175C5 /* ContestCategory.swift */,
 				5B843C751C71167700048552 /* Performance.swift */,
 				5B2B5B7B1C7D0EF6002E576F /* Piece.swift */,
-				0F6270971E4A551800EFDDE5 /* AppearanceResult.swift */,
 				5BAC51EB1C6F77320098B9C8 /* Venue.swift */,
 			);
 			path = Models;

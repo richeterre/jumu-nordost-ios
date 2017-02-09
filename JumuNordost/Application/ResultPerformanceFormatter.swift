@@ -12,6 +12,7 @@ struct FormattedResultAppearance {
     let name: String
     let instrument: String
     let points: String?
+    let prize: String?
 }
 
 struct FormattedResultPerformance {
@@ -31,7 +32,8 @@ class ResultPerformanceFormatter {
             return FormattedResultAppearance(
                 name: appearance.participantName,
                 instrument: appearance.instrument,
-                points: pointsForAppearance(appearance)
+                points: pointsForAppearance(appearance),
+                prize: appearance.result?.prize
             )
         }
 
