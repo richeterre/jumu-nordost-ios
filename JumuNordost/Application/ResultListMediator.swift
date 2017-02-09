@@ -23,7 +23,7 @@ class ResultListMediator: Mediator {
     }
 
     var title: String {
-        return contest.name
+        return contestCategory.name
     }
 
     // MARK: - Private Properties
