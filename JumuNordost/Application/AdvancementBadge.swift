@@ -18,7 +18,7 @@ class AdvancementBadge: UIView {
         super.init(frame: CGRectNull)
 
         self.backgroundColor = Color.successColor
-        self.layoutMargins = UIEdgeInsets(top: 1, left: 4, bottom: 1, right: 4)
+        self.layoutMargins = UIEdgeInsets(top: 0.5, left: 4, bottom: 0.5, right: 4)
         self.layer.cornerRadius = 6
 
         textLabel.textAlignment = .Center
