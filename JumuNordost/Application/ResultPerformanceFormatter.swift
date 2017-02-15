@@ -17,7 +17,6 @@ struct FormattedResultAppearance {
 }
 
 struct FormattedResultPerformance {
-    let category: String
     let ageGroup: String
     let appearances: [FormattedResultAppearance]
     let predecessorInfo: String?
@@ -40,7 +39,6 @@ class ResultPerformanceFormatter {
         }
 
         return FormattedResultPerformance(
-            category: performance.categoryName,
             ageGroup: String(format: localize("FORMAT.AGE_GROUP_SHORT"), performance.ageGroup),
             appearances: performance.appearances.map(formattedResultAppearance),
             predecessorInfo: PerformanceFormatter.predecessorInfoForPerformance(performance)

@@ -10,9 +10,8 @@ import Cartography
 
 class ResultPerformanceCell: UITableViewCell {
 
-    private let categoryInfoLabel = Label(fontWeight: .Bold, fontStyle: .Normal, fontSize: .Medium)
     private let appearancesView = UIStackView()
-    private let predecessorInfoLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let generalInfoLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
 
     // MARK: - Lifecycle
 
@@ -21,9 +20,8 @@ class ResultPerformanceCell: UITableViewCell {
 
         appearancesView.axis = .Vertical
 
-        contentView.addSubview(categoryInfoLabel)
-        contentView.addSubview(predecessorInfoLabel)
         contentView.addSubview(appearancesView)
+        contentView.addSubview(generalInfoLabel)
 
         makeConstraints()
     }
@@ -41,35 +39,35 @@ class ResultPerformanceCell: UITableViewCell {
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(categoryInfoLabel, contentView) { categoryInfoLabel, contentView in
-            categoryInfoLabel.top == contentView.topMargin
+        constrain(appearancesView, contentView) { appearancesView, contentView in
+            appearancesView.top == contentView.topMargin
 
-            categoryInfoLabel.left == contentView.leftMargin
-            categoryInfoLabel.right == contentView.rightMargin
+            appearancesView.left == contentView.leftMargin
+            appearancesView.right == contentView.rightMargin
         }
 
-        constrain(categoryInfoLabel, appearancesView, predecessorInfoLabel, contentView) { categoryInfoLabel, appearancesView, predecessorInfoLabel, contentView in
-            align(left: categoryInfoLabel, appearancesView, predecessorInfoLabel)
-            align(right: categoryInfoLabel, appearancesView, predecessorInfoLabel)
+        constrain(appearancesView, generalInfoLabel, contentView) { appearancesView, generalInfoLabel, contentView in
+            align(left: appearancesView, generalInfoLabel)
+            align(right: appearancesView, generalInfoLabel)
 
-            appearancesView.top == categoryInfoLabel.bottom + 8
-
-            predecessorInfoLabel.top == appearancesView.bottom + 8
-            predecessorInfoLabel.bottom == contentView.bottomMargin
+            generalInfoLabel.top == appearancesView.bottom + 8
+            generalInfoLabel.bottom == contentView.bottomMargin
         }
     }
 
     // MARK: - Content
 
     func configure(resultPerformance: FormattedResultPerformance) {
-        categoryInfoLabel.text = "\(resultPerformance.category), \(resultPerformance.ageGroup)"
-
         resultPerformance.appearances.forEach({ appearance in
             let appearanceView = ResultAppearanceView(appearance: appearance)
             appearancesView.addArrangedSubview(appearanceView)
         })
 
-        predecessorInfoLabel.text = resultPerformance.predecessorInfo
+        if let predecessorInfo = resultPerformance.predecessorInfo {
+            generalInfoLabel.text = "\(predecessorInfo), \(resultPerformance.ageGroup)"
+        } else {
+            generalInfoLabel.text = resultPerformance.ageGroup
+        }
     }
 }
 

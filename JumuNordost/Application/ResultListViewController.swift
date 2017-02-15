@@ -129,7 +129,7 @@ class ResultListViewController: UITableViewController, DZNEmptyDataSetDelegate, 
 
         // Calculate height based on number of appearances and predecessor info
         let appearanceCount = mediator.numberOfAppearancesForPerformanceAtIndexPath(indexPath)
-        let baseHeight = 77.0 + CGFloat((appearanceCount - 1)) * 19.0
+        let baseHeight = 49.5 + CGFloat((appearanceCount - 1)) * 19.0
 
         let hasPredecessorInfo = mediator.predecessorInfoPresentForPerformanceAtIndexPath(indexPath)
         return hasPredecessorInfo ? baseHeight + 20 : baseHeight
