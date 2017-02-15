@@ -13,6 +13,7 @@ struct FormattedResultAppearance {
     let instrument: String
     let points: String?
     let prize: String?
+    let advancesToNextRound: Bool?
 }
 
 struct FormattedResultPerformance {
@@ -33,7 +34,8 @@ class ResultPerformanceFormatter {
                 name: appearance.participantName,
                 instrument: appearance.instrument,
                 points: pointsForAppearance(appearance),
-                prize: appearance.result?.prize
+                prize: appearance.result?.prize,
+                advancesToNextRound: appearance.result?.advancesToNextRound
             )
         }
 

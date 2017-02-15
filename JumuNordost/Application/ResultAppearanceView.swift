@@ -13,6 +13,7 @@ class ResultAppearanceView: UIView {
     private let participantLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let pointsLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let prizeLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let advancementBadge = AdvancementBadge()
 
     // MARK: - Lifecycle
 
@@ -24,10 +25,12 @@ class ResultAppearanceView: UIView {
         participantLabel.text = "\(appearance.name), \(appearance.instrument)"
         pointsLabel.text = appearance.points
         prizeLabel.text = appearance.prize
+        advancementBadge.hidden = !(appearance.advancesToNextRound ?? false)
 
         self.addSubview(participantLabel)
         self.addSubview(pointsLabel)
         self.addSubview(prizeLabel)
+        self.addSubview(advancementBadge)
 
         makeConstraints()
     }
@@ -39,7 +42,7 @@ class ResultAppearanceView: UIView {
     // MARK: - Layout
 
     private func makeConstraints() {
-        constrain(self, participantLabel, pointsLabel, prizeLabel) { superview, participantLabel, pointsLabel, prizeLabel in
+        constrain(self, participantLabel, pointsLabel, prizeLabel, advancementBadge) { superview, participantLabel, pointsLabel, prizeLabel, advancementBadge in
             participantLabel.top == superview.top
             participantLabel.left == superview.left
             participantLabel.bottom == superview.bottom
@@ -48,10 +51,14 @@ class ResultAppearanceView: UIView {
             pointsLabel.width == 20
 
             prizeLabel.left == pointsLabel.right + 8
-            prizeLabel.right == superview.right
-            prizeLabel.width == 60
+            prizeLabel.width == 55
+
+            advancementBadge.left == prizeLabel.right + 2
+            advancementBadge.width == 30
+            advancementBadge.right == superview.right
 
             align(top: participantLabel, pointsLabel, prizeLabel)
+            align(centerY: prizeLabel, advancementBadge)
         }
     }
 }
