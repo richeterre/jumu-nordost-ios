@@ -13,6 +13,7 @@ class ResultAppearanceView: UIView {
     private let participantLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let pointsLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
     private let prizeLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Medium)
+    private let ratingLabel = Label(fontWeight: .Regular, fontStyle: .Normal, fontSize: .Small)
     private let advancementBadge = AdvancementBadge()
 
     // MARK: - Lifecycle
@@ -25,11 +26,13 @@ class ResultAppearanceView: UIView {
         participantLabel.text = "\(appearance.name), \(appearance.instrument)"
         pointsLabel.text = appearance.points
         prizeLabel.text = appearance.prize
+        ratingLabel.text = shorten(appearance.rating)
         advancementBadge.hidden = !(appearance.advancesToNextRound ?? false)
 
         self.addSubview(participantLabel)
         self.addSubview(pointsLabel)
         self.addSubview(prizeLabel)
+        self.addSubview(ratingLabel)
         self.addSubview(advancementBadge)
 
         makeConstraints()
@@ -60,5 +63,27 @@ class ResultAppearanceView: UIView {
             align(top: participantLabel, pointsLabel, prizeLabel)
             align(centerY: prizeLabel, advancementBadge)
         }
+
+        constrain(self, pointsLabel, prizeLabel, ratingLabel) { superview, pointsLabel, prizeLabel, ratingLabel in
+            align(left: prizeLabel, ratingLabel)
+            align(baseline: pointsLabel, ratingLabel)
+            ratingLabel.right == superview.right
+        }
+    }
+}
+
+// Shortens an appearance result's textual rating for display, if possible.
+private func shorten(rating: String?) -> String? {
+    guard let rating = rating else { return nil }
+
+    switch rating {
+    case "mit gutem Erfolg teilgenommen":
+        return "m. g. E. teilgen." // Use thin spaces between one-letter abbreviations
+    case "mit Erfolg teilgenommen":
+        return "m. E. teilgen."
+    case "teilgenommen":
+        return "teilgen."
+    default:
+        return rating
     }
 }

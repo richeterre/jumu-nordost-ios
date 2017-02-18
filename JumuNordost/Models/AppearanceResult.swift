@@ -12,6 +12,7 @@ import Curry
 struct AppearanceResult {
     let points: Int
     let prize: String?
+    let rating: String?
     let advancesToNextRound: Bool
 }
 
@@ -22,6 +23,7 @@ extension AppearanceResult: Decodable {
         return curry(self.init)
             <^> json <| "points"
             <*> json <|? "prize"
+            <*> json <|? "rating"
             <*> json <| "advances_to_next_round"
     }
 }
