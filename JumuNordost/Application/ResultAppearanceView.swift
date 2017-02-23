@@ -76,9 +76,14 @@ class ResultAppearanceView: UIView {
 private func shorten(rating: String?) -> String? {
     guard let rating = rating else { return nil }
 
+    // Note the thin spaces between one-letter abbreviations
     switch rating {
+    case "mit hervorragendem Erfolg teilgenommen":
+        return "m. h. E. teilgen."
+    case "mit sehr gutem Erfolg teilgenommen":
+        return "m. s. g. E. teilg."
     case "mit gutem Erfolg teilgenommen":
-        return "m. g. E. teilgen." // Use thin spaces between one-letter abbreviations
+        return "m. g. E. teilgen."
     case "mit Erfolg teilgenommen":
         return "m. E. teilgen."
     case "teilgenommen":
