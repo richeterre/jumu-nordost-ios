@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeAppAppearance()
 
         let apiKey = CredentialsHelper.apiKey()! // Crash if no credentials were found
-        let store = Store(baseURL: Constant.localBaseURL, apiKey: apiKey)
+        let store = Store(baseURL: Constant.remoteBaseURL, apiKey: apiKey)
 
         let rootMediator = RootMediator(store: store)
         let rootViewController = RootViewController(mediator: rootMediator)
